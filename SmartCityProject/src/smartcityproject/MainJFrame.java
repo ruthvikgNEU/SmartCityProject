@@ -37,11 +37,10 @@ public class MainJFrame extends javax.swing.JFrame {
     
     public void connectDatabase(){
      try{
-         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql","root", "Laplace1234!");
+         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "root");
         }
         catch(Exception e){
             System.out.println("Unable to connect to Database");
-            System.out.println("Saranya");
         }
 }
     /**
@@ -139,9 +138,9 @@ String pwd = String.valueOf(PasswordFld.getPassword());
                     if (rs.next()) {
                         if(rs.getString(1).equals(username)){
                             if(rs.getString(2).equals(pwd)){
-                                UserLandingJFrame frame = new UserLandingJFrame(connection);
-frame.show();
-dispose();
+                                UserLandingJFrame frame = new UserLandingJFrame(connection,rs.getString(1));
+                                        frame.show();
+                                        dispose();
                             }
                             else{
                                 JOptionPane.showMessageDialog(this, "Incorrect Password.");
