@@ -133,7 +133,7 @@ String pwd = String.valueOf(PasswordFld.getPassword());
             try {
                     PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
                     ResultSet rs = st.executeQuery();
-                    if (rs.next()) {
+                    while (rs.next()) {
                         if(rs.getString(1).equals(username)){
                             if(rs.getString(2).equals(pwd)){
                                 if(rs.getString(3).equals("1")){
@@ -149,12 +149,8 @@ String pwd = String.valueOf(PasswordFld.getPassword());
                                 JOptionPane.showMessageDialog(this, "Incorrect Password.");
                             }
                         }
-                        else{
-                             JOptionPane.showMessageDialog(this, "Username Not Found.");
-                        } 
-                    }else{
-                        JOptionPane.showMessageDialog(this, "Username Not Found.");
                     }
+                     JOptionPane.showMessageDialog(this, "Username Not Found.");
                 } catch (HeadlessException | SQLException sqlException) {
                     sqlException.printStackTrace();
                 } 
