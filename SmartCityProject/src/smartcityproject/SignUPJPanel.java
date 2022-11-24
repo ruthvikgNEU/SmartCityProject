@@ -62,7 +62,7 @@ UsernameListener();
     DocumentListener documentListener = new DocumentListener() {
       @Override
       public void changedUpdate(DocumentEvent documentEvent) {
-         if(!UsernameExists(UsernameFld.getText()) && UsernameFld.getText().length() > 8){
+         if(!UsernameExists(UsernameFld.getText()) && UsernameFld.getText().length() >= 8){
             UsernameGreenTick.setVisible(true);
             UsernameRedTick.setVisible(false);
           }else{
@@ -73,7 +73,7 @@ UsernameListener();
       @Override
       public void insertUpdate(DocumentEvent documentEvent) {
           
-          if(!UsernameExists(UsernameFld.getText()) && UsernameFld.getText().length() > 8){
+          if(!UsernameExists(UsernameFld.getText()) && UsernameFld.getText().length() >= 8){
             UsernameGreenTick.setVisible(true);
             UsernameRedTick.setVisible(false);
           }else{
@@ -83,7 +83,7 @@ UsernameListener();
       }
       @Override
       public void removeUpdate(DocumentEvent documentEvent) {
-           if(!UsernameExists(UsernameFld.getText()) && UsernameFld.getText().length() > 8){
+           if(!UsernameExists(UsernameFld.getText()) && UsernameFld.getText().length() >= 8){
             UsernameGreenTick.setVisible(true);
             UsernameRedTick.setVisible(false);
           }else{
@@ -431,7 +431,7 @@ pass = String.valueOf(PasswordFld.getPassword());
 cnfpass = String.valueOf(CnfPasswordFld.getPassword());
 code = generateUniqueId();
 try {
-  PreparedStatement st = (PreparedStatement) connection.prepareStatement("insert into users values(?,?,?,?,?,?,false)");
+  PreparedStatement st = (PreparedStatement) connection.prepareStatement("insert into users(firstname,lastname,username,email,passwordFld,verify_code) values(?,?,?,?,?,?)");
 
   st.setString(1, fname);
   st.setString(2, lname);
@@ -459,7 +459,6 @@ try {
                                 st2.setString(1,"1");
                                 st2.setString(2,uname);
                                     int executeUpdate = st2.executeUpdate();
-                                    System.out.println(executeUpdate);
                                     JOptionPane.showMessageDialog(this, "Email Verified.\n Please proceed to Login.");
                                 }else{
                                 JOptionPane.showMessageDialog(this, "Incorrect Verification Code");

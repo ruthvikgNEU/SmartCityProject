@@ -131,11 +131,7 @@ public class MainJFrame extends javax.swing.JFrame {
 String username = UsernameFld.getText();
 String pwd = String.valueOf(PasswordFld.getPassword());
             try {
-<<<<<<< HEAD
-                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld from users");
-=======
                     PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
->>>>>>> production
                     ResultSet rs = st.executeQuery();
                     while (rs.next()) {
                         if(rs.getString(1).equals(username)){
