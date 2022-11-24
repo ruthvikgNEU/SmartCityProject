@@ -162,7 +162,7 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     }//GEN-LAST:event_PasswordFldActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
+    SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
    HomeSplitPane.setRightComponent(panel);
     
         // TODO add your handling code here:
