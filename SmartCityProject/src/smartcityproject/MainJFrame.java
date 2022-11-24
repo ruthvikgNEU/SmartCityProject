@@ -52,7 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        HomeSplitPane = new javax.swing.JSplitPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         MainJPanel = new javax.swing.JPanel();
         UsernameFld = new javax.swing.JTextField();
@@ -66,19 +66,24 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_190801.png"))); // NOI18N
-        HomeSplitPane.setLeftComponent(jLabel1);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        MainJPanel.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_005729.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -2, 320, 660));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 660));
+
+        MainJPanel.setBackground(new java.awt.Color(0, 102, 102));
         MainJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        UsernameFld.setBackground(new java.awt.Color(0, 153, 153));
+        UsernameFld.setBackground(new java.awt.Color(0, 102, 102));
         UsernameFld.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         UsernameFld.setText("Username");
         UsernameFld.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         MainJPanel.add(UsernameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 260, 40));
 
-        RegisterButton.setBackground(new java.awt.Color(0, 153, 153));
+        RegisterButton.setBackground(new java.awt.Color(0, 102, 102));
         RegisterButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         RegisterButton.setText("Register");
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,11 +93,10 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         MainJPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 260, 40));
 
-        LoginButton.setBackground(new java.awt.Color(0, 153, 153));
+        LoginButton.setBackground(new java.awt.Color(0, 102, 102));
         LoginButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(51, 51, 51));
         LoginButton.setText("Login");
-        LoginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButtonActionPerformed(evt);
@@ -109,7 +113,7 @@ public class MainJFrame extends javax.swing.JFrame {
         TitleImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-smart-city-64.png"))); // NOI18N
         MainJPanel.add(TitleImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 70, 90));
 
-        PasswordFld.setBackground(new java.awt.Color(0, 153, 153));
+        PasswordFld.setBackground(new java.awt.Color(0, 102, 102));
         PasswordFld.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         PasswordFld.setText("password");
         PasswordFld.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -120,9 +124,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         MainJPanel.add(PasswordFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 260, 50));
 
-        HomeSplitPane.setRightComponent(MainJPanel);
-
-        getContentPane().add(HomeSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1040, 650));
+        getContentPane().add(MainJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 710, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,26 +133,23 @@ public class MainJFrame extends javax.swing.JFrame {
 String username = UsernameFld.getText();
 String pwd = String.valueOf(PasswordFld.getPassword());
             try {
-                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
+                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,password from users");
                     ResultSet rs = st.executeQuery();
-                    while (rs.next()) {
+                    if (rs.next()) {
                         if(rs.getString(1).equals(username)){
                             if(rs.getString(2).equals(pwd)){
-                                if(rs.getString(3).equals("1")){
-                                UserLandingJFrame frame = new UserLandingJFrame(connection,rs.getString(1));
-                                        frame.show();
-                                        dispose();
-                                }
-                                else{
-                                    JOptionPane.showMessageDialog(this, "Email not Verified.");
-                                }
+                                UserLandingJFrame frame = new UserLandingJFrame(connection);
+frame.show();
+dispose();
                             }
                             else{
                                 JOptionPane.showMessageDialog(this, "Incorrect Password.");
                             }
                         }
+                        else{
+                             JOptionPane.showMessageDialog(this, "Username Not Found.");
+                        } 
                     }
-                     JOptionPane.showMessageDialog(this, "Username Not Found.");
                 } catch (HeadlessException | SQLException sqlException) {
                     sqlException.printStackTrace();
                 } 
@@ -162,9 +161,11 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     }//GEN-LAST:event_PasswordFldActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
+
     SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
    HomeSplitPane.setRightComponent(panel);
     
+
         // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
@@ -204,7 +205,6 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSplitPane HomeSplitPane;
     private javax.swing.JButton LoginButton;
     private javax.swing.JPanel MainJPanel;
     private javax.swing.JPasswordField PasswordFld;
@@ -214,5 +214,6 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     private javax.swing.JLabel UserNameImage;
     private javax.swing.JTextField UsernameFld;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
