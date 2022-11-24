@@ -37,7 +37,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
     public void connectDatabase(){
      try{
-         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "root");
+         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "rajkumar");
         }
         catch(Exception e){
             System.out.println("Unable to connect to Database");
@@ -133,7 +133,7 @@ public class MainJFrame extends javax.swing.JFrame {
 String username = UsernameFld.getText();
 String pwd = String.valueOf(PasswordFld.getPassword());
             try {
-                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,password from users");
+                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld from users");
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         if(rs.getString(1).equals(username)){
