@@ -52,7 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        HomeSplitPane = new javax.swing.JSplitPane();
         jLabel1 = new javax.swing.JLabel();
         MainJPanel = new javax.swing.JPanel();
         UsernameFld = new javax.swing.JTextField();
@@ -66,13 +66,8 @@ public class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_005729.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -2, 320, 660));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 660));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_190801.png"))); // NOI18N
+        HomeSplitPane.setLeftComponent(jLabel1);
 
         MainJPanel.setBackground(new java.awt.Color(0, 102, 102));
         MainJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,7 +119,9 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         MainJPanel.add(PasswordFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 260, 50));
 
-        getContentPane().add(MainJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 710, 660));
+        HomeSplitPane.setRightComponent(MainJPanel);
+
+        getContentPane().add(HomeSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1040, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,6 +158,11 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     }//GEN-LAST:event_PasswordFldActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
+
+       TestingPanel panel = new TestingPanel();
+       MainJPanel.add(panel);
+       MainJPanel.validate();
+       MainJPanel.repaint();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
@@ -201,6 +203,7 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSplitPane HomeSplitPane;
     private javax.swing.JButton LoginButton;
     private javax.swing.JPanel MainJPanel;
     private javax.swing.JPasswordField PasswordFld;
@@ -210,6 +213,5 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     private javax.swing.JLabel UserNameImage;
     private javax.swing.JTextField UsernameFld;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
