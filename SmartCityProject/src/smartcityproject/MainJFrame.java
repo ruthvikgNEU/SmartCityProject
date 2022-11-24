@@ -69,16 +69,16 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_190801.png"))); // NOI18N
         HomeSplitPane.setLeftComponent(jLabel1);
 
-        MainJPanel.setBackground(new java.awt.Color(0, 102, 102));
+        MainJPanel.setBackground(new java.awt.Color(0, 153, 153));
         MainJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        UsernameFld.setBackground(new java.awt.Color(0, 102, 102));
+        UsernameFld.setBackground(new java.awt.Color(0, 153, 153));
         UsernameFld.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         UsernameFld.setText("Username");
         UsernameFld.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         MainJPanel.add(UsernameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 260, 40));
 
-        RegisterButton.setBackground(new java.awt.Color(0, 102, 102));
+        RegisterButton.setBackground(new java.awt.Color(0, 153, 153));
         RegisterButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         RegisterButton.setText("Register");
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +88,11 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         MainJPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 260, 40));
 
-        LoginButton.setBackground(new java.awt.Color(0, 102, 102));
+        LoginButton.setBackground(new java.awt.Color(0, 153, 153));
         LoginButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(51, 51, 51));
         LoginButton.setText("Login");
+        LoginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginButtonActionPerformed(evt);
@@ -108,7 +109,7 @@ public class MainJFrame extends javax.swing.JFrame {
         TitleImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-smart-city-64.png"))); // NOI18N
         MainJPanel.add(TitleImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 70, 90));
 
-        PasswordFld.setBackground(new java.awt.Color(0, 102, 102));
+        PasswordFld.setBackground(new java.awt.Color(0, 153, 153));
         PasswordFld.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         PasswordFld.setText("password");
         PasswordFld.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -130,14 +131,19 @@ public class MainJFrame extends javax.swing.JFrame {
 String username = UsernameFld.getText();
 String pwd = String.valueOf(PasswordFld.getPassword());
             try {
-                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,password from users");
+                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         if(rs.getString(1).equals(username)){
                             if(rs.getString(2).equals(pwd)){
+                                if(rs.getString(3).equals("1")){
                                 UserLandingJFrame frame = new UserLandingJFrame(connection,rs.getString(1));
                                         frame.show();
                                         dispose();
+                                }
+                                else{
+                                    JOptionPane.showMessageDialog(this, "Email not Verified.");
+                                }
                             }
                             else{
                                 JOptionPane.showMessageDialog(this, "Incorrect Password.");
@@ -146,6 +152,8 @@ String pwd = String.valueOf(PasswordFld.getPassword());
                         else{
                              JOptionPane.showMessageDialog(this, "Username Not Found.");
                         } 
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Username Not Found.");
                     }
                 } catch (HeadlessException | SQLException sqlException) {
                     sqlException.printStackTrace();
@@ -158,12 +166,9 @@ String pwd = String.valueOf(PasswordFld.getPassword());
     }//GEN-LAST:event_PasswordFldActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-
-       TestingPanel panel = new TestingPanel();
-       MainJPanel.add(panel);
-       MainJPanel.validate();
-       MainJPanel.repaint();
-
+SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
+   HomeSplitPane.setRightComponent(panel);
+    
         // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
