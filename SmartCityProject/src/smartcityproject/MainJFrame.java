@@ -138,9 +138,9 @@ String pwd = String.valueOf(PasswordFld.getPassword());
                     if (rs.next()) {
                         if(rs.getString(1).equals(username)){
                             if(rs.getString(2).equals(pwd)){
-                                UserLandingJFrame frame = new UserLandingJFrame(connection,rs.getString(1));
-                                        frame.show();
-                                        dispose();
+                                UserLandingJFrame frame = new UserLandingJFrame(connection);
+frame.show();
+dispose();
                             }
                             else{
                                 JOptionPane.showMessageDialog(this, "Incorrect Password.");
