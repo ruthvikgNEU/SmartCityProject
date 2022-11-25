@@ -13,9 +13,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.PasswordAuthentication;
 
 import java.util.Properties;
-//Ruthvik Branch Changes
-//Ruthvik's Changes
-//this is sample line for testing push
+//main branch code
 import javax.swing.JOptionPane;
 
 import java.sql.*;
