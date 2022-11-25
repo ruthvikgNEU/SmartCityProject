@@ -14,7 +14,7 @@ import javax.mail.PasswordAuthentication;
 
 import java.util.Properties;
 
-
+//Ruthvik's Changes
 import javax.swing.JOptionPane;
 
 import java.sql.*;
