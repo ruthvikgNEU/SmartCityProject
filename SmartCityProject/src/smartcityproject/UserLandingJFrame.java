@@ -5,6 +5,7 @@
 package smartcityproject;
 
 import java.sql.*;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
      */
     Connection connection;
     String user;
+   
     public UserLandingJFrame(Connection connection,String user) {
         initComponents();
         this.connection = connection;
@@ -41,10 +43,12 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         LogoutButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         UsernameLabel = new javax.swing.JLabel();
-        jSplitPane1 = new javax.swing.JSplitPane();
+        EduButton = new javax.swing.JButton();
+        HealthButton = new javax.swing.JButton();
+        EmployementButton = new javax.swing.JButton();
+        EntertainmentButton = new javax.swing.JButton();
+        UserSplitPane = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
-        MoviesButton = new javax.swing.JButton();
-        HomeIcon = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,15 +70,51 @@ public class UserLandingJFrame extends javax.swing.JFrame {
 
         UsernameLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
 
+        EduButton.setText("Education");
+        EduButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EduButtonActionPerformed(evt);
+            }
+        });
+
+        HealthButton.setText("Healthcare");
+        HealthButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthButtonActionPerformed(evt);
+            }
+        });
+
+        EmployementButton.setText("Employment");
+        EmployementButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmployementButtonActionPerformed(evt);
+            }
+        });
+
+        EntertainmentButton.setText("Entertainment");
+        EntertainmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntertainmentButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout UsernameLblLayout = new javax.swing.GroupLayout(UsernameLbl);
         UsernameLbl.setLayout(UsernameLblLayout);
         UsernameLblLayout.setHorizontalGroup(
             UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsernameLblLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EduButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(HealthButton)
+                .addGap(21, 21, 21)
+                .addComponent(EntertainmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(EmployementButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LogoutButton)
                 .addGap(46, 46, 46))
@@ -82,52 +122,46 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         UsernameLblLayout.setVerticalGroup(
             UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UsernameLblLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LogoutButton))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(UsernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EduButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HealthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EntertainmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EmployementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        MoviesButton.setText("Movies");
-
-        HomeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home_24px.png"))); // NOI18N
+        UserSplitPane.setDividerLocation(150);
+        UserSplitPane.setMinimumSize(new java.awt.Dimension(150, 1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(HomeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addComponent(MoviesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(HomeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MoviesButton)
-                .addContainerGap(487, Short.MAX_VALUE))
+            .addGap(0, 615, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setLeftComponent(jPanel2);
+        UserSplitPane.setLeftComponent(jPanel2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 933, Short.MAX_VALUE)
+            .addGap(0, 883, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 615, Short.MAX_VALUE)
         );
 
-        jSplitPane1.setRightComponent(jPanel1);
+        UserSplitPane.setRightComponent(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,7 +169,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(UsernameLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1038, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UserSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1038, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,7 +177,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(UsernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(UserSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -155,6 +189,31 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_LogoutButtonActionPerformed
+
+    private void EduButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EduButtonActionPerformed
+      
+        EducationPanel panel = new EducationPanel();
+       UserSplitPane.setLeftComponent(panel);
+       UserSplitPane.setDividerLocation(150);
+    }//GEN-LAST:event_EduButtonActionPerformed
+
+    private void HealthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HealthButtonActionPerformed
+           HealthcarePanel panel = new HealthcarePanel();
+       UserSplitPane.setLeftComponent(panel);
+       UserSplitPane.setDividerLocation(150);
+    }//GEN-LAST:event_HealthButtonActionPerformed
+
+    private void EntertainmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntertainmentButtonActionPerformed
+       EntertainmentPanel panel = new EntertainmentPanel();
+       UserSplitPane.setLeftComponent(panel);
+       UserSplitPane.setDividerLocation(150);
+    }//GEN-LAST:event_EntertainmentButtonActionPerformed
+
+    private void EmployementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployementButtonActionPerformed
+         EmployementPanel panel = new  EmployementPanel();
+         UserSplitPane.setLeftComponent(panel);
+         UserSplitPane.setDividerLocation(150);
+    }//GEN-LAST:event_EmployementButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,14 +251,16 @@ public class UserLandingJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel HomeIcon;
+    private javax.swing.JButton EduButton;
+    private javax.swing.JButton EmployementButton;
+    private javax.swing.JButton EntertainmentButton;
+    private javax.swing.JButton HealthButton;
     private javax.swing.JButton LogoutButton;
-    private javax.swing.JButton MoviesButton;
+    private javax.swing.JSplitPane UserSplitPane;
     private javax.swing.JLabel UsernameLabel;
     private javax.swing.JPanel UsernameLbl;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
 }

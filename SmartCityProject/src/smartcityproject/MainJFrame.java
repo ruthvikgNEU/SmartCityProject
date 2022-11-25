@@ -125,7 +125,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+boolean flag = true;
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
 String username = UsernameFld.getText();
 String pwd = String.valueOf(PasswordFld.getPassword());
@@ -136,6 +136,7 @@ String pwd = String.valueOf(PasswordFld.getPassword());
                         if(rs.getString(1).equals(username)){
                             if(rs.getString(2).equals(pwd)){
                                 if(rs.getString(3).equals("1")){
+                                    flag = false;
                                 UserLandingJFrame frame = new UserLandingJFrame(connection,rs.getString(1));
                                         frame.show();
                                         dispose();
@@ -149,6 +150,7 @@ String pwd = String.valueOf(PasswordFld.getPassword());
                             }
                         }
                     }
+                    if(flag)
                      JOptionPane.showMessageDialog(this, "Username Not Found.");
                 } catch (HeadlessException | SQLException sqlException) {
                     sqlException.printStackTrace();
