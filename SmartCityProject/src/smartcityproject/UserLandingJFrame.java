@@ -39,7 +39,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UsernameLbl = new javax.swing.JPanel();
+        UserLandingJPanel = new javax.swing.JPanel();
         LogoutButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         UsernameLabel = new javax.swing.JLabel();
@@ -53,11 +53,11 @@ public class UserLandingJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        UsernameLbl.setBackground(new java.awt.Color(0, 102, 102));
-        UsernameLbl.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        UserLandingJPanel.setBackground(new java.awt.Color(0, 0, 0));
+        UserLandingJPanel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
 
-        LogoutButton.setBackground(new java.awt.Color(0, 102, 102));
-        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-shutdown-30.png"))); // NOI18N
+        LogoutButton.setBackground(new java.awt.Color(0, 0, 0));
+        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-25.png"))); // NOI18N
         LogoutButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
         LogoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,10 +66,13 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Hi..");
 
         UsernameLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        UsernameLabel.setForeground(new java.awt.Color(242, 242, 242));
 
+        EduButton.setBackground(new java.awt.Color(0, 204, 204));
         EduButton.setText("Education");
         EduButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +80,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
             }
         });
 
+        HealthButton.setBackground(new java.awt.Color(255, 102, 102));
         HealthButton.setText("Healthcare");
         HealthButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +88,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
             }
         });
 
+        EmployementButton.setBackground(new java.awt.Color(255, 255, 102));
         EmployementButton.setText("Employment");
         EmployementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +96,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
             }
         });
 
+        EntertainmentButton.setBackground(new java.awt.Color(255, 153, 255));
         EntertainmentButton.setText("Entertainment");
         EntertainmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,11 +104,11 @@ public class UserLandingJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout UsernameLblLayout = new javax.swing.GroupLayout(UsernameLbl);
-        UsernameLbl.setLayout(UsernameLblLayout);
-        UsernameLblLayout.setHorizontalGroup(
-            UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsernameLblLayout.createSequentialGroup()
+        javax.swing.GroupLayout UserLandingJPanelLayout = new javax.swing.GroupLayout(UserLandingJPanel);
+        UserLandingJPanel.setLayout(UserLandingJPanelLayout);
+        UserLandingJPanelLayout.setHorizontalGroup(
+            UserLandingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UserLandingJPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,25 +123,28 @@ public class UserLandingJFrame extends javax.swing.JFrame {
                 .addComponent(EmployementButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LogoutButton)
-                .addGap(46, 46, 46))
+                .addGap(23, 23, 23))
         );
-        UsernameLblLayout.setVerticalGroup(
-            UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UsernameLblLayout.createSequentialGroup()
+        UserLandingJPanelLayout.setVerticalGroup(
+            UserLandingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UserLandingJPanelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(UsernameLblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(UsernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EduButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HealthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EntertainmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EmployementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGroup(UserLandingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(UserLandingJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(UsernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EduButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(HealthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EntertainmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EmployementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         UserSplitPane.setDividerLocation(150);
         UserSplitPane.setMinimumSize(new java.awt.Dimension(150, 1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -167,7 +176,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(UsernameLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(UserLandingJPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(UserSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1038, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -175,7 +184,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(UsernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UserLandingJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(UserSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -256,9 +265,9 @@ public class UserLandingJFrame extends javax.swing.JFrame {
     private javax.swing.JButton EntertainmentButton;
     private javax.swing.JButton HealthButton;
     private javax.swing.JButton LogoutButton;
+    private javax.swing.JPanel UserLandingJPanel;
     private javax.swing.JSplitPane UserSplitPane;
     private javax.swing.JLabel UsernameLabel;
-    private javax.swing.JPanel UsernameLbl;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
