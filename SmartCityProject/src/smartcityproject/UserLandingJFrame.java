@@ -53,10 +53,10 @@ public class UserLandingJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        UserLandingJPanel.setBackground(new java.awt.Color(0, 0, 0));
+        UserLandingJPanel.setBackground(new java.awt.Color(51, 51, 51));
         UserLandingJPanel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
 
-        LogoutButton.setBackground(new java.awt.Color(0, 0, 0));
+        LogoutButton.setBackground(new java.awt.Color(51, 51, 51));
         LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-25.png"))); // NOI18N
         LogoutButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
         LogoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         UserSplitPane.setDividerLocation(150);
         UserSplitPane.setMinimumSize(new java.awt.Dimension(150, 1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -158,6 +158,8 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         );
 
         UserSplitPane.setLeftComponent(jPanel2);
+
+        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,7 +203,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
 
     private void EduButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EduButtonActionPerformed
       
-        EducationPanel panel = new EducationPanel();
+        EducationPanel panel = new EducationPanel(UserSplitPane);
        UserSplitPane.setLeftComponent(panel);
        UserSplitPane.setDividerLocation(150);
     }//GEN-LAST:event_EduButtonActionPerformed
@@ -213,7 +215,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_HealthButtonActionPerformed
 
     private void EntertainmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntertainmentButtonActionPerformed
-       EntertainmentPanel panel = new EntertainmentPanel();
+       EntertainmentPanel panel = new EntertainmentPanel(UserSplitPane,connection);
        UserSplitPane.setLeftComponent(panel);
        UserSplitPane.setDividerLocation(150);
     }//GEN-LAST:event_EntertainmentButtonActionPerformed

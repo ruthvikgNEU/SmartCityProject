@@ -4,6 +4,8 @@
  */
 package smartcityproject;
 
+import javax.swing.JSplitPane;
+
 /**
  *
  * @author Ruthvik Garlapati
@@ -13,8 +15,10 @@ public class EducationPanel extends javax.swing.JPanel {
     /**
      * Creates new form EducationPanel
      */
-    public EducationPanel() {
+    JSplitPane pane;
+    public EducationPanel(JSplitPane pane) {
         initComponents();
+        this.pane = pane;
     }
 
     /**
@@ -26,38 +30,49 @@ public class EducationPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        UniversityButton = new javax.swing.JButton();
+        CollegeButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setText("University");
+        UniversityButton.setBackground(new java.awt.Color(0, 204, 204));
+        UniversityButton.setText("University");
+        UniversityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UniversityButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 204));
-        jButton2.setText("College");
+        CollegeButton.setBackground(new java.awt.Color(0, 204, 204));
+        CollegeButton.setText("College");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(CollegeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(UniversityButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(162, 162, 162)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UniversityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CollegeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(277, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void UniversityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UniversityButtonActionPerformed
+EducationMainJPanel panel = new EducationMainJPanel();
+pane.setRightComponent(panel);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UniversityButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton CollegeButton;
+    private javax.swing.JButton UniversityButton;
     // End of variables declaration//GEN-END:variables
 }
