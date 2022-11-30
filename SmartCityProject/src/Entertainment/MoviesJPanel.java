@@ -29,7 +29,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
          try {
                     PreparedStatement st = (PreparedStatement)connection.prepareStatement("select theatre_id,name from theatres");
                     ResultSet rs = st.executeQuery();
-                    System.out.println(rs);
+                  
                     while(rs.next()){
                         TheatreDropDown.addItem(rs.getString(2));
                     }

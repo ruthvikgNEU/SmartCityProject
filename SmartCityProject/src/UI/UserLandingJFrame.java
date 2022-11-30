@@ -9,9 +9,15 @@ import Employment.EmployementPanel;
 import Healtcare.HealthcarePanel;
 import Entertainment.EntertainmentPanel;
 import java.sql.*;
-import javax.swing.JSplitPane;
 import smartcityproject.MainJFrame;
-
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.swing.BrowserView;
+import java.awt.BorderLayout;
+import java.awt.HeadlessException;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author Ruthvik Garlapati
@@ -23,18 +29,74 @@ public class UserLandingJFrame extends javax.swing.JFrame {
      */
     Connection connection;
     String user;
-   
-    public UserLandingJFrame(Connection connection,String user) {
-        initComponents();
-        this.connection = connection;
-        this.user = user;
-       UsernameLabel.setText(user+"!!");
-    }
+ private static final int MIN_ZOOM = 0;
+ private static final int MAX_ZOOM = 21;
+ private static int zoomValue = 5;
+ // private static final String setMarkerScript = "var locations = [\n  ['Bondi Beach', -33.890542, 151.274856, 4],\n  ['Coogee Beach', -33.923036, 151.259052, 5],\n  ['Cronulla Beach', -34.028249, 151.157507, 3],\n  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],\n  ['Maroubra Beach', -33.950198, 151.259302, 1]\n];\n\nvar marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\ttitle: locations[i][0]\n  });\n}";
+ public UserLandingJFrame(Connection connection, String user) {
+   initComponents();
+   this.connection = connection;
+   this.user = user;
+   UsernameLabel.setText(user + "!!");
+   getMarkers();
+   open_site();
+ }
 
     private UserLandingJFrame() {
        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
+     String str = "";
+    private void getMarkers(){
+        
+        try {
+                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("select lat,lon from bookings where user_id = 1");
+                    ResultSet rs2 = st.executeQuery();
+                    while(rs2.next()){
+                    str += "['Message 1',"+rs2.getString(1)+","+rs2.getString(2)+",4],\n";
+                    }
+                    System.out.println(str);
+             
+                } catch (HeadlessException | SQLException sqlException) {
+                    sqlException.printStackTrace();
+                } 
+    }
+ private void open_site() {
+   String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0], \n\toptimized: true\n });\n}";
+   String first = "var locations = [\n";
+   String third = "];\n";
+   //String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
+   String setMarkerScript = first + str + third + fourth;
+   EngineOptions options =
+     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+   Engine engine = Engine.newInstance(options);
+   Browser browser = engine.newBrowser();
+   SwingUtilities.invokeLater(() -> {
+     BrowserView view = BrowserView.newInstance(browser);
+     browser.mainFrame().ifPresent(frame ->
+       frame.executeJavaScript(setMarkerScript));
+     ZoomIN.addActionListener(e -> {
+       if (zoomValue < MAX_ZOOM) {
+         browser.mainFrame().ifPresent(frame ->
+           frame.executeJavaScript("map.setZoom(" +
+             ++zoomValue + ")"));
+       }
+     });
+     ZoomOut.addActionListener(e -> {
+       if (zoomValue > MIN_ZOOM) {
+         browser.mainFrame().ifPresent(frame ->
+           frame.executeJavaScript("map.setZoom(" +
+             --zoomValue + ")"));
+       }
+     });
+     setMarkerButton.addActionListener(e ->
+       browser.mainFrame().ifPresent(frame ->
+         frame.executeJavaScript(setMarkerScript)));
+     MapsPanel.add(view, BorderLayout.CENTER);
+     String rootPath = System.getProperty("user.dir");
+     browser.navigation().loadUrl("D:/NEU_JAVA_WORKSPACE/JavaSwingHospitalApplication/TestingProject/build/classes/Libraries/simple_map.html");
+   });
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +117,11 @@ public class UserLandingJFrame extends javax.swing.JFrame {
         UserSplitPane = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        MapsPanel = new javax.swing.JPanel();
+        ZoomIN = new javax.swing.JButton();
+        ZoomOut = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        setMarkerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,15 +233,51 @@ public class UserLandingJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
+        MapsPanel.setLayout(new java.awt.BorderLayout());
+
+        ZoomIN.setText("Zoom In");
+
+        ZoomOut.setText("Zoom Out");
+
+        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        jLabel1.setText("My Purchases");
+
+        setMarkerButton.setText("Show Markers");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 883, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(ZoomIN, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(ZoomOut, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(setMarkerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(MapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ZoomIN)
+                    .addComponent(ZoomOut)
+                    .addComponent(setMarkerButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 482, Short.MAX_VALUE)
+                .addComponent(MapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         UserSplitPane.setRightComponent(jPanel1);
@@ -272,11 +375,16 @@ public class UserLandingJFrame extends javax.swing.JFrame {
     private javax.swing.JButton EntertainmentButton;
     private javax.swing.JButton HealthButton;
     private javax.swing.JButton LogoutButton;
+    private javax.swing.JPanel MapsPanel;
     private javax.swing.JPanel UserLandingJPanel;
     private javax.swing.JSplitPane UserSplitPane;
     private javax.swing.JLabel UsernameLabel;
+    private javax.swing.JButton ZoomIN;
+    private javax.swing.JButton ZoomOut;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton setMarkerButton;
     // End of variables declaration//GEN-END:variables
 }
