@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package smartcityproject;
+package Entertainment;
 import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -52,7 +52,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         MoviesDropDown = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        ShowsDropDown = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -83,8 +83,13 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jLabel1.setText("My Bookings :");
 
         MoviesDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", " " }));
+        MoviesDropDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoviesDropDownActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        ShowsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         jLabel3.setText("Theatre :");
 
@@ -114,7 +119,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
                         .addGap(91, 91, 91)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ShowsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(52, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +140,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TheatreDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MoviesDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ShowsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
@@ -160,11 +165,27 @@ String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
         // TODO add your handling code here:
     }//GEN-LAST:event_TheatreDropDownActionPerformed
 
+    private void MoviesDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoviesDropDownActionPerformed
+   ShowsDropDown.removeAllItems();
+   String movie = String.valueOf(MoviesDropDown.getSelectedItem());
+    try {
+                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("select show_id,show_time from shows s, movies  m where m.movie_id = s.movie_id and m.name = ?");
+                    st.setString(1, movie);
+                    ResultSet rs = st.executeQuery();
+                    while(rs.next()){
+                        ShowsDropDown.addItem(rs.getString(2));
+                    }
+                } catch (HeadlessException | SQLException sqlException) {
+                    sqlException.printStackTrace();
+                } 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MoviesDropDownActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> MoviesDropDown;
+    private javax.swing.JComboBox<String> ShowsDropDown;
     private javax.swing.JComboBox<String> TheatreDropDown;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

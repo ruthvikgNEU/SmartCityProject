@@ -2,10 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package smartcityproject;
+package UI;
 
+import Education.EducationPanel;
+import Employment.EmployementPanel;
+import Healtcare.HealthcarePanel;
+import Entertainment.EntertainmentPanel;
 import java.sql.*;
 import javax.swing.JSplitPane;
+import smartcityproject.MainJFrame;
 
 /**
  *

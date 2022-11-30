@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package smartcityproject;
+package Employment;
 
 /**
  *
  * @author Ruthvik Garlapati
  */
-public class HealthcarePanel extends javax.swing.JPanel {
+public class EmployementPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form HealthcarePanel
+     * Creates new form EmployementPanel
      */
-    public HealthcarePanel() {
+    public EmployementPanel() {
         initComponents();
     }
 
@@ -28,23 +28,23 @@ public class HealthcarePanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Healthcare Label");
+        jLabel1.setText("Employement ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(210, 210, 210)
                 .addComponent(jLabel1)
-                .addContainerGap(452, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

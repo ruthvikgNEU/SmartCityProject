@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package smartcityproject;
+import UI.SignUPJPanel;
+import UI.UserLandingJFrame;
 import java.awt.HeadlessException;
 import javax.mail.Message;
 import javax.mail.MessagingException;
