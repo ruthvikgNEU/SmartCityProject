@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package smartcityproject;
+package Entertainment;
 
 import java.sql.*;
 import javax.swing.JSplitPane;
@@ -33,53 +33,53 @@ public class EntertainmentPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        MoviesButton = new javax.swing.JButton();
+        TourismButton = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MoviesButton.setText("Movies");
+        MoviesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                MoviesButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        TourismButton.setText("Tourism");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(MoviesButton)
                 .addGap(14, 14, 14))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
+                .addComponent(TourismButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(166, 166, 166)
-                .addComponent(jButton1)
+                .addComponent(MoviesButton)
                 .addGap(85, 85, 85)
-                .addComponent(jButton2)
+                .addComponent(TourismButton)
                 .addContainerGap(316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void MoviesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoviesButtonActionPerformed
 
 MoviesJPanel panel = new MoviesJPanel(connection);
 pane.setRightComponent(panel);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_MoviesButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton MoviesButton;
+    private javax.swing.JButton TourismButton;
     // End of variables declaration//GEN-END:variables
 }
