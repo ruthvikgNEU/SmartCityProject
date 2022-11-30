@@ -16,10 +16,12 @@ public class MoviesJPanel extends javax.swing.JPanel {
      * Creates new form MoviesJPanel
      */
     Connection connection;
-    public MoviesJPanel(Connection connection) {
+    String user;
+    public MoviesJPanel(Connection connection,String user) {
         initComponents();
         this.connection = connection;
         PopulateTheatres();
+        this.user = user;
     }
 
     
@@ -56,6 +58,11 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        dateTxt = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        TicketsDropDown = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        bookButton = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         jLabel2.setText("Welcome to Movies Dashboard.............!!");
@@ -97,6 +104,24 @@ public class MoviesJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Show :");
 
+        jLabel6.setText("Date :");
+
+        TicketsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
+        TicketsDropDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TicketsDropDownActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Tickets :");
+
+        bookButton.setText("Book");
+        bookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,23 +133,34 @@ public class MoviesJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(TheatreDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(MoviesDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ShowsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(52, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TheatreDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MoviesDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TicketsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ShowsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,7 +180,15 @@ public class MoviesJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TicketsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(bookButton)))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -181,16 +225,71 @@ String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
         // TODO add your handling code here:
     }//GEN-LAST:event_MoviesDropDownActionPerformed
 
+    private void TicketsDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TicketsDropDownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TicketsDropDownActionPerformed
+
+    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+double lat = 42.3410701;
+double lon = -71.0882683;
+int noft = Integer.parseInt(String.valueOf(TicketsDropDown.getSelectedItem()));
+String stime = (String)ShowsDropDown.getSelectedItem();
+String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
+String date = String.valueOf(dateTxt.getDate());
+String movie = String.valueOf(MoviesDropDown.getSelectedItem());
+String movie_id = "";
+String user_id = "";
+try {
+    PreparedStatement st2 = (PreparedStatement)connection.prepareStatement("select user_id from users where username = ?");
+             st2.setString(1, user);
+             ResultSet rs2 = st2.executeQuery();
+             if(rs2.next())
+             user_id += rs2.getString(1);
+                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("select movie_id from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ? and m.name = ?");
+                    st.setString(1, theatre);
+                    st.setString(2, movie);
+                    ResultSet rs = st.executeQuery();
+                    if(rs.next())
+                    movie_id += rs.getString(1);
+                    
+                } catch (HeadlessException | SQLException sqlException) {
+                    sqlException.printStackTrace();
+                } 
+try {
+                    PreparedStatement st3 = (PreparedStatement)connection.prepareStatement("insert into bookings(user_id,enterprize,movie_id,show_time,no_of_tickets_booked,booked_date,lat,lon) values (?,?,?,?,?,?,?,?)");
+                    st3.setString(1, user_id);
+                    st3.setString(2,"Movies");
+                    st3.setString(3, movie_id);
+                    st3.setString(4, stime);
+                    st3.setString(5,""+noft);
+                    
+                    st3.setString(6, date);
+                   st3.setString(7,""+lat);
+                   st3.setString(8,""+lon);
+                   st3.executeUpdate();
+                   JOptionPane.showMessageDialog(this, "Tickets Booked");
+                    
+                } catch (HeadlessException | SQLException sqlException) {
+                    sqlException.printStackTrace();
+                } 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bookButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> MoviesDropDown;
     private javax.swing.JComboBox<String> ShowsDropDown;
     private javax.swing.JComboBox<String> TheatreDropDown;
+    private javax.swing.JComboBox<String> TicketsDropDown;
+    private javax.swing.JButton bookButton;
+    private com.toedter.calendar.JDateChooser dateTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

@@ -18,10 +18,12 @@ public class EntertainmentPanel extends javax.swing.JPanel {
      */
     JSplitPane pane;
     Connection connection;
-    public EntertainmentPanel(JSplitPane pane,Connection connection) {
+    String user;
+    public EntertainmentPanel(JSplitPane pane,Connection connection,String user) {
         initComponents();
         this.pane = pane;
         this.connection = connection;
+        this.user = user;
     }
 
     /**
@@ -71,7 +73,7 @@ public class EntertainmentPanel extends javax.swing.JPanel {
 
     private void MoviesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoviesButtonActionPerformed
 
-MoviesJPanel panel = new MoviesJPanel(connection);
+MoviesJPanel panel = new MoviesJPanel(connection,user);
 pane.setRightComponent(panel);
 
         // TODO add your handling code here:

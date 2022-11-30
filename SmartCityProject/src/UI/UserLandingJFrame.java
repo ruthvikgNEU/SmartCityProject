@@ -323,7 +323,7 @@ public class UserLandingJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_HealthButtonActionPerformed
 
     private void EntertainmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntertainmentButtonActionPerformed
-       EntertainmentPanel panel = new EntertainmentPanel(UserSplitPane,connection);
+       EntertainmentPanel panel = new EntertainmentPanel(UserSplitPane,connection,user);
        UserSplitPane.setLeftComponent(panel);
        UserSplitPane.setDividerLocation(150);
     }//GEN-LAST:event_EntertainmentButtonActionPerformed
