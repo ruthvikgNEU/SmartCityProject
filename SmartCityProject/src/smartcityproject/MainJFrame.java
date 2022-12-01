@@ -4,7 +4,9 @@
  */
 package smartcityproject;
 import UI.SignUPJPanel;
+import UI.UserLandingJPanel;
 import UI.UserLandingJFrame;
+import java.awt.CardLayout;
 import java.awt.HeadlessException;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -21,6 +23,7 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.Random;
 import javax.mail.Message.RecipientType;
+import javax.swing.JPanel;
 /**
  *
  * @author Ruthvik Garlapati
@@ -53,8 +56,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        HomeSplitPane = new javax.swing.JSplitPane();
-        jLabel1 = new javax.swing.JLabel();
+        container = new javax.swing.JPanel();
         MainJPanel = new javax.swing.JPanel();
         UsernameFld = new javax.swing.JTextField();
         RegisterButton = new javax.swing.JButton();
@@ -63,12 +65,12 @@ public class MainJFrame extends javax.swing.JFrame {
         UserNameImage = new javax.swing.JLabel();
         TitleImage = new javax.swing.JLabel();
         PasswordFld = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_190801.png"))); // NOI18N
-        HomeSplitPane.setLeftComponent(jLabel1);
+        container.setLayout(new java.awt.CardLayout());
 
         MainJPanel.setBackground(new java.awt.Color(0, 153, 153));
         MainJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,7 +79,7 @@ public class MainJFrame extends javax.swing.JFrame {
         UsernameFld.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         UsernameFld.setText("Username");
         UsernameFld.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        MainJPanel.add(UsernameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 260, 40));
+        MainJPanel.add(UsernameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, 260, 40));
 
         RegisterButton.setBackground(new java.awt.Color(0, 153, 153));
         RegisterButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -87,7 +89,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 RegisterButtonActionPerformed(evt);
             }
         });
-        MainJPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 260, 40));
+        MainJPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 270, 40));
 
         LoginButton.setBackground(new java.awt.Color(0, 153, 153));
         LoginButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -99,16 +101,16 @@ public class MainJFrame extends javax.swing.JFrame {
                 LoginButtonActionPerformed(evt);
             }
         });
-        MainJPanel.add(LoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 260, 40));
+        MainJPanel.add(LoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 280, 40));
 
         PasswordImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-unlock-private-20.png"))); // NOI18N
-        MainJPanel.add(PasswordImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 20, 30));
+        MainJPanel.add(PasswordImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 20, 30));
 
         UserNameImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-user-20.png"))); // NOI18N
-        MainJPanel.add(UserNameImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 20, 30));
+        MainJPanel.add(UserNameImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 20, 30));
 
         TitleImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-smart-city-64.png"))); // NOI18N
-        MainJPanel.add(TitleImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 70, 90));
+        MainJPanel.add(TitleImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 70, 90));
 
         PasswordFld.setBackground(new java.awt.Color(0, 153, 153));
         PasswordFld.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -119,58 +121,61 @@ public class MainJFrame extends javax.swing.JFrame {
                 PasswordFldActionPerformed(evt);
             }
         });
-        MainJPanel.add(PasswordFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 260, 50));
+        MainJPanel.add(PasswordFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 260, 260, 50));
 
-        HomeSplitPane.setRightComponent(MainJPanel);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Screenshot_20221123_190801.png"))); // NOI18N
+        MainJPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 700));
 
-        getContentPane().add(HomeSplitPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1040, 650));
+        container.add(MainJPanel, "card2");
+
+        getContentPane().add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-boolean flag = true;
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-String username = UsernameFld.getText();
-String pwd = String.valueOf(PasswordFld.getPassword());
-            try {
-                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
-                    ResultSet rs = st.executeQuery();
-                    while (rs.next()) {
-                        if(rs.getString(1).equals(username)){
-                            if(rs.getString(2).equals(pwd)){
-                                if(rs.getString(3).equals("1")){
-                                    flag = false;
-                                UserLandingJFrame frame = new UserLandingJFrame(connection,rs.getString(1));
-                                        frame.show();
-                                        dispose();
-                                }
-                                else{
-                                    JOptionPane.showMessageDialog(this, "Email not Verified.");
-                                }
-                            }
-                            else{
-                                JOptionPane.showMessageDialog(this, "Incorrect Password.");
-                            }
-                        }
-                    }
-                    if(flag)
-                     JOptionPane.showMessageDialog(this, "Username Not Found.");
-                } catch (HeadlessException | SQLException sqlException) {
-                    sqlException.printStackTrace();
-                } 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void PasswordFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFldActionPerformed
 
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        String username = UsernameFld.getText();
+        String pwd = String.valueOf(PasswordFld.getPassword());
+        try {
+            PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                if(rs.getString(1).equals(username)){
+                    if(rs.getString(2).equals(pwd)){
+                        if(rs.getString(3).equals("1")){
+                            flag = false;
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection);
+                            container.add("UserLandingJPanel",panel2);
+                            CardLayout layout = (CardLayout) container.getLayout();
+                            layout.next(container);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(this, "Email not Verified.");
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "Incorrect Password.");
+                    }
+                }
+            }
+            if(flag)
+            JOptionPane.showMessageDialog(this, "Username Not Found.");
+        } catch (HeadlessException | SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
-   HomeSplitPane.setRightComponent(panel);
-    
+        //SignUPJPanel panel = new SignUPJPanel(MainJPanel,connection);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
-
+boolean flag = true;
     /**
      * @param args the command line arguments
      */
@@ -207,7 +212,6 @@ SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSplitPane HomeSplitPane;
     private javax.swing.JButton LoginButton;
     private javax.swing.JPanel MainJPanel;
     private javax.swing.JPasswordField PasswordFld;
@@ -216,6 +220,7 @@ SignUPJPanel panel = new SignUPJPanel(HomeSplitPane,MainJPanel,connection);
     private javax.swing.JLabel TitleImage;
     private javax.swing.JLabel UserNameImage;
     private javax.swing.JTextField UsernameFld;
+    private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
