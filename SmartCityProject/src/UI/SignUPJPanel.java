@@ -166,6 +166,7 @@ UsernameListener();
         EmailRedTick = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HomeButton.setBackground(new java.awt.Color(0, 153, 153));
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home_24px.png"))); // NOI18N
@@ -175,6 +176,7 @@ UsernameListener();
                 HomeButtonActionPerformed(evt);
             }
         });
+        add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(602, 6, 42, 45));
 
         FirstNameFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         FirstNameFld.setText("First Name");
@@ -184,36 +186,49 @@ UsernameListener();
                 FirstNameFldActionPerformed(evt);
             }
         });
+        add(FirstNameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 88, 213, -1));
 
         jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
         jLabel1.setText("New Registration");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 19, -1, 32));
 
         jLabel2.setText("FirstName :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 91, -1, -1));
 
         jLabel3.setText("LastName :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 127, -1, -1));
 
         LastNameFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         LastNameFld.setText("Last Name");
+        add(LastNameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 124, 213, -1));
 
         jLabel4.setText("Username :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 169, -1, -1));
 
         UsernameFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         UsernameFld.setText("User Name");
+        add(UsernameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 166, 213, -1));
 
         EmailFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         EmailFld.setText("Email");
+        add(EmailFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 212, 213, -1));
 
         jLabel5.setText("Email :");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 215, -1, -1));
 
         PasswordFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         PasswordFld.setText("password");
+        add(PasswordFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 261, 213, -1));
 
         jLabel6.setText("Password :");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 264, -1, -1));
 
         CnfPasswordFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         CnfPasswordFld.setText("password");
+        add(CnfPasswordFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 303, 213, -1));
 
         jLabel7.setText("Confirm Password :");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 306, -1, -1));
 
         SignUpButton.setBackground(new java.awt.Color(0, 153, 153));
         SignUpButton.setText("Sign Up");
@@ -222,11 +237,14 @@ UsernameListener();
                 SignUpButtonActionPerformed(evt);
             }
         });
+        add(SignUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 345, 112, -1));
 
         VerifyCodeFld.setFont(new java.awt.Font("Segoe UI Light", 0, 13)); // NOI18N
         VerifyCodeFld.setText("Code");
+        add(VerifyCodeFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 396, 213, -1));
 
         jLabel8.setText("Verification Code :");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 399, -1, -1));
 
         VerifyButton.setBackground(new java.awt.Color(0, 153, 153));
         VerifyButton.setText("Verify");
@@ -235,119 +253,19 @@ UsernameListener();
                 VerifyButtonActionPerformed(evt);
             }
         });
+        add(VerifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 449, 112, -1));
 
         EmailGreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
+        add(EmailGreenTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 212, -1, -1));
 
         UsernameGreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
+        add(UsernameGreenTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 166, -1, -1));
 
         UsernameRedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
+        add(UsernameRedTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 166, -1, -1));
 
         EmailRedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(143, 143, 143)
-                .addComponent(HomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FirstNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LastNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(EmailFld, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(EmailGreenTick)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(EmailRedTick))
-                                    .addComponent(PasswordFld, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(UsernameFld, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(UsernameGreenTick)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(UsernameRedTick))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CnfPasswordFld)
-                            .addComponent(SignUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(VerifyCodeFld, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                            .addComponent(VerifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(HomeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FirstNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(LastNameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(UsernameRedTick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(UsernameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(UsernameGreenTick)))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(EmailFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(EmailGreenTick))
-                    .addComponent(EmailRedTick))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PasswordFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CnfPasswordFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addComponent(SignUpButton)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VerifyCodeFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(29, 29, 29)
-                .addComponent(VerifyButton)
-                .addContainerGap(69, Short.MAX_VALUE))
-        );
+        add(EmailRedTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 212, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
  public String generateUniqueId(){
         Random random = new Random();

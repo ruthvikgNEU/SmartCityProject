@@ -5,6 +5,7 @@ drop table if exists users;
 drop table if exists theatres;
 drop table if exists movies;
 drop table if exists shows;
+drop table if exists bookings;
 create table users(
 user_id integer auto_increment,
 firstname varchar(20),
@@ -35,6 +36,14 @@ movie_id integer,
 no_of_tickets integer default 50,
 primary key(show_id)
 );
+create table bookings(
+booking_id integer auto_increment,
+user_id integer,
+enterprize varchar(15),
+lat double,
+lon double,
+primary key(booking_id)
+);
 insert into users(firstname,lastname,username,email,passwordFld,verify_code) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456);
 insert into users(firstname,lastname,username,email,passwordFld,verify_code) values("Ruthvik","Garlapati","Kdebruyne17","ruthvik@gmail.com","password",123456);
 update users set username = 'Username' where user_id = 1;
@@ -51,4 +60,7 @@ insert into shows(show_time,movie_id) values("11:15 AM",1);
 insert into shows(show_time,movie_id) values("11:30 AM",1);
 insert into shows(show_time,movie_id) values("02:00 PM",2);
 insert into shows(show_time,movie_id) values("02:15 PM",2);
+
+insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3410701,-71.0882683);
+insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3432429,-71.0979135);
 select * from users;
