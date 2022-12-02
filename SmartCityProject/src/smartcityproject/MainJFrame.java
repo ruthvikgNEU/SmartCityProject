@@ -5,25 +5,12 @@
 package smartcityproject;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
-import UI.UserLandingJFrame;
 import java.awt.CardLayout;
 import java.awt.HeadlessException;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.PasswordAuthentication;
 
-import java.util.Properties;
-//main branch code
 import javax.swing.JOptionPane;
 
 import java.sql.*;
-import java.util.Random;
-import javax.mail.Message.RecipientType;
-import javax.swing.JPanel;
 /**
  *
  * @author Ruthvik Garlapati
@@ -39,11 +26,11 @@ public class MainJFrame extends javax.swing.JFrame {
         connectDatabase();
     }
     
-    public void connectDatabase(){
+    public final void connectDatabase(){
      try{
          connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "root");
         }
-        catch(Exception e){
+        catch(SQLException e){
             System.out.println("Unable to connect to Database");
         }
 }
@@ -84,12 +71,13 @@ public class MainJFrame extends javax.swing.JFrame {
         RegisterButton.setBackground(new java.awt.Color(0, 153, 153));
         RegisterButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         RegisterButton.setText("Register");
+        RegisterButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterButtonActionPerformed(evt);
             }
         });
-        MainJPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 270, 40));
+        MainJPanel.add(RegisterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 280, 40));
 
         LoginButton.setBackground(new java.awt.Color(0, 153, 153));
         LoginButton.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -148,7 +136,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     if(rs.getString(2).equals(pwd)){
                         if(rs.getString(3).equals("1")){
                             flag = false;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection);
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
@@ -171,39 +159,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        //SignUPJPanel panel = new SignUPJPanel(MainJPanel,connection);
-
-        // TODO add your handling code here:
+        SignUPJPanel panel = new SignUPJPanel(MainJPanel,connection);
+        container.add("SignUPJPanel",panel);
+                            CardLayout layout = (CardLayout) container.getLayout();
+                            layout.next(container);
+      
     }//GEN-LAST:event_RegisterButtonActionPerformed
 boolean flag = true;
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainJFrame().setVisible(true);

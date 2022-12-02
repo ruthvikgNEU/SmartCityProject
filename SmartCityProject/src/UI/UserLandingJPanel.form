@@ -146,20 +146,23 @@
               <Image iconType="3" name="/Images/icons8-home-page-48.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="HomeButtonMouseClicked"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="19" y="11" width="81" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="LogoutButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/icons8-logout-rounded-50.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel3MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="LogoutButtonMouseClicked"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -224,58 +227,56 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="ZoomIN" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ZoomOut" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                      <Component id="setMarkerButton" min="-2" pref="123" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                      <Component id="BalanceNameLbl" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="BalanceLbl" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="MapsPanel" min="-2" pref="981" max="-2" attributes="0"/>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="BarChartPanel" min="-2" pref="413" max="-2" attributes="0"/>
+                      <EmptySpace pref="490" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ZoomIN" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ZoomOut" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="setMarkerButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BalanceNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BalanceLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
-                      <Component id="MapsPanel" min="-2" pref="521" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <Component id="BarChartPanel" min="-2" pref="417" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="MapsPanel">
+            <Component class="javax.swing.JLabel" name="BalanceNameLbl">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="24" style="2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Wallet Balance :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="BalanceLbl">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="24" style="2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="$1000.00"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JPanel" name="BarChartPanel">
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
             </Container>
-            <Component class="javax.swing.JButton" name="ZoomIN">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Zoom In"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="ZoomOut">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Zoom Out"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="setMarkerButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Show Markers"/>
-              </Properties>
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

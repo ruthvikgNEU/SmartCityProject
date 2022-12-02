@@ -3,21 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+
 import Education.EducationPanel;
 import Employment.EmployementPanel;
-import Healtcare.HealthcarePanel;
 import Entertainment.EntertainmentPanel;
-import com.teamdev.jxbrowser.browser.Browser;
-import com.teamdev.jxbrowser.engine.Engine;
-import com.teamdev.jxbrowser.engine.EngineOptions;
-import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
-import com.teamdev.jxbrowser.view.swing.BrowserView;
-import java.awt.BorderLayout;
-import java.awt.HeadlessException;
-import java.sql.PreparedStatement;
-import java.sql.*;
-import java.sql.SQLException;
-import javax.swing.SwingUtilities;
+import Healtcare.HealthcarePanel;
+import java.awt.CardLayout;
+import java.sql.Connection;
 import smartcityproject.MainJFrame;
 /**
  *
@@ -33,65 +25,20 @@ public class UserLandingJPanel extends javax.swing.JPanel {
  private static final int MIN_ZOOM = 0;
  private static final int MAX_ZOOM = 21;
  private static int zoomValue = 5;
-    public UserLandingJPanel(Connection connection) {
+    public UserLandingJPanel(Connection connection,String user) {
         initComponents();
         this.connection = connection;
+        this.user = user;
           UsernameLabel.setText(user + "!!");
-   getMarkers();
-   open_site();
+          UserAnalyticsDashboard board1 = new UserAnalyticsDashboard();
+          BarChartPanel.add("UserAnalyticsDashboard",board1);
+                            CardLayout layout = (CardLayout) BarChartPanel.getLayout();
+                            layout.next(BarChartPanel);
+          //UserDashBoardMapsPanel panel = new UserDashBoardMapsPanel(connection);
+  //UserSplitPane.setRightComponent(panel);
     }
 
-     String str = "";
-    private void getMarkers(){
-        
-        try {
-                    PreparedStatement st = (PreparedStatement)connection.prepareStatement("select lat,lon from bookings where user_id = 1");
-                    ResultSet rs2 = st.executeQuery();
-                    while(rs2.next()){
-                    str += "['Message 1',"+rs2.getString(1)+","+rs2.getString(2)+",4],\n";
-                    }
-                    System.out.println(str);
-             
-                } catch (HeadlessException | SQLException sqlException) {
-                    sqlException.printStackTrace();
-                } 
-    }
- private void open_site() {
-   String fourth = "var marker, i;\n\nfor (i = 0; i < locations.length; i++) {  \n  marker = new google.maps.Marker({\n\tposition: new google.maps.LatLng(locations[i][1], locations[i][2]),\n\tmap: map,\n\tlabel: locations[i][0], \n\toptimized: true\n });\n}";
-   String first = "var locations = [\n";
-   String third = "];\n";
-   //String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
-   String setMarkerScript = first + str + third + fourth;
-   EngineOptions options =
-     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-   Engine engine = Engine.newInstance(options);
-   Browser browser = engine.newBrowser();
-   SwingUtilities.invokeLater(() -> {
-     BrowserView view = BrowserView.newInstance(browser);
-     browser.mainFrame().ifPresent(frame ->
-       frame.executeJavaScript(setMarkerScript));
-     ZoomIN.addActionListener(e -> {
-       if (zoomValue < MAX_ZOOM) {
-         browser.mainFrame().ifPresent(frame ->
-           frame.executeJavaScript("map.setZoom(" +
-             ++zoomValue + ")"));
-       }
-     });
-     ZoomOut.addActionListener(e -> {
-       if (zoomValue > MIN_ZOOM) {
-         browser.mainFrame().ifPresent(frame ->
-           frame.executeJavaScript("map.setZoom(" +
-             --zoomValue + ")"));
-       }
-     });
-     setMarkerButton.addActionListener(e ->
-       browser.mainFrame().ifPresent(frame ->
-         frame.executeJavaScript(setMarkerScript)));
-     MapsPanel.add(view, BorderLayout.CENTER);
-     String rootPath = System.getProperty("user.dir");
-     browser.navigation().loadUrl("D:/NEU_JAVA_WORKSPACE/JavaSwingHospitalApplication/TestingProject/build/classes/Libraries/simple_map.html");
-   });
- }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,15 +55,14 @@ public class UserLandingJPanel extends javax.swing.JPanel {
         EmployementButton = new javax.swing.JButton();
         EntertainmentButton = new javax.swing.JButton();
         HomeButton = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        LogoutButton = new javax.swing.JLabel();
         UsernameLabel = new javax.swing.JLabel();
         UserSplitPane = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        MapsPanel = new javax.swing.JPanel();
-        ZoomIN = new javax.swing.JButton();
-        ZoomOut = new javax.swing.JButton();
-        setMarkerButton = new javax.swing.JButton();
+        BalanceNameLbl = new javax.swing.JLabel();
+        BalanceLbl = new javax.swing.JLabel();
+        BarChartPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1080, 650));
 
@@ -166,15 +112,20 @@ public class UserLandingJPanel extends javax.swing.JPanel {
         UserLandingJPanel.add(EntertainmentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 123, 33));
 
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-home-page-48.png"))); // NOI18N
-        UserLandingJPanel.add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 11, 81, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-50.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        HomeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                HomeButtonMouseClicked(evt);
             }
         });
-        UserLandingJPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+        UserLandingJPanel.add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 11, 81, -1));
+
+        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-50.png"))); // NOI18N
+        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogoutButtonMouseClicked(evt);
+            }
+        });
+        UserLandingJPanel.add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
 
         UsernameLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         UsernameLabel.setForeground(new java.awt.Color(242, 242, 242));
@@ -197,42 +148,39 @@ public class UserLandingJPanel extends javax.swing.JPanel {
 
         UserSplitPane.setLeftComponent(jPanel2);
 
-        MapsPanel.setLayout(new javax.swing.BoxLayout(MapsPanel, javax.swing.BoxLayout.LINE_AXIS));
+        BalanceNameLbl.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        BalanceNameLbl.setText("Wallet Balance :");
 
-        ZoomIN.setText("Zoom In");
+        BalanceLbl.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        BalanceLbl.setText("$1000.00");
 
-        ZoomOut.setText("Zoom Out");
-
-        setMarkerButton.setText("Show Markers");
+        BarChartPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BalanceNameLbl)
+                .addGap(28, 28, 28)
+                .addComponent(BalanceLbl)
+                .addGap(49, 49, 49))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(ZoomIN, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ZoomOut, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(162, 162, 162)
-                .addComponent(setMarkerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(201, 201, 201))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(MapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(BarChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(490, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ZoomIN)
-                    .addComponent(ZoomOut)
-                    .addComponent(setMarkerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(MapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                    .addComponent(BalanceNameLbl)
+                    .addComponent(BalanceLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(BarChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         UserSplitPane.setRightComponent(jPanel1);
@@ -286,30 +234,32 @@ public class UserLandingJPanel extends javax.swing.JPanel {
         UserSplitPane.setDividerLocation(150);
     }//GEN-LAST:event_EntertainmentButtonActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
+this.setVisible(false);
+    }//GEN-LAST:event_LogoutButtonMouseClicked
 
-        MainJFrame  frame = new MainJFrame();
-        frame.show();
-//        dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseClicked
+    private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
+UserDashBoardMapsPanel panel = new UserDashBoardMapsPanel(connection);
+UserSplitPane.setRightComponent(panel);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HomeButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BalanceLbl;
+    private javax.swing.JLabel BalanceNameLbl;
+    private javax.swing.JPanel BarChartPanel;
     private javax.swing.JButton EduButton;
     private javax.swing.JButton EmployementButton;
     private javax.swing.JButton EntertainmentButton;
     private javax.swing.JButton HealthButton;
     private javax.swing.JLabel HomeButton;
-    private javax.swing.JPanel MapsPanel;
+    private javax.swing.JLabel LogoutButton;
     private javax.swing.JPanel UserLandingJPanel;
     private javax.swing.JSplitPane UserSplitPane;
     private javax.swing.JLabel UsernameLabel;
-    private javax.swing.JButton ZoomIN;
-    private javax.swing.JButton ZoomOut;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton setMarkerButton;
     // End of variables declaration//GEN-END:variables
 }
