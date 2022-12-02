@@ -17,6 +17,8 @@ import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 import com.teamdev.jxbrowser.view.swing.BrowserView;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.SwingUtilities;
 /**
  *
@@ -67,9 +69,10 @@ public class UserLandingJFrame extends javax.swing.JFrame {
    String third = "];\n";
    //String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
    String setMarkerScript = first + str + third + fourth;
-   EngineOptions options =
-     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-   Engine engine = Engine.newInstance(options);
+   Path path = Paths.get("/Users/rajkumarkumaravelu/Downloads/jxbrowser-mac-7.28.1.jar");
+   //EngineOptions options = 
+   Engine engine = Engine.newInstance(
+     EngineOptions.newBuilder(HARDWARE_ACCELERATED).chromiumDir(path).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build());
    Browser browser = engine.newBrowser();
    SwingUtilities.invokeLater(() -> {
      BrowserView view = BrowserView.newInstance(browser);
