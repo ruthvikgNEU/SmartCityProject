@@ -19,7 +19,7 @@ public class EntertainmentPanel extends javax.swing.JPanel {
     JSplitPane pane;
     Connection connection;
     String user;
-    public EntertainmentPanel(JSplitPane pane,Connection connection,String user) {
+    public EntertainmentPanel(JSplitPane pane, Connection connection, String user) {
         initComponents();
         this.pane = pane;
         this.connection = connection;
