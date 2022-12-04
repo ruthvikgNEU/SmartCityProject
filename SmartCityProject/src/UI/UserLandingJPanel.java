@@ -7,9 +7,11 @@ package UI;
 import Education.EducationPanel;
 import Employment.EmployementPanel;
 import Entertainment.EntertainmentPanel;
+import Entertainment.MoviesJFrame;
 import Healtcare.HealthcarePanel;
 import java.awt.CardLayout;
 import java.sql.Connection;
+import javax.swing.JFrame;
 import smartcityproject.MainJFrame;
 /**
  *
@@ -29,11 +31,11 @@ public class UserLandingJPanel extends javax.swing.JPanel {
         initComponents();
         this.connection = connection;
         this.user = user;
-          UsernameLabel.setText(user + "!!");
-          UserAnalyticsDashboard board1 = new UserAnalyticsDashboard();
-          BarChartPanel.add("UserAnalyticsDashboard",board1);
-                            CardLayout layout = (CardLayout) BarChartPanel.getLayout();
-                            layout.next(BarChartPanel);
+//          UsernameLabel.setText(user + "!!");
+          //UserAnalyticsDashboard board1 = new UserAnalyticsDashboard();
+         // BarChartPanel.add("UserAnalyticsDashboard",board1);
+                            //CardLayout layout = (CardLayout) BarChartPanel.getLayout();
+                            //layout.next(BarChartPanel);
           //UserDashBoardMapsPanel panel = new UserDashBoardMapsPanel(connection);
   //UserSplitPane.setRightComponent(panel);
     }
@@ -48,218 +50,98 @@ public class UserLandingJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UserLandingJPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        EduButton = new javax.swing.JButton();
-        HealthButton = new javax.swing.JButton();
-        EmployementButton = new javax.swing.JButton();
-        EntertainmentButton = new javax.swing.JButton();
-        HomeButton = new javax.swing.JLabel();
-        LogoutButton = new javax.swing.JLabel();
-        UsernameLabel = new javax.swing.JLabel();
-        UserSplitPane = new javax.swing.JSplitPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        BalanceNameLbl = new javax.swing.JLabel();
-        BalanceLbl = new javax.swing.JLabel();
-        BarChartPanel = new javax.swing.JPanel();
+        UserTabbedPane = new javax.swing.JTabbedPane();
+        educationMainJPanel1 = new Education.EducationMainJPanel();
+        employementMainJPanel1 = new Employment.EmployementMainJPanel();
+        healthcareMainJPanel1 = new Healtcare.HealthcareMainJPanel();
+        entertainmentMainJPanel1 = new Entertainment.EntertainmentMainJPanel();
+        MoviesButton = new javax.swing.JLabel();
+        BookATicketLabal = new javax.swing.JLabel();
+        userProfileJPanel1 = new UI.UserProfileJPanel();
 
         setPreferredSize(new java.awt.Dimension(1080, 650));
 
-        UserLandingJPanel.setBackground(new java.awt.Color(0, 153, 153));
-        UserLandingJPanel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        UserLandingJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        UserTabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setText("Hi..");
-        UserLandingJPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 26, 54, -1));
+        javax.swing.GroupLayout educationMainJPanel1Layout = new javax.swing.GroupLayout(educationMainJPanel1);
+        educationMainJPanel1.setLayout(educationMainJPanel1Layout);
+        educationMainJPanel1Layout.setHorizontalGroup(
+            educationMainJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 975, Short.MAX_VALUE)
+        );
+        educationMainJPanel1Layout.setVerticalGroup(
+            educationMainJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
 
-        EduButton.setBackground(new java.awt.Color(0, 204, 204));
-        EduButton.setText("Education");
-        EduButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EduButtonActionPerformed(evt);
-            }
-        });
-        UserLandingJPanel.add(EduButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 96, 33));
+        UserTabbedPane.addTab("Education", educationMainJPanel1);
+        UserTabbedPane.addTab("Employment", employementMainJPanel1);
+        UserTabbedPane.addTab("HealthCare", healthcareMainJPanel1);
 
-        HealthButton.setBackground(new java.awt.Color(255, 102, 102));
-        HealthButton.setText("Healthcare");
-        HealthButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthButtonActionPerformed(evt);
-            }
-        });
-        UserLandingJPanel.add(HealthButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, -1, 33));
-
-        EmployementButton.setBackground(new java.awt.Color(255, 255, 102));
-        EmployementButton.setText("Employment");
-        EmployementButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmployementButtonActionPerformed(evt);
-            }
-        });
-        UserLandingJPanel.add(EmployementButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, 33));
-
-        EntertainmentButton.setBackground(new java.awt.Color(255, 153, 255));
-        EntertainmentButton.setText("Entertainment");
-        EntertainmentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EntertainmentButtonActionPerformed(evt);
-            }
-        });
-        UserLandingJPanel.add(EntertainmentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 123, 33));
-
-        HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-home-page-48.png"))); // NOI18N
-        HomeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        MoviesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-movies-tv-96.png"))); // NOI18N
+        MoviesButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                HomeButtonMouseClicked(evt);
+                MoviesButtonMouseClicked(evt);
             }
         });
-        UserLandingJPanel.add(HomeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 11, 81, -1));
 
-        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-50.png"))); // NOI18N
-        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LogoutButtonMouseClicked(evt);
-            }
-        });
-        UserLandingJPanel.add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+        BookATicketLabal.setText("Book a Ticket");
 
-        UsernameLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        UsernameLabel.setForeground(new java.awt.Color(242, 242, 242));
-
-        UserSplitPane.setDividerLocation(150);
-        UserSplitPane.setMinimumSize(new java.awt.Dimension(150, 1));
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+        javax.swing.GroupLayout entertainmentMainJPanel1Layout = new javax.swing.GroupLayout(entertainmentMainJPanel1);
+        entertainmentMainJPanel1.setLayout(entertainmentMainJPanel1Layout);
+        entertainmentMainJPanel1Layout.setHorizontalGroup(
+            entertainmentMainJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(entertainmentMainJPanel1Layout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addGroup(entertainmentMainJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(entertainmentMainJPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(BookATicketLabal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(MoviesButton))
+                .addContainerGap(714, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
+        entertainmentMainJPanel1Layout.setVerticalGroup(
+            entertainmentMainJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(entertainmentMainJPanel1Layout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(MoviesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BookATicketLabal)
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
-        UserSplitPane.setLeftComponent(jPanel2);
-
-        BalanceNameLbl.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        BalanceNameLbl.setText("Wallet Balance :");
-
-        BalanceLbl.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        BalanceLbl.setText("$1000.00");
-
-        BarChartPanel.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BalanceNameLbl)
-                .addGap(28, 28, 28)
-                .addComponent(BalanceLbl)
-                .addGap(49, 49, 49))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(BarChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(490, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BalanceNameLbl)
-                    .addComponent(BalanceLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                .addComponent(BarChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-
-        UserSplitPane.setRightComponent(jPanel1);
+        UserTabbedPane.addTab("Entertainment", entertainmentMainJPanel1);
+        UserTabbedPane.addTab("Profile", userProfileJPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(UserSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(UserLandingJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(UserTabbedPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(UserLandingJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(UsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(UserSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(UserTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EduButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EduButtonActionPerformed
+    private void MoviesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoviesButtonMouseClicked
 
-        EducationPanel panel = new EducationPanel(UserSplitPane);
-        UserSplitPane.setLeftComponent(panel);
-        UserSplitPane.setDividerLocation(150);
-    }//GEN-LAST:event_EduButtonActionPerformed
-
-    private void HealthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HealthButtonActionPerformed
-        HealthcarePanel panel = new HealthcarePanel();
-        UserSplitPane.setLeftComponent(panel);
-        UserSplitPane.setDividerLocation(150);
-    }//GEN-LAST:event_HealthButtonActionPerformed
-
-    private void EmployementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployementButtonActionPerformed
-        EmployementPanel panel = new  EmployementPanel();
-        UserSplitPane.setLeftComponent(panel);
-        UserSplitPane.setDividerLocation(150);
-    }//GEN-LAST:event_EmployementButtonActionPerformed
-
-    private void EntertainmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntertainmentButtonActionPerformed
-        EntertainmentPanel panel = new EntertainmentPanel(UserSplitPane,connection,user);
-        UserSplitPane.setLeftComponent(panel);
-        UserSplitPane.setDividerLocation(150);
-    }//GEN-LAST:event_EntertainmentButtonActionPerformed
-
-    private void LogoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutButtonMouseClicked
-this.setVisible(false);
-    }//GEN-LAST:event_LogoutButtonMouseClicked
-
-    private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
-UserDashBoardMapsPanel panel = new UserDashBoardMapsPanel(connection);
-UserSplitPane.setRightComponent(panel);
+MoviesJFrame frame = new MoviesJFrame();
+frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_HomeButtonMouseClicked
+    }//GEN-LAST:event_MoviesButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BalanceLbl;
-    private javax.swing.JLabel BalanceNameLbl;
-    private javax.swing.JPanel BarChartPanel;
-    private javax.swing.JButton EduButton;
-    private javax.swing.JButton EmployementButton;
-    private javax.swing.JButton EntertainmentButton;
-    private javax.swing.JButton HealthButton;
-    private javax.swing.JLabel HomeButton;
-    private javax.swing.JLabel LogoutButton;
-    private javax.swing.JPanel UserLandingJPanel;
-    private javax.swing.JSplitPane UserSplitPane;
-    private javax.swing.JLabel UsernameLabel;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel BookATicketLabal;
+    private javax.swing.JLabel MoviesButton;
+    private javax.swing.JTabbedPane UserTabbedPane;
+    private Education.EducationMainJPanel educationMainJPanel1;
+    private Employment.EmployementMainJPanel employementMainJPanel1;
+    private Entertainment.EntertainmentMainJPanel entertainmentMainJPanel1;
+    private Healtcare.HealthcareMainJPanel healthcareMainJPanel1;
+    private UI.UserProfileJPanel userProfileJPanel1;
     // End of variables declaration//GEN-END:variables
 }
