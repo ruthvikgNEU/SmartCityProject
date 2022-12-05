@@ -37,14 +37,14 @@ public class EmployementMainJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(173, 173, 173)
                 .addComponent(jLabel1)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(1001, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
                 .addComponent(jLabel1)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(499, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

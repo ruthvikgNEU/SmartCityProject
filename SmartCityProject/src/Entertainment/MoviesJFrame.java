@@ -5,6 +5,7 @@
 package Entertainment;
 import java.awt.HeadlessException;
 import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Ruthvik Garlapati
@@ -14,8 +15,16 @@ public class MoviesJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MoviesJFrame
      */
-    public MoviesJFrame() {
+    Connection c;
+    String user;
+    public MoviesJFrame(Connection c,String user) {
         initComponents();
+        this.c = c;
+        this.user = user;
+    }
+
+    private MoviesJFrame() {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -209,16 +218,16 @@ public class MoviesJFrame extends javax.swing.JFrame {
     private void TheatreDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TheatreDropDownActionPerformed
         MoviesDropDown.removeAllItems();
         String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
-//        try {
-//            PreparedStatement st = (PreparedStatement)connection.prepareStatement("select movie_id,m.name from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ?");
-//            st.setString(1, theatre);
-//            ResultSet rs = st.executeQuery();
-//            while(rs.next()){
-//                MoviesDropDown.addItem(rs.getString(2));
-//            }
-//        } catch (HeadlessException | SQLException sqlException) {
-//            sqlException.printStackTrace();
-//        }
+        try {
+            PreparedStatement st = (PreparedStatement)c.prepareStatement("select movie_id,m.name from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ?");
+            st.setString(1, theatre);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                MoviesDropDown.addItem(rs.getString(2));
+            }
+        } catch (HeadlessException | SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_TheatreDropDownActionPerformed
@@ -226,16 +235,15 @@ public class MoviesJFrame extends javax.swing.JFrame {
     private void MoviesDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoviesDropDownActionPerformed
         ShowsDropDown.removeAllItems();
         String movie = String.valueOf(MoviesDropDown.getSelectedItem());
-//        try {
-//            PreparedStatement st = (PreparedStatement)connection.prepareStatement("select show_id,show_time from shows s, movies  m where m.movie_id = s.movie_id and m.name = ?");
-//            st.setString(1, movie);
-//            ResultSet rs = st.executeQuery();
-//            while(rs.next()){
-//                ShowsDropDown.addItem(rs.getString(2));
-//            }
-//        } catch (HeadlessException | SQLException sqlException) {
-//            sqlException.printStackTrace();
-//        }
+        try {
+            PreparedStatement st = (PreparedStatement)c.prepareStatement("select show_id,show_time from shows s, movies  m where m.movie_id = s.movie_id and m.name = ?");
+            st.setString(1, movie);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                ShowsDropDown.addItem(rs.getString(2));
+            }
+        } catch (HeadlessException | SQLException sqlException) {
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_MoviesDropDownActionPerformed
 
@@ -253,39 +261,39 @@ public class MoviesJFrame extends javax.swing.JFrame {
         String movie = String.valueOf(MoviesDropDown.getSelectedItem());
         String movie_id = "";
         String user_id = "";
-//        try {
-//            PreparedStatement st2 = (PreparedStatement)connection.prepareStatement("select user_id from users where username = ?");
-//            st2.setString(1, user);
-//            ResultSet rs2 = st2.executeQuery();
-//            if(rs2.next())
-//            user_id += rs2.getString(1);
-//            PreparedStatement st = (PreparedStatement)connection.prepareStatement("select movie_id from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ? and m.name = ?");
-//            st.setString(1, theatre);
-//            st.setString(2, movie);
-//            ResultSet rs = st.executeQuery();
-//            if(rs.next())
-//            movie_id += rs.getString(1);
-//
-//        } catch (HeadlessException | SQLException sqlException) {
-//            sqlException.printStackTrace();
-//        }
-//        try {
-//            PreparedStatement st3 = (PreparedStatement)connection.prepareStatement("insert into bookings(user_id,enterprize,movie_id,show_time,no_of_tickets_booked,booked_date,lat,lon) values (?,?,?,?,?,?,?,?)");
-//            st3.setString(1, user_id);
-//            st3.setString(2,"Movies");
-//            st3.setString(3, movie_id);
-//            st3.setString(4, stime);
-//            st3.setString(5,""+noft);
-//
-//            st3.setString(6, date);
-//            st3.setString(7,""+lat);
-//            st3.setString(8,""+lon);
-//            st3.executeUpdate();
-//            JOptionPane.showMessageDialog(this, "Tickets Booked");
-//
-//        } catch (HeadlessException | SQLException sqlException) {
-//            sqlException.printStackTrace();
-//        }
+        try {
+            PreparedStatement st2 = (PreparedStatement)c.prepareStatement("select user_id from users where username = ?");
+            st2.setString(1, user);
+            ResultSet rs2 = st2.executeQuery();
+            if(rs2.next())
+            user_id += rs2.getString(1);
+            PreparedStatement st = (PreparedStatement)c.prepareStatement("select movie_id from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ? and m.name = ?");
+            st.setString(1, theatre);
+            st.setString(2, movie);
+            ResultSet rs = st.executeQuery();
+            if(rs.next())
+            movie_id += rs.getString(1);
+
+        } catch (HeadlessException | SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        try {
+            PreparedStatement st3 = (PreparedStatement)c.prepareStatement("insert into bookings(user_id,enterprize,movie_id,show_time,no_of_tickets_booked,booked_date,lat,lon) values (?,?,?,?,?,?,?,?)");
+            st3.setString(1, user_id);
+            st3.setString(2,"Movies");
+            st3.setString(3, movie_id);
+            st3.setString(4, stime);
+            st3.setString(5,""+noft);
+
+            st3.setString(6, date);
+            st3.setString(7,""+lat);
+            st3.setString(8,""+lon);
+            st3.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Tickets Booked");
+
+        } catch (HeadlessException | SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_bookButtonActionPerformed
 

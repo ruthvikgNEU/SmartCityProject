@@ -37,14 +37,14 @@ public class HealthcareMainJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
                 .addComponent(jLabel1)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(1009, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(jLabel1)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(502, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

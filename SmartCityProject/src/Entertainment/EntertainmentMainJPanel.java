@@ -4,17 +4,19 @@
  */
 package Entertainment;
 
+import javax.swing.JFrame;
+import java.sql.Connection;
 /**
  *
  * @author Ruthvik Garlapati
  */
 public class EntertainmentMainJPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form EntertainmentMainJPanel
-     */
-    public EntertainmentMainJPanel() {
+    Connection c;
+    String user;
+    public EntertainmentMainJPanel(Connection c,String user) {
         initComponents();
+        this.c = c;
+        this.user = user;
     }
 
     /**
@@ -28,25 +30,37 @@ public class EntertainmentMainJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Entertainment");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-movies-tv-96.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel1)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(904, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(109, 109, 109)
+                .addGap(186, 186, 186)
                 .addComponent(jLabel1)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+ MoviesJFrame frame = new MoviesJFrame(c,user);
+       frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
