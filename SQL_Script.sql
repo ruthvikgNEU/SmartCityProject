@@ -7,6 +7,9 @@ drop table if exists theatres;
 drop table if exists movies;
 drop table if exists shows;
 drop table if exists bookings;
+drop table if exists companies;
+drop table if exists jobs;
+drop table if exists applications;
 create table users(
 user_id integer auto_increment,
 firstname varchar(20),
@@ -48,6 +51,31 @@ lat double,
 lon double,
 primary key(booking_id)
 );
+
+
+
+create table companies(
+company_id integer auto_increment,
+name varchar(30),
+primary key(company_id)
+);
+create table jobs(
+job_id integer auto_increment,
+name varchar(20),
+description varchar(200),
+company_id integer,
+primary key(job_id)
+);
+create table applications(
+application_id integer auto_increment,
+username varchar(20),
+company_name varchar(20),
+job_name varchar(30),
+applied_date varchar(30),
+status varchar(20),
+comments varchar(200),
+primary key(application_id)
+);
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","ruthvik@gmail.com","password",123456,1,"SystemAdmin");
 update users set username = 'Username' where user_id = 1;
@@ -69,3 +97,22 @@ insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3410701,-
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3432429,-71.0979135);
 select * from users;
 Select username,passwordFld,can_login,role from users;
+
+insert into companies(name) values("Google");
+insert into companies(name) values("Meta");
+insert into companies(name) values("Apple");
+insert into jobs(name,description,company_id) values ("Software Engineer","Java,MySQL,Python",1);
+insert into jobs(name,description,company_id) values ("Databse Engineer",",Oracle,MySQL,Python",1);
+insert into jobs(name,description,company_id) values ("Product Engineer","Java,UI/UX",1);
+insert into jobs(name,description,company_id) values ("Software Engineer","Swift,Scala",3);
+insert into jobs(name,description,company_id) values ("Frontend Engineer","HTML,CSS",3);
+insert into jobs(name,description,company_id) values ("Metaverse Engineer","AWS,Cloud",2);
+
+
+select * from jobs;
+select j.name,j.description from companies c ,jobs j where c.company_id = j.company_id and c.name = 'Google';
+select j.description from companies c ,jobs j where c.company_id = j.company_id and c.name = 'Google' and j.name = 'Software Engineer';
+
+select * from applications;
+
+

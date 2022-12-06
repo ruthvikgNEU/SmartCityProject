@@ -275,7 +275,7 @@ public class MoviesJFrame extends javax.swing.JFrame {
             movie_id += rs.getString(1);
 
         } catch (HeadlessException | SQLException sqlException) {
-            sqlException.printStackTrace();
+            System.out.println(sqlException);
         }
         try {
             PreparedStatement st3 = (PreparedStatement)c.prepareStatement("insert into bookings(user_id,enterprize,movie_id,show_time,no_of_tickets_booked,booked_date,lat,lon) values (?,?,?,?,?,?,?,?)");

@@ -1,5 +1,6 @@
 
 package UI;
+import Directories.CompanyDirectory;
 import Education.EducationMainJPanel;
 import Employment.EmployementMainJPanel;
 import Entertainment.EntertainmentMainJPanel;
@@ -15,15 +16,17 @@ public class UserLandingJPanel extends javax.swing.JPanel {
        private static final int MIN_ZOOM = 0;
  private static final int MAX_ZOOM = 21;
  private static int zoomValue = 5;
-    public UserLandingJPanel(Connection connection,String user) {
+ CompanyDirectory compDir;
+    public UserLandingJPanel(Connection connection,String user,CompanyDirectory compDir) {
         initComponents();
         this.connection = connection;
         this.user = user;
+        this.compDir = compDir;
         UsernameLbl.setText(user);
         TabbedPane.add("Profile",new UserProfileJPanel());
         TabbedPane.add("Analytics",new UserAnalyticsDashboard());
        TabbedPane.add("Education",new EducationMainJPanel());
-       TabbedPane.add("Employment",new EmployementMainJPanel());
+       TabbedPane.add("My Applications",new EmployementMainJPanel(compDir,connection,user));
        TabbedPane.add("Entertainment",new EntertainmentMainJPanel(connection,user));
        TabbedPane.add("Healthcare",new HealthcareMainJPanel());
     }

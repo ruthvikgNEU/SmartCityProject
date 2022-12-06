@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package smartcityproject;
+import Directories.CompanyDirectory;
 import SystemAdmin.SystemAdminLandingJPanel;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
@@ -21,10 +22,12 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    CompanyDirectory compDir;
     Connection connection;
     public MainJFrame() {
         initComponents();
         connectDatabase();
+        compDir = new CompanyDirectory(connection);
     }
     
     public final void connectDatabase(){
@@ -140,7 +143,7 @@ String username;
                         if(rs.getString(3).equals("1")){
                             if(rs.getString(4).equals("User")){
                                 flag = true;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username);
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
