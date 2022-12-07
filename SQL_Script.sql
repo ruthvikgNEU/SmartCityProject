@@ -1,3 +1,4 @@
+
 drop database if exists test;
 create database test;
 use test;
@@ -6,6 +7,9 @@ drop table if exists theatres;
 drop table if exists movies;
 drop table if exists shows;
 drop table if exists bookings;
+drop table if exists companies;
+drop table if exists jobs;
+drop table if exists applications;
 create table users(
 user_id integer auto_increment,
 firstname varchar(20),
@@ -15,12 +19,15 @@ email varchar(30),
 passwordFld varchar(20),
 verify_code integer,
 can_login boolean default false,
+role varchar(20),
 primary key(user_id)
 );
 create table theatres(
 theatre_id integer auto_increment,
 name varchar(25),
 location varchar(20),
+lat double,
+lon double,
 primary key(theatre_id)
 );
 create table movies(
@@ -44,12 +51,37 @@ lat double,
 lon double,
 primary key(booking_id)
 );
-insert into users(firstname,lastname,username,email,passwordFld,verify_code) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456);
-insert into users(firstname,lastname,username,email,passwordFld,verify_code) values("Ruthvik","Garlapati","Kdebruyne17","ruthvik@gmail.com","password",123456);
+
+
+
+create table companies(
+company_id integer auto_increment,
+name varchar(30),
+primary key(company_id)
+);
+create table jobs(
+job_id integer auto_increment,
+name varchar(20),
+description varchar(200),
+company_id integer,
+primary key(job_id)
+);
+create table applications(
+application_id integer auto_increment,
+username varchar(20),
+company_name varchar(20),
+job_name varchar(30),
+applied_date varchar(30),
+status varchar(20),
+comments varchar(200),
+primary key(application_id)
+);
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","ruthvik@gmail.com","password",123456,1,"SystemAdmin");
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
-insert into theatres(name,location) values('Prasad IMAX','Boston');
-insert into theatres(name,location) values('AMC IMAX','New York');
+insert into theatres(name,location,lat,lon) values('Prasad IMAX','Boston',42.3410701,-71.0882683);
+insert into theatres(name,location,lat,lon) values('AMC IMAX','New York',42.3410701,-71.0882683);
 insert into movies(name,theatre_id) values('Avatar',1);
 insert into movies(name,theatre_id) values('Black Panther',1);
 insert into movies(name,theatre_id) values('HIT 2',1);
@@ -64,3 +96,23 @@ insert into shows(show_time,movie_id) values("02:15 PM",2);
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3410701,-71.0882683);
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3432429,-71.0979135);
 select * from users;
+Select username,passwordFld,can_login,role from users;
+
+insert into companies(name) values("Google");
+insert into companies(name) values("Meta");
+insert into companies(name) values("Apple");
+insert into jobs(name,description,company_id) values ("Software Engineer","Java,MySQL,Python",1);
+insert into jobs(name,description,company_id) values ("Databse Engineer",",Oracle,MySQL,Python",1);
+insert into jobs(name,description,company_id) values ("Product Engineer","Java,UI/UX",1);
+insert into jobs(name,description,company_id) values ("Software Engineer","Swift,Scala",3);
+insert into jobs(name,description,company_id) values ("Frontend Engineer","HTML,CSS",3);
+insert into jobs(name,description,company_id) values ("Metaverse Engineer","AWS,Cloud",2);
+
+
+select * from jobs;
+select j.name,j.description from companies c ,jobs j where c.company_id = j.company_id and c.name = 'Google';
+select j.description from companies c ,jobs j where c.company_id = j.company_id and c.name = 'Google' and j.name = 'Software Engineer';
+
+select * from applications;
+
+

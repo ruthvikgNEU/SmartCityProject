@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package smartcityproject;
+import Directories.CompanyDirectory;
+import SystemAdmin.SystemAdminLandingJPanel;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
 import java.awt.CardLayout;
@@ -20,10 +22,12 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    CompanyDirectory compDir;
     Connection connection;
     public MainJFrame() {
         initComponents();
         connectDatabase();
+        compDir = new CompanyDirectory(connection);
     }
     
     public final void connectDatabase(){
@@ -124,33 +128,40 @@ public class MainJFrame extends javax.swing.JFrame {
     private void PasswordFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFldActionPerformed
-
+String username;
+  String pwd ;
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        String username = UsernameFld.getText();
-        String pwd = String.valueOf(PasswordFld.getPassword());
+        username = UsernameFld.getText();
+      pwd = String.valueOf(PasswordFld.getPassword());
+        System.out.println(username + pwd);
         try {
-            PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login from users");
+            PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,can_login,role from users");
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                if(rs.getString(1).equals(username)){
-                    if(rs.getString(2).equals(pwd)){
+                if(rs.getString(1).equals(username) && rs.getString(2).equals(pwd)){
+                     flag = false;
                         if(rs.getString(3).equals("1")){
-                            flag = false;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username);
+                            if(rs.getString(4).equals("User")){
+                                flag = true;
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
+                            }
+                            if(rs.getString(4).equals("SystemAdmin")){
+                                flag = true;
+                            SystemAdminLandingJPanel panel = new SystemAdminLandingJPanel(connection,username);
+                            container.add("SystemAdminLandingJPanel",panel);
+                            CardLayout layout = (CardLayout) container.getLayout();
+                            layout.next(container);
+                            }
                         }
                         else{
                             JOptionPane.showMessageDialog(this, "Email not Verified.");
                         }
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(this, "Incorrect Password.");
-                    }
                 }
             }
-            if(flag)
+            if(!flag)
             JOptionPane.showMessageDialog(this, "Username Not Found.");
         } catch (HeadlessException | SQLException sqlException) {
             sqlException.printStackTrace();
@@ -165,7 +176,7 @@ public class MainJFrame extends javax.swing.JFrame {
                             layout.next(container);
       
     }//GEN-LAST:event_RegisterButtonActionPerformed
-boolean flag = true;
+boolean flag = false;
    
     public static void main(String args[]) {
        
