@@ -2,21 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Entertainment;
+package Employment;
 
-import javax.swing.JFrame;
-import java.sql.Connection;
 /**
  *
  * @author Ruthvik Garlapati
  */
-public class EntertainmentMainJPanel extends javax.swing.JPanel {
-    Connection c;
-    String user;
-    public EntertainmentMainJPanel(Connection c,String user) {
+public class MyEmpExchangePanel extends javax.swing.JPanel {
+
+    /**
+     * Creates new form MyEmpExchangePanel
+     */
+    public MyEmpExchangePanel() {
         initComponents();
-        this.c = c;
-        this.user = user;
     }
 
     /**
@@ -30,37 +28,25 @@ public class EntertainmentMainJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-movies-tv-96.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
+        jLabel1.setText("EmloyementExchange");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addGap(150, 150, 150)
                 .addComponent(jLabel1)
-                .addContainerGap(904, Short.MAX_VALUE))
+                .addContainerGap(824, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
+                .addGap(132, 132, 132)
                 .addComponent(jLabel1)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(480, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
- MoviesJFrame frame = new MoviesJFrame(c,user);
-       frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setVisible(true);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -12,12 +12,12 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class EmployementMainJPanel extends javax.swing.JPanel {
+public class MyApplicationsPanel extends javax.swing.JPanel {
 
     CompanyDirectory compDir;
   Connection connection;
   String user;
-    public EmployementMainJPanel(CompanyDirectory compDir,Connection connection,String user) {
+    public MyApplicationsPanel(CompanyDirectory compDir,Connection connection,String user) {
         initComponents();
         this.compDir = compDir;
        this.user = user;
