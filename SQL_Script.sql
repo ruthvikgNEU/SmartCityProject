@@ -134,7 +134,14 @@ primary key(application_id)
 
 
 insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-05","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Approved","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-20","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Approved","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
 select * from censor_applications;
 
 
