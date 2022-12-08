@@ -78,6 +78,8 @@ primary key(application_id)
 );
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","ruthvik@gmail.com","password",123456,1,"SystemAdmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","gadmin","ruthvik@yahoo.com","password",123456,1,"gadmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin","ruthvik@yahoo.com","password",123456,1,"censoradmin");
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
 insert into theatres(name,location,lat,lon) values('Prasad IMAX','Boston',42.3410701,-71.0882683);
@@ -115,4 +117,25 @@ select j.description from companies c ,jobs j where c.company_id = j.company_id 
 
 select * from applications;
 
+select * from users;
 
+
+create table censor_applications(
+application_id integer auto_increment,
+Movie_Name varchar(20),
+director varchar(30),
+studio varchar(30),
+app_status varchar(20),
+movie_status varchar(20),
+applied_date date,
+url varchar(100),
+primary key(application_id)
+);
+
+
+insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
+
+select * from censor_applications;
+
+
+select * from censor_applications  where app_status = 'Active' or app_status = 'Pending' order by applied_date asc;

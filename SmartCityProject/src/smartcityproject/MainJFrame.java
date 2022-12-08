@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package smartcityproject;
+import Directories.CensorDirectory;
 import Directories.CompanyDirectory;
 import Directories.UserDirectory;
+import GovernmentAdmin.CensorBoardAdmin;
+import GovernmentAdmin.GAdminLandingPage;
 import SystemAdmin.SystemAdminLandingJPanel;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
@@ -26,11 +29,14 @@ public class MainJFrame extends javax.swing.JFrame {
     CompanyDirectory compDir;
     Connection connection;
       UserDirectory userDir;
+      CensorDirectory cenDir;
     public MainJFrame() {
-        initComponents();
-        connectDatabase();
+         connectDatabase();
         compDir = new CompanyDirectory(connection);
         userDir = new UserDirectory(connection);
+        cenDir = new CensorDirectory(connection);
+        initComponents();
+       
     }
     
     public final void connectDatabase(){
@@ -154,6 +160,18 @@ String username;
                             container.add("SystemAdminLandingJPanel",panel);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
+                            }
+                            if(rs.getString(9).equals("gadmin")){
+                                flag = true;
+                           GAdminLandingPage frame = new GAdminLandingPage();
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                             if(rs.getString(9).equals("censoradmin")){
+                                flag = true;
+                           CensorBoardAdmin frame = new CensorBoardAdmin(connection,cenDir);
+                           frame.setVisible(true);
+                           dispose();
                             }
                         }
                         else{
