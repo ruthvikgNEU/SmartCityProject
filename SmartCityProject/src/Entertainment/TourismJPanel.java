@@ -64,7 +64,7 @@ public class TourismJPanel extends javax.swing.JPanel {
         numOfTicketsComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(883, 603));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 630));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
@@ -116,6 +116,11 @@ public class TourismJPanel extends javax.swing.JPanel {
         jPanel1.add(locationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
         placesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        placesComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placesComboBoxActionPerformed(evt);
+            }
+        });
         jPanel1.add(placesComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
 
         daysComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -147,6 +152,13 @@ public class TourismJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void placesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placesComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+        placesComboBox.removeAllItems();
+        
+    }//GEN-LAST:event_placesComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

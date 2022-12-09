@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Entertainment;
+import java.awt.Graphics;
 import java.awt.HeadlessException;
+import java.awt.Image;
 import java.sql.*;
 import java.sql.Connection;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,7 +25,17 @@ public class MoviesJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel(){
+            public void paintComponent(Graphics g)
+            {
+
+                ImageIcon im = new ImageIcon("movies.jpeg");
+                Image i = im.getImage();
+
+                g.drawImage(i, 0, 0, this.getSize().width, this.getSize().height, this);
+
+            }
+        };
         jLabel2 = new javax.swing.JLabel();
         TheatreDropDown = new javax.swing.JComboBox<>();
         BookingTable = new javax.swing.JScrollPane();
@@ -34,15 +47,19 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         dateTxt = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
         TicketsDropDown = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         bookButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         viewButton = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        jLabel2.setText("Welcome to Movies Dashboard.............!!");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Welcome to Movies Dashboard");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 4, -1, -1));
 
         TheatreDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         TheatreDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +67,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 TheatreDropDownActionPerformed(evt);
             }
         });
+        jPanel2.add(TheatreDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 314, 147, -1));
 
         bookingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,7 +79,10 @@ public class MoviesJPanel extends javax.swing.JPanel {
         ));
         BookingTable.setViewportView(bookingTable);
 
+        jPanel2.add(BookingTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 88, 780, 168));
+
         jLabel1.setText("My Bookings :");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 59, -1, -1));
 
         MoviesDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", " " }));
         MoviesDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -69,16 +90,23 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 MoviesDropDownActionPerformed(evt);
             }
         });
+        jPanel2.add(MoviesDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 355, 147, -1));
 
         ShowsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        jPanel2.add(ShowsDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 435, 147, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Theatre :");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 317, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Movie :");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 358, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Show :");
-
-        jLabel6.setText("Date :");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 435, -1, -1));
+        jPanel2.add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 470, 147, -1));
 
         TicketsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
         TicketsDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -86,8 +114,11 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 TicketsDropDownActionPerformed(evt);
             }
         });
+        jPanel2.add(TicketsDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 394, 147, -1));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tickets :");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 397, -1, -1));
 
         bookButton.setText("Book");
         bookButton.addActionListener(new java.awt.event.ActionListener() {
@@ -95,9 +126,12 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 bookButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 511, 147, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Book a Ticket");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 274, -1, -1));
 
         viewButton.setText("View Bookings");
         viewButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,97 +139,21 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 viewButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(viewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 511, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(234, 234, 234))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(BookingTable, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TheatreDropDown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MoviesDropDown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ShowsDropDown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TicketsDropDown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(76, 76, 76)
-                        .addComponent(viewButton))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1)))
-                .addContainerGap(391, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel2)
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BookingTable, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TheatreDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(MoviesDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TicketsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ShowsDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(dateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bookButton)
-                    .addComponent(viewButton))
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Date");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 50, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1202, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -309,11 +267,11 @@ public class MoviesJPanel extends javax.swing.JPanel {
     private javax.swing.JTable bookingTable;
     private com.toedter.calendar.JDateChooser dateTxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
