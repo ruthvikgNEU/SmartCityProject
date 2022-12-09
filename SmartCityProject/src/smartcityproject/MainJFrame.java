@@ -6,6 +6,7 @@ package smartcityproject;
 import Directories.CensorDirectory;
 import Directories.CompanyDirectory;
 import Directories.UserDirectory;
+import Entertainment.MoviesCreatorAdmin;
 import GovernmentAdmin.CensorBoardAdmin;
 import GovernmentAdmin.GAdminLandingPage;
 import SystemAdmin.SystemAdminLandingJPanel;
@@ -170,6 +171,12 @@ String username;
                              if(rs.getString(9).equals("censoradmin")){
                                 flag = true;
                            CensorBoardAdmin frame = new CensorBoardAdmin(connection,cenDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                               if(rs.getString(9).equals("mcreator")){
+                                flag = true;
+                          MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection,username,cenDir);
                            frame.setVisible(true);
                            dispose();
                             }
