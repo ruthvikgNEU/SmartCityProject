@@ -113,6 +113,11 @@ CensorDirectory cenDir;
         getContentPane().add(PlayMovie, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 207, 37));
 
         AppStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Pending", "Rejected", "Approved" }));
+        AppStatusDropDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AppStatusDropDownActionPerformed(evt);
+            }
+        });
         getContentPane().add(AppStatusDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 417, 220, 37));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -215,6 +220,10 @@ int index1 = ApplicationsTable.getSelectedRow();
         MovieVideoPanel frame = new MovieVideoPanel(url);
         frame.setVisible(true);
     }//GEN-LAST:event_PlayMovieActionPerformed
+
+    private void AppStatusDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppStatusDropDownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AppStatusDropDownActionPerformed
 
     private void populateNextApplication(){
          ResultSet rs = cenDir.populateNextApplications();
