@@ -1,11 +1,12 @@
 
 package UI;
 import Directories.CompanyDirectory;
+import Education.CoursesPanel;
 import Education.UniversityPanel;
 import Employment.MyApplicationsPanel;
 import Employment.MyEmpExchangePanel;
 import Entertainment.MoviesJPanel;
-import Healtcare.HealthcareMainJPanel;
+//import Healtcare.HealthcareMainJPanel;
 import java.sql.Connection;
 /**
  *
@@ -26,11 +27,12 @@ public class UserLandingJPanel extends javax.swing.JPanel {
         UsernameLbl.setText(user);
         TabbedPane.add("Profile",new UserProfileJPanel());
         TabbedPane.add("Analytics",new UserAnalyticsDashboard());
-       TabbedPane.add("Education",new UniversityPanel());
+       TabbedPane.add("Univeristy",new UniversityPanel());
+        TabbedPane.add("Course",new CoursesPanel(connection,user));
        TabbedPane.add("My Applications",new MyApplicationsPanel(compDir,connection,user));
        TabbedPane.add("Employment Exchange",new MyEmpExchangePanel());
        TabbedPane.add("Entertainment",new MoviesJPanel(connection,user));
-       TabbedPane.add("Healthcare",new HealthcareMainJPanel());
+      // TabbedPane.add("Healthcare",new HealthcareMainJPanel());
     }
 
     
