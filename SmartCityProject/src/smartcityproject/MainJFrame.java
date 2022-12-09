@@ -5,6 +5,7 @@
 package smartcityproject;
 import Directories.CensorDirectory;
 import Directories.CompanyDirectory;
+import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
 import Entertainment.MoviesCreatorAdmin;
 import GovernmentAdmin.CensorBoardAdmin;
@@ -31,11 +32,13 @@ public class MainJFrame extends javax.swing.JFrame {
     Connection connection;
       UserDirectory userDir;
       CensorDirectory cenDir;
+      UserCoordinatesDirectory coordDir;
     public MainJFrame() {
          connectDatabase();
         compDir = new CompanyDirectory(connection);
         userDir = new UserDirectory(connection);
         cenDir = new CensorDirectory(connection);
+        coordDir = new UserCoordinatesDirectory();
         initComponents();
        
     }
@@ -150,7 +153,7 @@ String username;
                         if(rs.getString(8).equals("1")){
                             if(rs.getString(9).equals("User")){
                                 flag = true;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir);
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);

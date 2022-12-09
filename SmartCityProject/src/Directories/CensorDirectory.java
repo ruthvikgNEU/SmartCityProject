@@ -35,7 +35,17 @@ public class CensorDirectory {
         }
         return null;
     }
-    
+    public ResultSet getApplicationsByAsignee(String username){
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("select * from censor_applications where asignee = ?");
+        st.setString(1, username);
+        return st.executeQuery();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return null;
+    }
     
     public void insertRecord(String name,String dir,String prod,String url,String theatre,String applied_Date){
         try{
@@ -53,6 +63,5 @@ public class CensorDirectory {
         catch(SQLException e){
             System.out.println(e);
         }
-       
     }
 }

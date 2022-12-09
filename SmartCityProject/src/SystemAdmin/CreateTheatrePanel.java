@@ -124,9 +124,9 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SetLocationLabelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationLabelMouseReleased
-MapsFrame frame  = new MapsFrame();
- frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setVisible(true);
+//MapsFrame frame  = new MapsFrame();
+// frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//        frame.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_SetLocationLabelMouseReleased
 
