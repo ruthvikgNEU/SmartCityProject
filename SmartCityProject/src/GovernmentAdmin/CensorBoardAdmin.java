@@ -89,13 +89,13 @@ CensorDirectory cenDir;
 
         ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Application Id", "Name", "Director", "Producer/Studio", "Application Status", "Movie Status", "Applied Date", "Url"
+                "Application Id", "Theatre", "Name", "Director", "Producer/Studio", "Application Status", "Movie Status", "Applied Date", "Url"
             }
         ));
         jScrollPane1.setViewportView(ApplicationsTable);

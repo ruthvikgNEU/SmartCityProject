@@ -80,6 +80,7 @@ insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","ruthvik@gmail.com","password",123456,1,"SystemAdmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","gadmin","ruthvik@yahoo.com","password",123456,1,"gadmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin","ruthvik@yahoo.com","password",123456,1,"censoradmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","ruthvik@yahoo.com","password",123456,1,"mcreator");
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
 insert into theatres(name,location,lat,lon) values('Prasad IMAX','Boston',42.3410701,-71.0882683);
@@ -123,6 +124,7 @@ select * from users;
 create table censor_applications(
 application_id integer auto_increment,
 Movie_Name varchar(20),
+theatre varchar(20),
 director varchar(30),
 studio varchar(30),
 app_status varchar(20),
@@ -132,16 +134,8 @@ url varchar(100),
 primary key(application_id)
 );
 
+insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Imax 3D","Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
 
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-05","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Approved","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-20","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Approved","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
-insert into censor_applications(movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Avengers","Kevin Feige","Marvel Studios","Pending","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
 select * from censor_applications;
 
 
