@@ -88,15 +88,15 @@ public class TourismJPanel extends javax.swing.JPanel {
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Location");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 104, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 104, 30));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Places");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 104, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 104, 30));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Days");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 104, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 104, 30));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Open Timing");
@@ -113,7 +113,7 @@ public class TourismJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, -1, -1));
 
         locationComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(locationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+        jPanel1.add(locationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 100, -1));
 
         placesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         placesComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -121,16 +121,16 @@ public class TourismJPanel extends javax.swing.JPanel {
                 placesComboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(placesComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
+        jPanel1.add(placesComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 100, -1));
 
         daysComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(daysComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
+        jPanel1.add(daysComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 100, -1));
 
         openTimingComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(openTimingComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, -1, -1));
+        jPanel1.add(openTimingComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 100, -1));
 
         numOfTicketsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(numOfTicketsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, -1, -1));
+        jPanel1.add(numOfTicketsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 100, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon("/Users/rajkumarkumaravelu/NetBeansProjects/AED-final project-smartcity/SmartCityProject/SmartCityProject/tourism.jpeg"));
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

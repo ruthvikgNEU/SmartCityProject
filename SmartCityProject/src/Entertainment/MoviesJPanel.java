@@ -54,6 +54,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
         viewButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(1200, 620));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
@@ -153,7 +154,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,6 +211,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
             ResultSet rs2 = st2.executeQuery();
             if(rs2.next())
             user_id += rs2.getString(1);
+            
             PreparedStatement st = (PreparedStatement)c.prepareStatement("select movie_id from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ? and m.name = ?");
             st.setString(1, theatre);
             st.setString(2, movie);
