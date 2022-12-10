@@ -148,7 +148,7 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(TheatreData);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
-        jLabel1.setText("Theatres");
+        jLabel1.setText("Add Theatres");
 
         jLabel2.setText("Name :");
 
@@ -205,14 +205,14 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(UsernameGreenTick, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(480, 480, 480)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(495, 495, 495)
-                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(480, 480, 480)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
