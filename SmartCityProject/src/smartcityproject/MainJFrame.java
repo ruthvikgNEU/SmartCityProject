@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package smartcityproject;
+
 import Directories.CensorDirectory;
 import Directories.CompanyDirectory;
+import Directories.EducationDirector;
 import Directories.UserDirectory;
+import Education.EduRegistration;
 import Entertainment.MoviesCreatorAdmin;
 import GovernmentAdmin.CensorBoardAdmin;
 import GovernmentAdmin.GAdminLandingPage;
@@ -18,6 +21,7 @@ import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
 import java.sql.*;
+
 /**
  *
  * @author Ruthvik Garlapati
@@ -29,26 +33,28 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     CompanyDirectory compDir;
     Connection connection;
-      UserDirectory userDir;
-      CensorDirectory cenDir;
+    UserDirectory userDir;
+    CensorDirectory cenDir;
+    EducationDirector eduDir;
+
     public MainJFrame() {
-         connectDatabase();
+        connectDatabase();
         compDir = new CompanyDirectory(connection);
         userDir = new UserDirectory(connection);
         cenDir = new CensorDirectory(connection);
+        eduDir = new EducationDirector(connection);
         initComponents();
-       
+
     }
-    
-    public final void connectDatabase(){
-     try{
-         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "root");
-        }
-        catch(SQLException e){
+
+    public final void connectDatabase() {
+        try {
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
+        } catch (SQLException e) {
             System.out.println("Unable to connect to Database");
         }
-}
- 
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,60 +140,69 @@ public class MainJFrame extends javax.swing.JFrame {
     private void PasswordFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFldActionPerformed
-String username;
-  String pwd ;
+    String username;
+    String pwd;
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         username = UsernameFld.getText();
-      pwd = String.valueOf(PasswordFld.getPassword());
+        pwd = String.valueOf(PasswordFld.getPassword());
         System.out.println(username + pwd);
         try {
-         
-            ResultSet rs =userDir.getUserData();
+
+            ResultSet rs = userDir.getUserData();
             while (rs.next()) {
-                if(rs.getString(4).equals(username) && rs.getString(6).equals(pwd)){
-                     flag = false;
-                        if(rs.getString(8).equals("1")){
-                            if(rs.getString(9).equals("User")){
-                                flag = true;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir);
-                            container.add("UserLandingJPanel",panel2);
+                if (rs.getString(4).equals(username) && rs.getString(6).equals(pwd)) {
+                    flag = false;
+                    if (rs.getString(8).equals("1")) {
+                        if (rs.getString(9).equals("User")) {
+                            flag = true;
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection, username, compDir);
+                            container.add("UserLandingJPanel", panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
-                            }
-                            if(rs.getString(9).equals("SystemAdmin")){
-                                flag = true;
-                            SystemAdminLandingJPanel panel = new SystemAdminLandingJPanel(connection,username);
-                            container.add("SystemAdminLandingJPanel",panel);
+                        }
+                        if (rs.getString(9).equals("SystemAdmin")) {
+                            flag = true;
+                            SystemAdminLandingJPanel panel = new SystemAdminLandingJPanel(connection, username);
+                            container.add("SystemAdminLandingJPanel", panel);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
-                            }
-                            if(rs.getString(9).equals("gadmin")){
-                                flag = true;
-                           GAdminLandingPage frame = new GAdminLandingPage();
-                           frame.setVisible(true);
-                           dispose();
-                            }
-                             if(rs.getString(9).equals("censoradmin")){
-                                flag = true;
-                           CensorBoardAdmin frame = new CensorBoardAdmin(connection,cenDir);
-                           frame.setVisible(true);
-                           dispose();
-                            }
-                               if(rs.getString(9).equals("mcreator")){
-                                flag = true;
-                          MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection,username,cenDir);
-                           frame.setVisible(true);
-                           dispose();
-                            }
                         }
-                        else{
-                            JOptionPane.showMessageDialog(this, "Email not Verified.");
+                        if (rs.getString(9).equals("gadmin")) {
+                            flag = true;
+                            GAdminLandingPage frame = new GAdminLandingPage();
+                            frame.setVisible(true);
+                            dispose();
                         }
+                        if (rs.getString(9).equals("censoradmin")) {
+                            flag = true;
+                            CensorBoardAdmin frame = new CensorBoardAdmin(connection, cenDir);
+                            frame.setVisible(true);
+                            dispose();
+                        }
+                        if (rs.getString(9).equals("mcreator")) {
+                            flag = true;
+                            MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection, username, cenDir);
+                            frame.setVisible(true);
+                            dispose();
+                        }
+                        //for education
+
+                        if (rs.getString(9).equals("educationappl")) {
+                            flag = true;
+                            EduRegistration eduRegistration = new EduRegistration(connection, username, eduDir);
+                            //eduRegistration.setVisible(true);
+                            eduRegistration.show();
+                            dispose();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Email not Verified.");
+                    }
                 }
             }
-            if(!flag)
-            JOptionPane.showMessageDialog(this, "Username Not Found.");
+            if (!flag) {
+                JOptionPane.showMessageDialog(this, "Username Not Found.");
+            }
         } catch (HeadlessException | SQLException sqlException) {
             sqlException.printStackTrace();
         }
@@ -195,16 +210,16 @@ String username;
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        SignUPJPanel panel = new SignUPJPanel(MainJPanel,connection);
-        container.add("SignUPJPanel",panel);
-                            CardLayout layout = (CardLayout) container.getLayout();
-                            layout.next(container);
-      
+        SignUPJPanel panel = new SignUPJPanel(MainJPanel, connection);
+        container.add("SignUPJPanel", panel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+
     }//GEN-LAST:event_RegisterButtonActionPerformed
-boolean flag = false;
-   
+    boolean flag = false;
+
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainJFrame().setVisible(true);

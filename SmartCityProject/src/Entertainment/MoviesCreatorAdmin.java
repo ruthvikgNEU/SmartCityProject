@@ -9,8 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import smartcityproject.MainJFrame;
 
 public class MoviesCreatorAdmin extends javax.swing.JFrame {
-
-    Connection connection;
+Connection connection;
     String user;
     CensorDirectory cenDir;
     public MoviesCreatorAdmin(Connection connection,String user,CensorDirectory cenDir) {
@@ -21,6 +20,7 @@ public class MoviesCreatorAdmin extends javax.swing.JFrame {
         UsernameLbl.setText(user);
         populateApplications();
     }
+    
     
      private void populateApplications(){
          DefaultTableModel model = (DefaultTableModel) ApplicationsTableData.getModel();

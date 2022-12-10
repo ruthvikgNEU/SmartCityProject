@@ -4,17 +4,34 @@
  */
 package Education;
 
+import Directories.CensorDirectory;
+import Directories.EducationDirector;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import org.icepdf.ri.common.ComponentKeyBinding;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
+
 /**
  *
  * @author ksara
  */
 public class EduRegistration extends javax.swing.JPanel {
 
-    /**
-     * Creates new form EduRegistration
-     */
-    public EduRegistration() {
+    Connection connection;
+    String user;
+    EducationDirector eduDir;
+
+    public EduRegistration(Connection connection, String user, EducationDirector eduDir) {
         initComponents();
+        this.connection = connection;
+        this.user = user;
+        this.eduDir = eduDir;
+        //  UsernameLbl.setText(user);
+        //populateApplications();
     }
 
     /**
@@ -29,11 +46,19 @@ public class EduRegistration extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Nametxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        Teasurertxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        Appliedtxt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        Principaltxt = new javax.swing.JTextField();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -48,70 +73,116 @@ public class EduRegistration extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setText("University Name");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 1126, 185));
 
-        jTextField1.setText("jTextField1");
+        jLabel1.setText("University Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 268, 118, 39));
+
+        Nametxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NametxtActionPerformed(evt);
+            }
+        });
+        add(Nametxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 261, 224, 52));
 
         jLabel2.setText("Principal");
-
-        jTextField2.setText("jTextField1");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 347, 118, -1));
 
         jLabel3.setText("Treasurer");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 415, 118, -1));
+        add(Teasurertxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 397, 224, 53));
 
-        jTextField3.setText("jTextField1");
+        jLabel4.setText("Course Info");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 118, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(307, Short.MAX_VALUE))
-        );
+        jButton1.setText("APPLY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 542, 136, 56));
+
+        jLabel5.setText("Location");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 118, 48));
+        add(Appliedtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 330, 224, 48));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/up2.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jLabel7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel7KeyPressed(evt);
+            }
+        });
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 40, 30));
+
+        jLabel6.setText("Applied on: ");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 118, -1));
+        add(Principaltxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 224, 48));
     }// </editor-fold>//GEN-END:initComponents
+String univname, princ, tres, courseinfourl, location, applied_ondate;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        univname = Nametxt.getText();
+        princ = Principaltxt.getText();
+        tres = Teasurertxt.getText();
+        courseinfourl = jLabel7.getText();
+        // location = String.valueOf(TheatresDropDown.getSelectedItem());
+        Date dNow = new Date();
+        SimpleDateFormat ft
+                = new SimpleDateFormat(" yyyy-MM-dd");
+        String applied_date = ft.format(dNow);
+        eduDir.insertRecord(univname, princ, tres, courseinfourl, location, applied_ondate);
+        // populateApplications();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7KeyPressed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void NametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NametxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NametxtActionPerformed
+
+    //PDF OPEN CODE 
+    /*void openpdf(String file){
+  
+    try {
+           SwingController control=new SwingController();
+            SwingViewBuilder factry=new SwingViewBuilder(control);
+            JPanel veiwerCompntpnl=factry.buildViewerPanel();
+            ComponentKeyBinding.install(control, veiwerCompntpnl);
+            control.getDocumentViewController().setAnnotationCallback(
+                    new org.icepdf.ri.common.MyAnnotationCallback(
+                    control.getDocumentViewController()));
+                   control.openDocument(file);
+        jScrollPane1.setViewportView(veiwerCompntpnl); 
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,"Cannot Load Pdf");
+        } 
+}*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Appliedtxt;
+    private javax.swing.JTextField Nametxt;
+    private javax.swing.JTextField Principaltxt;
+    private javax.swing.JTextField Teasurertxt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

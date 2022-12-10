@@ -2,6 +2,7 @@
 package UI;
 import Directories.CompanyDirectory;
 import Education.CoursesPanel;
+import Education.EduRegistration;
 import Education.UniversityPanel;
 import Employment.MyApplicationsPanel;
 import Employment.MyEmpExchangePanel;
@@ -28,6 +29,7 @@ public class UserLandingJPanel extends javax.swing.JPanel {
         TabbedPane.add("Profile",new UserProfileJPanel());
         TabbedPane.add("Analytics",new UserAnalyticsDashboard());
        TabbedPane.add("Univeristy",new UniversityPanel());
+
         TabbedPane.add("Course",new CoursesPanel(connection,user));
        TabbedPane.add("My Applications",new MyApplicationsPanel(compDir,connection,user));
        TabbedPane.add("Employment Exchange",new MyEmpExchangePanel());
