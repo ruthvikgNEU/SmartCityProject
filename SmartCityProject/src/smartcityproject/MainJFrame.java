@@ -4,38 +4,42 @@
  */
 package smartcityproject;
 import Directories.CensorDirectory;
+import Directories.CityDirectory;
 import Directories.CompanyDirectory;
+import Directories.TheatreDirectory;
+import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
 import Entertainment.MoviesCreatorAdmin;
-import GovernmentAdmin.CensorBoardAdmin;
+import GovernmentAdmin.CensorBoardAdminFrame;
+import GovernmentAdmin.CityCommisionerFrame;
 import GovernmentAdmin.GAdminLandingPage;
-import SystemAdmin.SystemAdminLandingJPanel;
+import SystemAdmin.SysAdminJFrame;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
 import java.awt.CardLayout;
 import java.awt.HeadlessException;
-
 import javax.swing.JOptionPane;
 
 import java.sql.*;
-/**
- *
- * @author Ruthvik Garlapati
- */
+
 public class MainJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainJFrame
-     */
+   
     CompanyDirectory compDir;
     Connection connection;
       UserDirectory userDir;
       CensorDirectory cenDir;
+      UserCoordinatesDirectory coordDir;
+      CityDirectory cityDir;
+      TheatreDirectory thDir;
     public MainJFrame() {
          connectDatabase();
         compDir = new CompanyDirectory(connection);
         userDir = new UserDirectory(connection);
         cenDir = new CensorDirectory(connection);
+        coordDir = new UserCoordinatesDirectory();
+        cityDir = new CityDirectory(connection);
+        this.thDir = new TheatreDirectory(connection);
         initComponents();
        
     }
@@ -150,33 +154,38 @@ String username;
                         if(rs.getString(8).equals("1")){
                             if(rs.getString(9).equals("User")){
                                 flag = true;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir);
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
                             }
                             if(rs.getString(9).equals("SystemAdmin")){
                                 flag = true;
-                            SystemAdminLandingJPanel panel = new SystemAdminLandingJPanel(connection,username);
-                            container.add("SystemAdminLandingJPanel",panel);
-                            CardLayout layout = (CardLayout) container.getLayout();
-                            layout.next(container);
+                            SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir);
+                          frame.setVisible(true);
+                           dispose();
                             }
                             if(rs.getString(9).equals("gadmin")){
                                 flag = true;
-                           GAdminLandingPage frame = new GAdminLandingPage();
+                           GAdminLandingPage frame = new GAdminLandingPage(cenDir,username,cityDir);
                            frame.setVisible(true);
                            dispose();
                             }
                              if(rs.getString(9).equals("censoradmin")){
                                 flag = true;
-                           CensorBoardAdmin frame = new CensorBoardAdmin(connection,cenDir);
+                           CensorBoardAdminFrame frame = new CensorBoardAdminFrame(connection,cenDir,username);
                            frame.setVisible(true);
                            dispose();
                             }
                                if(rs.getString(9).equals("mcreator")){
                                 flag = true;
                           MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection,username,cenDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                if(rs.getString(9).equals("citycomm")){
+                                flag = true;
+                          CityCommisionerFrame frame = new CityCommisionerFrame(connection,username,cityDir);
                            frame.setVisible(true);
                            dispose();
                             }

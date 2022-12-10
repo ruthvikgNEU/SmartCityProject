@@ -9,17 +9,25 @@ import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.engine.EngineOptions;
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 import com.teamdev.jxbrowser.view.swing.BrowserView;
+import javax.swing.JOptionPane;
+import model.UserCoordinates;
 
 
 public class MapsFrame extends javax.swing.JFrame {
 
     Browser browser;
-  
-    public MapsFrame() {
+  UserCoordinates temp;
+    public MapsFrame(UserCoordinates temp) {
         initComponents();
-       
+       this.temp = temp;
       open_site();
     }
+
+    private MapsFrame() {
+      
+    }
+
+  
 
     private void open_site() {
         try{
@@ -68,7 +76,7 @@ public class MapsFrame extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(34, 34, 34)
                 .addComponent(SetLocationButton)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +89,7 @@ public class MapsFrame extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(SetLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(MapsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE))
+                .addComponent(MapsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,21 +102,19 @@ public class MapsFrame extends javax.swing.JFrame {
                 String[] placeName = split2[0].split("\\+");
                 String[] longLat = split2[1].split(",");
                 String place="";
-                
                 int size = placeName.length;
                 for(int i=0;i<size;i++){
                     place+=placeName[i];
                 }
-                System.out.println(place);
-                System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
-                
+                temp.setLat(Double.parseDouble(longLat[0]));
+                temp.setLon(Double.parseDouble(longLat[1]));
+                JOptionPane.showMessageDialog(this, "Location Selected.");
             }
-        dispose();
-// TODO add your handling code here:
     }//GEN-LAST:event_SetLocationButtonMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MapsFrame().setVisible(true);
             }

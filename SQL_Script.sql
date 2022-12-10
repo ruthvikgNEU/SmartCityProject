@@ -10,6 +10,7 @@ drop table if exists bookings;
 drop table if exists companies;
 drop table if exists jobs;
 drop table if exists applications;
+drop table if exists censor_applications;
 create table users(
 user_id integer auto_increment,
 firstname varchar(20),
@@ -25,6 +26,7 @@ primary key(user_id)
 create table theatres(
 theatre_id integer auto_increment,
 name varchar(25),
+owner varchar(30),
 location varchar(20),
 lat double,
 lon double,
@@ -76,15 +78,31 @@ status varchar(20),
 comments varchar(200),
 primary key(application_id)
 );
+create table censor_applications(
+application_id integer auto_increment,
+Movie_Name varchar(20),
+theatre varchar(20),
+director varchar(30),
+studio varchar(30),
+app_status varchar(20),
+movie_status varchar(20),
+applied_date date,
+url varchar(100),
+asignee varchar(30),
+primary key(application_id)
+);
+
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User");
-insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","ruthvik@gmail.com","password",123456,1,"SystemAdmin");
-insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","gadmin","ruthvik@yahoo.com","password",123456,1,"gadmin");
-insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin","ruthvik@yahoo.com","password",123456,1,"censoradmin");
-insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","ruthvik@yahoo.com","password",123456,1,"mcreator");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","garlapati.r@northeastern.edu","password",123456,1,"SystemAdmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","gadmin","garlapati.r@northeastern.edu","password",123456,1,"gadmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin1","garlapati.r@northeastern.edu","password",123456,1,"censoradmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin2","garlapati.r@northeastern.edu","password",123456,1,"censoradmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","garlapati.r@northeastern.edu","password",123456,1,"mcreator");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","citycomm","garlapati.r@northeastern.edu","password",123456,1,"citycomm");
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
-insert into theatres(name,location,lat,lon) values('Prasad IMAX','Boston',42.3410701,-71.0882683);
-insert into theatres(name,location,lat,lon) values('AMC IMAX','New York',42.3410701,-71.0882683);
+insert into theatres(name,location,owner,lat,lon) values('Prasad IMAX','Boston','Marvel',42.3410701,-71.0882683);
+insert into theatres(name,location,owner,lat,lon) values('AMC IMAX','New York','DC',42.3410701,-71.0882683);
 insert into movies(name,theatre_id) values('Avatar',1);
 insert into movies(name,theatre_id) values('Black Panther',1);
 insert into movies(name,theatre_id) values('HIT 2',1);
@@ -98,9 +116,6 @@ insert into shows(show_time,movie_id) values("02:15 PM",2);
 
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3410701,-71.0882683);
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3432429,-71.0979135);
-select * from users;
-Select username,passwordFld,can_login,role from users;
-
 insert into companies(name) values("Google");
 insert into companies(name) values("Meta");
 insert into companies(name) values("Apple");
@@ -110,33 +125,30 @@ insert into jobs(name,description,company_id) values ("Product Engineer","Java,U
 insert into jobs(name,description,company_id) values ("Software Engineer","Swift,Scala",3);
 insert into jobs(name,description,company_id) values ("Frontend Engineer","HTML,CSS",3);
 insert into jobs(name,description,company_id) values ("Metaverse Engineer","AWS,Cloud",2);
+insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url,asignee) values ("Imax 3D","Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c","N/A");
 
-
-select * from jobs;
-select j.name,j.description from companies c ,jobs j where c.company_id = j.company_id and c.name = 'Google';
-select j.description from companies c ,jobs j where c.company_id = j.company_id and c.name = 'Google' and j.name = 'Software Engineer';
-
-select * from applications;
-
-select * from users;
-
-
-create table censor_applications(
-application_id integer auto_increment,
-Movie_Name varchar(20),
-theatre varchar(20),
-director varchar(30),
-studio varchar(30),
-app_status varchar(20),
-movie_status varchar(20),
-applied_date date,
-url varchar(100),
-primary key(application_id)
-);
-
-insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url) values ("Imax 3D","Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c");
 
 select * from censor_applications;
 
+select username from users where role = 'censoradmin';
 
-select * from censor_applications  where app_status = 'Active' or app_status = 'Pending' order by applied_date asc;
+
+create table city_applications(
+application_id integer auto_increment,
+name varchar(30),
+type varchar(30),
+owner varchar(30),
+location varchar(30),
+lat double,
+lon double,
+asignee varchar(30),
+application_status varchar(30),
+primary key(application_id)
+);
+
+
+
+
+
+
+insert into city_applications(name,type,owner,location,lat,lon,asignee,application_status) values ("IMAX 3D","Theatre","Ruthvik","Boston",42.3410701,-71.0882683,"N/A","Active");

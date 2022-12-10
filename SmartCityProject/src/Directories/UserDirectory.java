@@ -37,4 +37,31 @@ public class UserDirectory {
         }
         return null;
     }
+     public ResultSet getAdminsData(){
+        try{
+            PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from users where role not in ('User','SystemAdmin')");
+            return st.executeQuery();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return null;
+    }
+     
+     public void addAdmin(String fname,String lname,String uname,String password, String email,String role){
+           try{
+            PreparedStatement st = (PreparedStatement)connection.prepareStatement("insert into users(firstname,lastname,username,passwordFld,email,role) values (?,?,?,?,?,?)");
+            st.setString(1, fname);
+            st.setString(2, lname);
+            st.setString(3, uname);
+            st.setString(4, password);
+            st.setString(5, email);
+            st.setString(6, role);
+            st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        
+     }
 }
