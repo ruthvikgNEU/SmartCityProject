@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 public class CensorDirectory {
     Connection connection;
     public CensorDirectory(Connection connection){
@@ -25,9 +26,10 @@ public class CensorDirectory {
         }
         return null;
     }
-    public ResultSet populateNextApplications(){
+    public ResultSet populateNextApplicationsByAsignee(String user){
          try{
-        PreparedStatement st= (PreparedStatement)connection.prepareStatement("select * from censor_applications  where app_status = 'Active' or app_status = 'Pending' order by applied_date asc ");
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("select * from censor_applications  where username = ? app_status = 'Active' or app_status = 'Pending' order by applied_date asc ");
+       st.setString(1, user);
         return st.executeQuery();
         }
         catch(SQLException e){
@@ -64,4 +66,56 @@ public class CensorDirectory {
             System.out.println(e);
         }
     }
+    public  ArrayList getAllCensorAdmins(){
+        ArrayList<String> list = new ArrayList<>();
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("select username from users where role = ? ");
+        st.setString(1,"censoradmin");
+      ResultSet rs = st.executeQuery();
+      while(rs.next()){
+          list.add(rs.getString(1));
+      }
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    
+    public void updateAssignee(String id,String asignee){
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("update censor_applications set asignee = ? where application_id = ?");
+        st.setString(1, asignee);
+        st.setString(2, id);
+        st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+     public void updateAppStatus(String id,String status){
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("update censor_applications set app_status = ? where application_id = ?");
+        st.setString(1, status);
+        st.setString(2, id);
+        st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+     
+     public void updateMovieStatus(String id,String status){
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("update censor_applications set movie_status = ? where application_id = ?");
+        st.setString(1, status);
+        st.setString(2, id);
+        st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+     
 }

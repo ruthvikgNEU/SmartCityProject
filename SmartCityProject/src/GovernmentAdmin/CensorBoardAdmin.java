@@ -9,9 +9,11 @@ import javax.swing.JOptionPane;
 public class CensorBoardAdmin extends javax.swing.JFrame {
 Connection connection;
 CensorDirectory cenDir;
-    public CensorBoardAdmin(Connection connection,CensorDirectory cenDir) {
+String user;
+    public CensorBoardAdmin(Connection connection,CensorDirectory cenDir,String user) {
         this.connection = connection;
         this.cenDir = cenDir;
+        this.user = user;
         initComponents();
         populateApplications();
         populateNextApplication();
@@ -24,18 +26,19 @@ CensorDirectory cenDir;
     private void populateApplications(){
          DefaultTableModel model = (DefaultTableModel) ApplicationsTable.getModel();
           try{
-              ResultSet rs = cenDir.getAllApplications();
+              ResultSet rs = cenDir.getApplicationsByAsignee(user);
               model.setRowCount(0);
       while(rs.next()) {
-            Object row[] = new Object[8];
+            Object row[] = new Object[9];
             row[0] = rs.getString(1);
-            row[1] = rs.getString(2);
-            row[2] = rs.getString(3);
+            row[1] = rs.getString(3);
+            row[2] = rs.getString(2);
             row[3] = rs.getString(4);
             row[4] = rs.getString(5);
               row[5] = rs.getString(6);
             row[6] = rs.getString(7);
             row[7] = rs.getString(8);
+            row[8] = rs.getString(9);
             model.addRow(row);
         }
           }
@@ -54,9 +57,9 @@ CensorDirectory cenDir;
         PlayMovie = new javax.swing.JButton();
         AppStatusDropDown = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        AppStatusButton = new javax.swing.JButton();
         MovieStatusDropDown = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        MovieStatusButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -120,14 +123,24 @@ CensorDirectory cenDir;
         jLabel2.setText("Application Status :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 426, -1, -1));
 
-        jButton3.setText("Update");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
+        AppStatusButton.setText("Update");
+        AppStatusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AppStatusButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(AppStatusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
 
         MovieStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "In-appropriate Content", "U/A", "Adult(18+)", "Kids" }));
         getContentPane().add(MovieStatusDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 220, 37));
 
-        jButton4.setText("Update");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
+        MovieStatusButton.setText("Update");
+        MovieStatusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MovieStatusButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MovieStatusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,13 +224,42 @@ int index1 = ApplicationsTable.getSelectedRow();
             return;
         }
          DefaultTableModel model2 = (DefaultTableModel) ApplicationsTable.getModel();
-        String url  = String.valueOf(model2.getValueAt(index1, 7));
+        String url  = String.valueOf(model2.getValueAt(index1, 8));
         MovieVideoPanel frame = new MovieVideoPanel(url);
         frame.setVisible(true);
     }//GEN-LAST:event_PlayMovieActionPerformed
 
+    private void AppStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppStatusButtonActionPerformed
+int index1 = ApplicationsTable.getSelectedRow();
+        if (index1 < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a movie to play....!");
+            return;
+        }
+         DefaultTableModel model2 = (DefaultTableModel) ApplicationsTable.getModel();
+          String id  = String.valueOf(model2.getValueAt(index1, 0));
+          String status = AppStatusDropDown.getSelectedItem().toString();
+          cenDir.updateAppStatus(id,status);
+          populateApplications();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AppStatusButtonActionPerformed
+
+    private void MovieStatusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MovieStatusButtonActionPerformed
+
+int index1 = ApplicationsTable.getSelectedRow();
+        if (index1 < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a movie to play....!");
+            return;
+        }
+         DefaultTableModel model2 = (DefaultTableModel) ApplicationsTable.getModel();
+          String id  = String.valueOf(model2.getValueAt(index1, 0));
+          String status = MovieStatusDropDown.getSelectedItem().toString();
+          cenDir.updateMovieStatus(id,status);
+          populateApplications();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MovieStatusButtonActionPerformed
+
     private void populateNextApplication(){
-         ResultSet rs = cenDir.populateNextApplications();
+         ResultSet rs = cenDir.getApplicationsByAsignee(user);
          try{
          if(rs.next()){
              ApplicationdLbl.setText(rs.getString(1));
@@ -233,7 +275,7 @@ int index1 = ApplicationsTable.getSelectedRow();
              AppliedDateLbl.setText("N/A");
          }
          }catch(Exception e){
-             
+             System.out.println(e);
          }
     }
     
@@ -245,18 +287,18 @@ int index1 = ApplicationsTable.getSelectedRow();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AppStatusButton;
     private javax.swing.JComboBox<String> AppStatusDropDown;
     private javax.swing.JLabel ApplicationdLbl;
     private javax.swing.JTable ApplicationsTable;
     private javax.swing.JLabel AppliedDateLbl;
     private javax.swing.JLabel DirectorLbl;
     private javax.swing.JLabel LogoutButton;
+    private javax.swing.JButton MovieStatusButton;
     private javax.swing.JComboBox<String> MovieStatusDropDown;
     private javax.swing.JLabel NameLbl;
     private javax.swing.JButton PlayMovie;
     private javax.swing.JLabel StudioLbl;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
