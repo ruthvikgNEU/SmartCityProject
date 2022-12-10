@@ -85,7 +85,7 @@ Treasurer_name varchar(30),
 applied_date varchar(30),
 status varchar(20),
 course_info varchar(200),
-primary key(univapplication_id)
+primary key(application_id)
 );
 
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User");
@@ -93,6 +93,10 @@ insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","gadmin","ruthvik@yahoo.com","password",123456,1,"gadmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin","ruthvik@yahoo.com","password",123456,1,"censoradmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","ruthvik@yahoo.com","password",123456,1,"mcreator");
+
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Saranya","Sankar","educationappl","ruthvik@yahoo.com","password",123456,1,"educationappl");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Saranya","Sankar","educationdir","ksaranya2119@gmail.com","password",123456,1,"educationdir");
+
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
 insert into theatres(name,location,lat,lon) values('Prasad IMAX','Boston',42.3410701,-71.0882683);

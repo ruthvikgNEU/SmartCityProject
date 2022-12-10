@@ -11,6 +11,7 @@ import Directories.UserDirectory;
 import Education.EduRegistration;
 import Entertainment.MoviesCreatorAdmin;
 import GovernmentAdmin.CensorBoardAdmin;
+import GovernmentAdmin.EducationDir;
 import GovernmentAdmin.GAdminLandingPage;
 import SystemAdmin.SystemAdminLandingJPanel;
 import UI.SignUPJPanel;
@@ -190,9 +191,25 @@ public class MainJFrame extends javax.swing.JFrame {
 
                         if (rs.getString(9).equals("educationappl")) {
                             flag = true;
-                            EduRegistration eduRegistration = new EduRegistration(connection, username, eduDir);
-                            //eduRegistration.setVisible(true);
-                            eduRegistration.show();
+                            EduRegistration frame = new EduRegistration(connection, username, eduDir);
+                            frame.setVisible(true);
+                            
+                            dispose();
+                        }
+//                         if (rs.getString(9).equals("educationappl")) {
+//                            flag = true;
+//                            EducationDir frame = new EducationDir(connection, eduDir);
+//                            frame.setVisible(true);
+//                            
+//                            dispose();
+//                        }
+                         
+                         //for education director 
+                         if (rs.getString(9).equals("educationdir")) {
+                            flag = true;
+                            EducationDir frame = new EducationDir(connection, eduDir);
+                            frame.setVisible(true);
+                            
                             dispose();
                         }
                     } else {
