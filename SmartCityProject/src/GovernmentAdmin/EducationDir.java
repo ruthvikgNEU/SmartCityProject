@@ -16,18 +16,70 @@ import javax.swing.JOptionPane;
  * @author ksara
  */
 public class EducationDir extends javax.swing.JFrame {
+    Connection connection;
+    EducationDirector eduDir;
+    
+    public EducationDir(Connection connection,EducationDirector eduDir) {
+        this.connection = connection;
+        this.eduDir = eduDir;
+        initComponents();
+        populateApplications();
+        populateNextApplication();
+    }
+
 
     /**
      * Creates new form EducationDir
      */
     
-    Connection connection;
-    EducationDirector eduDir;
-    public EducationDir(Connection connection, EducationDirector eduDir) {
-        
-        this.connection = connection;
-        this.eduDir = eduDir;
-        initComponents();
+  //populate table appl
+    
+            private void populateApplications(){
+         DefaultTableModel model = (DefaultTableModel) ApplicationsTable.getModel();
+          try{
+              ResultSet rs = eduDir.getAllApplications();
+              model.setRowCount(0);
+      while(rs.next()) {
+            Object row[] = new Object[8];
+            row[0] = rs.getString(1);
+            row[1] = rs.getString(2);
+            row[2] = rs.getString(3);
+            row[3] = rs.getString(4);
+            row[4] = rs.getString(5);
+              row[5] = rs.getString(6);
+            row[6] = rs.getString(7);
+            row[7] = rs.getString(8);
+            model.addRow(row);
+        }
+          }
+          catch(Exception e){
+              System.out.println(e);
+          }
+    }
+            
+            
+            //TO GET NEXT APPLICATION 
+            
+            
+            private void populateNextApplication(){
+         ResultSet rs = eduDir.populateNextApplications();
+         try{
+         if(rs.next()){
+             ApplicationuLbl.setText(rs.getString(1));
+             NameuLbl.setText(rs.getString(2));
+             PrincipalLbl.setText(rs.getString(3));
+             TreasurerLbl.setText(rs.getString(4));
+             AppliedLbl.setText(rs.getString(7));
+         }else{
+              ApplicationuLbl.setText("N/A");
+             NameuLbl.setText("N/A");
+             PrincipalLbl.setText("N/A");
+             TreasurerLbl.setText("N/A");
+             AppliedLbl.setText("N/A");
+         }
+         }catch(Exception e){
+             
+         }
     }
 
     private EducationDir() {
@@ -44,7 +96,7 @@ public class EducationDir extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ApplicationsTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -59,15 +111,16 @@ public class EducationDir extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        ApplicationuLbl = new javax.swing.JLabel();
+        NameuLbl = new javax.swing.JLabel();
+        PrincipalLbl = new javax.swing.JLabel();
+        TreasurerLbl = new javax.swing.JLabel();
+        AppliedLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 153, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -78,7 +131,7 @@ public class EducationDir extends javax.swing.JFrame {
                 "Application", "University Name", "Applied On", "Status", "Principal", "Treasurer", "Location ", "Course Info"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(ApplicationsTable);
 
         jButton1.setText("View Course");
 
@@ -102,21 +155,21 @@ public class EducationDir extends javax.swing.JFrame {
 
         jLabel6.setText("University Name:");
 
-        jLabel7.setText("Status:");
+        jLabel7.setText("Principal:");
 
-        jLabel8.setText("Principal: ");
+        jLabel8.setText("Treasurer:");
 
         jLabel9.setText("Applied On: ");
 
-        jLabel10.setText("as");
+        ApplicationuLbl.setText("To be viewed");
 
-        jLabel11.setText("Application ID:");
+        NameuLbl.setText("To be viewed");
 
-        jLabel12.setText("Application ID:");
+        PrincipalLbl.setText("To be viewed");
 
-        jLabel13.setText("Application ID:");
+        TreasurerLbl.setText("To be viewed");
 
-        jLabel14.setText("Application ID:");
+        AppliedLbl.setText("To be viewed");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,11 +196,11 @@ public class EducationDir extends javax.swing.JFrame {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(AppliedLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TreasurerLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(PrincipalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NameuLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ApplicationuLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -193,15 +246,15 @@ public class EducationDir extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ApplicationuLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NameuLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(PrincipalLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -212,11 +265,11 @@ public class EducationDir extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TreasurerLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AppliedLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(193, 193, 193))
         );
 
@@ -259,17 +312,18 @@ public class EducationDir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable ApplicationsTable;
+    private javax.swing.JLabel ApplicationuLbl;
+    private javax.swing.JLabel AppliedLbl;
+    private javax.swing.JLabel NameuLbl;
+    private javax.swing.JLabel PrincipalLbl;
+    private javax.swing.JLabel TreasurerLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -279,6 +333,5 @@ public class EducationDir extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

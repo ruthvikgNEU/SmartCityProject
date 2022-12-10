@@ -126,12 +126,22 @@ CensorDirectory cenDir;
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 426, -1, -1));
 
         jButton3.setText("Update");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
 
         MovieStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "In-appropriate Content", "U/A", "Adult(18+)", "Kids" }));
         getContentPane().add(MovieStatusDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 220, 37));
 
         jButton4.setText("Update");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -224,6 +234,14 @@ int index1 = ApplicationsTable.getSelectedRow();
     private void AppStatusDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppStatusDropDownActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AppStatusDropDownActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void populateNextApplication(){
          ResultSet rs = cenDir.populateNextApplications();

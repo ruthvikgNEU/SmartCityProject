@@ -9,6 +9,7 @@ import Directories.CompanyDirectory;
 import Directories.EducationDirector;
 import Directories.UserDirectory;
 import Education.EduRegistration;
+import Education.UniversityRegistrationFrame;
 import Entertainment.MoviesCreatorAdmin;
 import GovernmentAdmin.CensorBoardAdmin;
 import GovernmentAdmin.EducationDir;
@@ -189,11 +190,10 @@ public class MainJFrame extends javax.swing.JFrame {
                         }
                         //for education
 
-                        if (rs.getString(9).equals("educationappl")) {
+                        if (rs.getString("role").equals("educationappl")) {
                             flag = true;
-                            EduRegistration frame = new EduRegistration(connection, username, eduDir);
+                            UniversityRegistrationFrame frame = new UniversityRegistrationFrame(connection, username, eduDir);
                             frame.setVisible(true);
-                            
                             dispose();
                         }
 //                         if (rs.getString(9).equals("educationappl")) {

@@ -6,6 +6,7 @@ package Directories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +19,29 @@ public class EducationDirector {
      this.connection = connection;   
     
 }
+    public ResultSet getAllApplications(){
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("select * from universityapplication");
+        return st.executeQuery();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return null;
+    }
 
+    
+     public ResultSet populateNextApplications(){
+         try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("select * from universityapplication  where app_status = 'Active' or app_status = 'Pending' order by applied_date asc ");
+        return st.executeQuery();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    
 
 
 public void insertRecord(String univname,String princ,String tres,String courseinfourl,String location,String applied_ondate){
