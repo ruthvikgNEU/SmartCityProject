@@ -26,6 +26,7 @@ primary key(user_id)
 create table theatres(
 theatre_id integer auto_increment,
 name varchar(25),
+owner varchar(30),
 location varchar(20),
 lat double,
 lon double,
@@ -100,8 +101,8 @@ insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","citycomm","garlapati.r@northeastern.edu","password",123456,1,"citycomm");
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
-insert into theatres(name,location,lat,lon) values('Prasad IMAX','Boston',42.3410701,-71.0882683);
-insert into theatres(name,location,lat,lon) values('AMC IMAX','New York',42.3410701,-71.0882683);
+insert into theatres(name,location,owner,lat,lon) values('Prasad IMAX','Boston','Marvel',42.3410701,-71.0882683);
+insert into theatres(name,location,owner,lat,lon) values('AMC IMAX','New York','DC',42.3410701,-71.0882683);
 insert into movies(name,theatre_id) values('Avatar',1);
 insert into movies(name,theatre_id) values('Black Panther',1);
 insert into movies(name,theatre_id) values('HIT 2',1);

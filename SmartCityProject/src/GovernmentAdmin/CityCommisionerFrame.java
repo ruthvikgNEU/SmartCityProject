@@ -25,6 +25,7 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
     private CityCommisionerFrame() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 
   private void populateApplications(){
       
@@ -63,11 +64,9 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
         ViewonMap = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setText("Hi!");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 19, -1, 35));
 
         LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-70.png"))); // NOI18N
         LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,10 +74,8 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
                 LogoutButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 6, -1, -1));
 
         USernameLbl.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
-        getContentPane().add(USernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 19, 371, 35));
 
         ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,13 +90,9 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(ApplicationsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 105, 979, 184));
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "In-review", "Approved", "Rejected" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 378, 214, 40));
 
         jLabel3.setText("Status :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 389, -1, -1));
 
         UpdateStatus.setText("Update");
         UpdateStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +100,6 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
                 UpdateStatusActionPerformed(evt);
             }
         });
-        getContentPane().add(UpdateStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 459, -1, -1));
 
         ViewonMap.setText("View Location on Map");
         ViewonMap.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +107,61 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
                 ViewonMapActionPerformed(evt);
             }
         });
-        getContentPane().add(ViewonMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 371, 242, 54));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1)
+                        .addGap(34, 34, 34)
+                        .addComponent(USernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(454, 454, 454)
+                        .addComponent(LogoutButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(243, 243, 243)
+                        .addComponent(ViewonMap, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(UpdateStatus)))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogoutButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(USernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ViewonMap, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(UpdateStatus)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

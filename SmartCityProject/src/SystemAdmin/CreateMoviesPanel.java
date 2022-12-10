@@ -8,13 +8,13 @@ package SystemAdmin;
  *
  * @author Ruthvik Garlapati
  */
-public class AddMoviesPanel extends javax.swing.JPanel {
+import java.sql.*;
+public class CreateMoviesPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form AddMoviesPanel
-     */
-    public AddMoviesPanel() {
+  Connection connection;
+    public CreateMoviesPanel(Connection connection) {
         initComponents();
+        this.connection = connection;
     }
 
     /**
@@ -77,7 +77,7 @@ public class AddMoviesPanel extends javax.swing.JPanel {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Libraries/20552168.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -2, 780, 660));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -2, 1200, 630));
     }// </editor-fold>//GEN-END:initComponents
 
 

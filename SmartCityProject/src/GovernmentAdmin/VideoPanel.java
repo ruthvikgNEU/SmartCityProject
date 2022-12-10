@@ -7,10 +7,10 @@ import com.teamdev.jxbrowser.engine.EngineOptions;
 import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
 import com.teamdev.jxbrowser.view.swing.BrowserView;
 
-public class MovieVideoPanel extends javax.swing.JFrame {
+public class VideoPanel extends javax.swing.JFrame {
  Browser browser;
  static String url;
-    public MovieVideoPanel(String url) {
+    public VideoPanel(String url) {
         initComponents();
         this.url = url;
         PlayMovie();
@@ -100,7 +100,7 @@ dispose();
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MovieVideoPanel(url).setVisible(true);
+                new VideoPanel(url).setVisible(true);
             }
         });
     }

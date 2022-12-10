@@ -6,13 +6,14 @@ package smartcityproject;
 import Directories.CensorDirectory;
 import Directories.CityDirectory;
 import Directories.CompanyDirectory;
+import Directories.TheatreDirectory;
 import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
 import Entertainment.MoviesCreatorAdmin;
-import GovernmentAdmin.CensorBoardAdmin;
+import GovernmentAdmin.CensorBoardAdminFrame;
 import GovernmentAdmin.CityCommisionerFrame;
 import GovernmentAdmin.GAdminLandingPage;
-import SystemAdmin.SystemAdminLandingJPanel;
+import SystemAdmin.SysAdminJFrame;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
 import java.awt.CardLayout;
@@ -30,6 +31,7 @@ public class MainJFrame extends javax.swing.JFrame {
       CensorDirectory cenDir;
       UserCoordinatesDirectory coordDir;
       CityDirectory cityDir;
+      TheatreDirectory thDir;
     public MainJFrame() {
          connectDatabase();
         compDir = new CompanyDirectory(connection);
@@ -37,6 +39,7 @@ public class MainJFrame extends javax.swing.JFrame {
         cenDir = new CensorDirectory(connection);
         coordDir = new UserCoordinatesDirectory();
         cityDir = new CityDirectory(connection);
+        this.thDir = new TheatreDirectory(connection);
         initComponents();
        
     }
@@ -158,10 +161,9 @@ String username;
                             }
                             if(rs.getString(9).equals("SystemAdmin")){
                                 flag = true;
-                            SystemAdminLandingJPanel panel = new SystemAdminLandingJPanel(connection,username);
-                            container.add("SystemAdminLandingJPanel",panel);
-                            CardLayout layout = (CardLayout) container.getLayout();
-                            layout.next(container);
+                            SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir);
+                          frame.setVisible(true);
+                           dispose();
                             }
                             if(rs.getString(9).equals("gadmin")){
                                 flag = true;
@@ -171,7 +173,7 @@ String username;
                             }
                              if(rs.getString(9).equals("censoradmin")){
                                 flag = true;
-                           CensorBoardAdmin frame = new CensorBoardAdmin(connection,cenDir,username);
+                           CensorBoardAdminFrame frame = new CensorBoardAdminFrame(connection,cenDir,username);
                            frame.setVisible(true);
                            dispose();
                             }

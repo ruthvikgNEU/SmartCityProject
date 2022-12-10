@@ -6,11 +6,11 @@ import javax.swing.table.DefaultTableModel;
 import smartcityproject.MainJFrame;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-public class CensorBoardAdmin extends javax.swing.JFrame {
+public class CensorBoardAdminFrame extends javax.swing.JFrame {
 Connection connection;
 CensorDirectory cenDir;
 String user;
-    public CensorBoardAdmin(Connection connection,CensorDirectory cenDir,String user) {
+    public CensorBoardAdminFrame(Connection connection,CensorDirectory cenDir,String user) {
         this.connection = connection;
         this.cenDir = cenDir;
         this.user = user;
@@ -19,7 +19,7 @@ String user;
         populateNextApplication();
     }
 
-    private CensorBoardAdmin() {
+    private CensorBoardAdminFrame() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -225,7 +225,7 @@ int index1 = ApplicationsTable.getSelectedRow();
         }
          DefaultTableModel model2 = (DefaultTableModel) ApplicationsTable.getModel();
         String url  = String.valueOf(model2.getValueAt(index1, 8));
-        MovieVideoPanel frame = new MovieVideoPanel(url);
+        VideoPanel frame = new VideoPanel(url);
         frame.setVisible(true);
     }//GEN-LAST:event_PlayMovieActionPerformed
 
@@ -282,7 +282,7 @@ int index1 = ApplicationsTable.getSelectedRow();
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(() -> {
-            new CensorBoardAdmin().setVisible(true);
+            new CensorBoardAdminFrame().setVisible(true);
         });
     }
 
