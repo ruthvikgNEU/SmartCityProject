@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MoviesJPanel extends javax.swing.JPanel {
+    //establishing connection
     Connection c;
     String user;
     public MoviesJPanel(Connection c,String user) {
@@ -177,6 +178,8 @@ public class MoviesJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_TheatreDropDownActionPerformed
 
     private void MoviesDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoviesDropDownActionPerformed
+        
+        //remove items from ShowsDropDown 
         ShowsDropDown.removeAllItems();
         String movie = String.valueOf(MoviesDropDown.getSelectedItem());
         try {
