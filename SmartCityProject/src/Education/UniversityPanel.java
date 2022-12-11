@@ -100,15 +100,33 @@ public class UniversityPanel extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 490, -1, -1));
 
         ApplyButton.setText("Apply");
+        ApplyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApplyButtonActionPerformed(evt);
+            }
+        });
         add(ApplyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 134, 34));
 
         WithdrawButton.setText("Withdraw");
+        WithdrawButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WithdrawButtonActionPerformed(evt);
+            }
+        });
         add(WithdrawButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 540, 130, 34));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/zoomRRLsummer.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 630));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ApplyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApplyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ApplyButtonActionPerformed
+
+    private void WithdrawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WithdrawButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WithdrawButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

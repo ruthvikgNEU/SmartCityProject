@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class MyApplicationsPanel extends javax.swing.JPanel {
 
     CompanyDirectory compDir;
+    //establishing connection
   Connection connection;
   String user;
     public MyApplicationsPanel(CompanyDirectory compDir,Connection connection,String user) {
@@ -26,6 +27,7 @@ public class MyApplicationsPanel extends javax.swing.JPanel {
         populateJobs();
     }
     private void populateJobs(){
+        //getting default table models
           DefaultTableModel model = (DefaultTableModel) ApplicationsTable.getModel();
           try{
               ResultSet rs = compDir.getApplicationByUser(user);

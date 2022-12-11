@@ -159,6 +159,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TheatreDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TheatreDropDownActionPerformed
+        //removing items from movies drop down box
         MoviesDropDown.removeAllItems();
         String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
         try {
