@@ -26,6 +26,7 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
         this.connection = connection;
         populateTheatres();
     }
+    // the function populate the values in the table
     private void populateTheatres(){
         try{
             PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from theatres");
