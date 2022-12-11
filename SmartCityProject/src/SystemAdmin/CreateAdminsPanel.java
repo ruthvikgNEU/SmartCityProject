@@ -178,7 +178,7 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Create Admins");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         UserData.setBackground(new java.awt.Color(255, 204, 204));
         UserData.setForeground(new java.awt.Color(255, 255, 255));
@@ -196,58 +196,74 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(UserData);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 93, 940, 180));
+
+        FName.setBackground(new java.awt.Color(255, 204, 204));
         add(FName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 315, 207, 36));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("FirstName :");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 324, -1, -1));
+
+        LName.setBackground(new java.awt.Color(255, 204, 204));
         add(LName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 378, 207, 36));
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LastName :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 387, -1, -1));
+
+        UName.setBackground(new java.awt.Color(255, 204, 204));
         add(UName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 207, 36));
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Username :");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 449, -1, -1));
+
+        emailfld.setBackground(new java.awt.Color(255, 204, 204));
         add(emailfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 506, 207, 36));
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Email :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 515, -1, -1));
 
+        rolefld.setBackground(new java.awt.Color(255, 204, 204));
         rolefld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "mcreator", "tcreator", "ucreator", "ccreator", "compcreator", "jobscreator", "gadmin", "censoradmin", "cityadmin", "courseregadmin" }));
         add(rolefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 313, 207, 39));
 
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Role :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 324, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Password :");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(611, 387, -1, -1));
+
+        password.setBackground(new java.awt.Color(255, 204, 204));
         add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 378, 207, 36));
+
+        cnfpassword.setBackground(new java.awt.Color(255, 204, 204));
         add(cnfpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 440, 207, 36));
 
-        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Confirm Password :");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 449, -1, -1));
 
+        CreateButton.setBackground(new java.awt.Color(255, 0, 51));
+        CreateButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        CreateButton.setForeground(new java.awt.Color(255, 255, 255));
         CreateButton.setText("Create");
         CreateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreateButtonActionPerformed(evt);
             }
         });
-        add(CreateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 503, 128, 41));
+        add(CreateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 510, 128, 41));
 
         GreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
         add(GreenTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(932, 451, -1, -1));
@@ -261,6 +277,8 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         UsernameRedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
         add(UsernameRedTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 440, -1, -1));
 
+        jLabel9.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/createadmin.jpeg"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 1200, 630));
     }// </editor-fold>//GEN-END:initComponents
