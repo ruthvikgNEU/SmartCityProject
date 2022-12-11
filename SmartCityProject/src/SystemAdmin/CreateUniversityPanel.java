@@ -75,9 +75,11 @@ private void populateUniversities(){
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add University");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 35, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 230, -1));
 
+        universitydropdown.setBackground(new java.awt.Color(204, 255, 255));
         universitydropdown.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -91,21 +93,37 @@ private void populateUniversities(){
         ));
         jScrollPane1.setViewportView(universitydropdown);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 84, 1011, 190));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 1011, 190));
+
+        namefld.setBackground(new java.awt.Color(204, 255, 255));
         add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 316, 233, -1));
+
+        deanfld.setBackground(new java.awt.Color(204, 255, 255));
         add(deanfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 357, 233, -1));
+
+        locfld.setBackground(new java.awt.Color(204, 255, 255));
         add(locfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 398, 233, -1));
+
+        cordfld.setBackground(new java.awt.Color(204, 255, 255));
         add(cordfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 439, 233, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name :");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 319, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dean :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 360, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Location :");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 401, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Co-Ordinates :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 442, -1, -1));
 
@@ -115,8 +133,10 @@ private void populateUniversities(){
                 SaveButtonActionPerformed(evt);
             }
         });
-        add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 494, 87, 34));
+        add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 494, 110, 40));
 
+        stloclbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        stloclbl.setForeground(new java.awt.Color(255, 255, 255));
         stloclbl.setText("Set Location");
         stloclbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,6 +144,8 @@ private void populateUniversities(){
             }
         });
         add(stloclbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 442, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/university.jpeg"))); // NOI18N
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 630));
     }// </editor-fold>//GEN-END:initComponents
 String name,dean,location,cord;

@@ -86,6 +86,7 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add Cinema");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
@@ -107,10 +108,14 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         thdropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(thdropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 328, 252, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Theatre :");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 331, -1, -1));
         add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 371, 252, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 374, -1, -1));
 
@@ -125,12 +130,18 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         add(prodfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 453, 252, -1));
         add(urlfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 494, 252, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Director :");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 415, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Producer/Studio :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 456, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Url :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 497, -1, -1));
 
@@ -141,6 +152,10 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
             }
         });
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 328, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cinema-come-è-cambiato.jpg"))); // NOI18N
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 630));
     }// </editor-fold>//GEN-END:initComponents
 String name,theatre,dir,studio,url;
