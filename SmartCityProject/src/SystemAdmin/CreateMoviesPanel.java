@@ -85,11 +85,12 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add Cinema");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
+        CinemaData.setBackground(new java.awt.Color(204, 255, 255));
         CinemaData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -105,6 +106,7 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 1030, 198));
 
+        thdropdown.setBackground(new java.awt.Color(204, 255, 255));
         thdropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(thdropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 328, 252, -1));
 
@@ -112,6 +114,8 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Theatre :");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 331, -1, -1));
+
+        namefld.setBackground(new java.awt.Color(204, 255, 255));
         add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 371, 252, -1));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -126,8 +130,14 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
             }
         });
         add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 535, 137, 35));
+
+        dirfld.setBackground(new java.awt.Color(204, 255, 255));
         add(dirfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 412, 252, -1));
+
+        prodfld.setBackground(new java.awt.Color(204, 255, 255));
         add(prodfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 453, 252, -1));
+
+        urlfld.setBackground(new java.awt.Color(204, 255, 255));
         add(urlfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 494, 252, -1));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
