@@ -49,9 +49,9 @@ public class CensorDirectory {
         return null;
     }
     
-    public void insertRecord(String name,String dir,String prod,String url,String theatre,String applied_Date){
+    public void insertRecord(String name,String dir,String prod,String url,String theatre,String applied_Date,String asignee){
         try{
-        PreparedStatement st= (PreparedStatement)connection.prepareStatement("insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url) values (?,?,?,?,?,?,?,?)");
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url,asignee) values (?,?,?,?,?,?,?,?,?)");
         st.setString(1,theatre);
         st.setString(2,name);
         st.setString(3, dir);
@@ -60,6 +60,7 @@ public class CensorDirectory {
         st.setString(6, "Pending");
         st.setString(7, applied_Date);
         st.setString(8, url);
+        st.setString(9,asignee);
         st.executeUpdate();
         }
         catch(SQLException e){

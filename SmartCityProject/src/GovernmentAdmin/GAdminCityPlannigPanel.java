@@ -52,16 +52,19 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
         CityCommDropDown = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         UpdateButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 51));
         setForeground(new java.awt.Color(0, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("City  Planning Applications");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 23, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 500, -1));
 
+        ApplicationsTable.setBackground(new java.awt.Color(204, 255, 255));
+        ApplicationsTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -73,20 +76,27 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
                 "Application Id", "Name", "Type", "Owner", "Asignee", "Location", "Application Status", "Co-Ordinates"
             }
         ));
+        ApplicationsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         jScrollPane1.setViewportView(ApplicationsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 990, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 1130, 180));
 
-        CityCommDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(CityCommDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 234, 57));
+        CityCommDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-" }));
+        CityCommDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(CityCommDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 234, 57));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Asignee :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 140, -1));
 
+        UpdateButton.setBackground(new java.awt.Color(204, 204, 255));
+        UpdateButton.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         UpdateButton.setText("Update");
-        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 120, 40));
+        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 140, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/city planning2.jpg"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 770));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -96,6 +106,7 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
     private javax.swing.JButton UpdateButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

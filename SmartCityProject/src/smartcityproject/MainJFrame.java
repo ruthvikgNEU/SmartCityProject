@@ -156,38 +156,39 @@ String username;
                 if(rs.getString(4).equals(username) && rs.getString(6).equals(pwd)){
                      flag = false;
                         if(rs.getString(8).equals("1")){
-                            if(rs.getString(9).equals("User")){
+                            System.out.println(rs.getString("role"));
+                            if(rs.getString("role").equals("User")){
                                 flag = true;
                             UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir,userDir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
                             }
-                            if(rs.getString(9).equals("SystemAdmin")){
+                            if(rs.getString("role").equals("SystemAdmin")){
                                 flag = true;
                             SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir,cityDir,coordDir,cenDir,edudir,compDir);
                           frame.setVisible(true);
                            dispose();
                             }
-                            if(rs.getString(9).equals("gadmin")){
+                            if(rs.getString("role").equals("gadmin")){
                                 flag = true;
                            GAdminLandingPage frame = new GAdminLandingPage(cenDir,username,cityDir);
                            frame.setVisible(true);
                            dispose();
                             }
-                             if(rs.getString(9).equals("censoradmin")){
+                             if(rs.getString("role").equals("censoradmin")){
                                 flag = true;
                            CensorBoardAdminFrame frame = new CensorBoardAdminFrame(connection,cenDir,username);
                            frame.setVisible(true);
                            dispose();
                             }
-                               if(rs.getString(9).equals("mcreator")){
+                               if(rs.getString("role").equals("mcreator")){
                                 flag = true;
                           MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection,username,cenDir);
                            frame.setVisible(true);
                            dispose();
                             }
-                                if(rs.getString(9).equals("citycomm")){
+                                if(rs.getString("role").equals("citycomm")){
                                 flag = true;
                           CityCommisionerFrame frame = new CityCommisionerFrame(connection,username,cityDir);
                            frame.setVisible(true);

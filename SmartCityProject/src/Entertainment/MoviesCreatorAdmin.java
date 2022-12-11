@@ -89,8 +89,8 @@ public class MoviesCreatorAdmin extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 28, -1, -1));
 
         UsernameLbl.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
-        UsernameLbl.setForeground(new java.awt.Color(255, 204, 204));
-        getContentPane().add(UsernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 28, 610, 43));
+        UsernameLbl.setForeground(new java.awt.Color(255, 51, 51));
+        getContentPane().add(UsernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 610, 43));
 
         ApplicationsTableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,6 +103,7 @@ public class MoviesCreatorAdmin extends javax.swing.JFrame {
                 "Application Id", "Theatre", "Name", "Director", "Producer/Studio", "Applied Date", "Application Status", "Movie Status", "Url"
             }
         ));
+        ApplicationsTableData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(ApplicationsTableData);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 92, 1268, 188));
@@ -155,11 +156,14 @@ dir = DirectorFld.getText();
 prod = StudioFld.getText();
 url = UrlFld.getText();
 theatre = String.valueOf(TheatresDropDown.getSelectedItem());
+String asignee = ""+user;
    Date dNow = new Date( );
       SimpleDateFormat ft = 
       new SimpleDateFormat (" yyyy-MM-dd");
       String applied_date  = ft.format(dNow);
-     cenDir.insertRecord(name, dir, prod, url, theatre, applied_date);
+      System.out.println(name);
+     cenDir.insertRecord(name, dir, prod, url, theatre, applied_date,asignee);
+     
      populateApplications();
     }//GEN-LAST:event_SaveFldActionPerformed
 
