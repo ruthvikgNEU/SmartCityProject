@@ -173,17 +173,17 @@ UserCoordinates newOne;
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 303, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 301, 60, 20));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Owner :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 358, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 356, 60, 20));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Location :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 408, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 406, 70, 20));
 
         cordfld.setBackground(new java.awt.Color(255, 204, 153));
         add(cordfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 461, 224, -1));
@@ -191,7 +191,7 @@ UserCoordinates newOne;
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Co-Ordinates :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 464, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 452, 100, 30));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
