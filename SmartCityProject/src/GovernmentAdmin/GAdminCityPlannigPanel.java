@@ -63,6 +63,8 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
         jLabel1.setText("City  Planning Applications");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 500, -1));
 
+        ApplicationsTable.setBackground(new java.awt.Color(204, 255, 255));
+        ApplicationsTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -74,23 +76,24 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
                 "Application Id", "Name", "Type", "Owner", "Asignee", "Location", "Application Status", "Co-Ordinates"
             }
         ));
+        ApplicationsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         jScrollPane1.setViewportView(ApplicationsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 990, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 1130, 180));
 
         CityCommDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-" }));
         CityCommDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        add(CityCommDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 234, 57));
+        add(CityCommDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 234, 57));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Asignee :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 140, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 140, -1));
 
         UpdateButton.setBackground(new java.awt.Color(204, 204, 255));
         UpdateButton.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         UpdateButton.setText("Update");
-        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 140, 40));
+        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 140, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/city planning2.jpg"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 770));
