@@ -6,7 +6,6 @@ import Education.UniversityPanel;
 import Employment.MyApplicationsPanel;
 import Employment.MyEmpExchangePanel;
 import Entertainment.MoviesJPanel;
-import Healtcare.HealthcareMainJPanel;
 import java.sql.Connection;
 /**
  *
@@ -33,7 +32,6 @@ public class UserLandingJPanel extends javax.swing.JPanel {
        TabbedPane.add("My Applications",new MyApplicationsPanel(compDir,connection,user));
        TabbedPane.add("Employment Exchange",new MyEmpExchangePanel());
        TabbedPane.add("Entertainment",new MoviesJPanel(connection,user));
-       TabbedPane.add("Healthcare",new HealthcareMainJPanel());
     }
 
     
