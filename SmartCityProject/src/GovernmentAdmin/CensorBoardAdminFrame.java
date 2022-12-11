@@ -77,10 +77,10 @@ String user;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 51));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Censor Board Panel");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 520, -1));
 
         LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-70.png"))); // NOI18N
         LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,6 +108,7 @@ String user;
         PlayMovie.setBackground(new java.awt.Color(0, 153, 153));
         PlayMovie.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         PlayMovie.setText("Play Movie");
+        PlayMovie.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PlayMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PlayMovieActionPerformed(evt);
@@ -115,23 +116,28 @@ String user;
         });
         getContentPane().add(PlayMovie, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 207, 37));
 
-        AppStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Pending", "Rejected", "Approved" }));
+        AppStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", "Pending", "Rejected", "Approved" }));
+        AppStatusDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(AppStatusDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 417, 220, 37));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("Application Status :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 426, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 120, 90));
 
+        AppStatusButton.setBackground(new java.awt.Color(0, 153, 153));
+        AppStatusButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         AppStatusButton.setText("Update");
+        AppStatusButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AppStatusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AppStatusButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AppStatusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 420, -1, -1));
+        getContentPane().add(AppStatusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, 100, 30));
 
-        MovieStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "In-appropriate Content", "U/A", "Adult(18+)", "Kids" }));
+        MovieStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", "In-appropriate Content", "U/A", "Adult(18+)", "Kids" }));
+        MovieStatusDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(MovieStatusDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 220, 37));
 
         MovieStatusButton.setText("Update");
@@ -142,10 +148,10 @@ String user;
         });
         getContentPane().add(MovieStatusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("Movie Status :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 499, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 110, 20));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
