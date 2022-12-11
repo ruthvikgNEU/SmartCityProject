@@ -112,6 +112,8 @@ public class GAdminCensorPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 140, -1));
 
         AssignButton.setBackground(new java.awt.Color(255, 153, 153));
+        AssignButton.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        AssignButton.setForeground(new java.awt.Color(51, 51, 0));
         AssignButton.setText("Assign");
         AssignButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
