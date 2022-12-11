@@ -70,6 +70,23 @@ public class CityDirectory {
              System.out.println(e);
          }
      }
+       public void addCompanyBySystemAdmin(String name,String owener,String location,double lat,double lon){
+         try{
+          PreparedStatement st = (PreparedStatement)connection.prepareStatement("insert into city_applications(name,type,owner,location,lat,lon,asignee,application_status) values (?,?,?,?,?,?,?,?)");
+          st.setString(1,name);
+          st.setString(2,"Company");
+          st.setString(3, owener);
+          st.setString(4, location);
+          st.setDouble(5,lat);
+          st.setDouble(6, lon);
+          st.setString(7, "N/A");
+          st.setString(8, "Approved");
+             st.executeUpdate();
+         }
+         catch(SQLException e){
+             System.out.println(e);
+         }
+     }
      
      public ResultSet getApprovedBuildings(){
       try{   

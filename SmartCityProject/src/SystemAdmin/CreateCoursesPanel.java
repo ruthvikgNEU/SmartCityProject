@@ -223,11 +223,11 @@ java.util.Date dNow = new java.util.Date( );
       new SimpleDateFormat (" yyyy-MM-dd");
       String applied_date  = ft.format(dNow);
 edudir.AddCourseByAdmin(uni,name,prof,dow,fileurl,applied_date);
-JOptionPane.showMessageDialog(this, "CourseAdded");
+JOptionPane.showMessageDialog(this, "Course Added");
 populateApplications();
 namefld.setText("");
 proffld.setText("");
-
+filelbl.setText("");
 // TODO add your handling code here:
     }//GEN-LAST:event_SaveButtonActionPerformed
 

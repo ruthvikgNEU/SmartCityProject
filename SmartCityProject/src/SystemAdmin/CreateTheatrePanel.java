@@ -289,6 +289,8 @@ newOne.setUsername(name);
         ownerfld.setText("");
         locfld.setText("");
         cordfld.setText("");
+         UsernameGreenTick.setVisible(false);
+            UsernameRedTick.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitButtonActionPerformed
 

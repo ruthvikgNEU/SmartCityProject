@@ -165,7 +165,7 @@ String username;
                             }
                             if(rs.getString(9).equals("SystemAdmin")){
                                 flag = true;
-                            SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir,cityDir,coordDir,cenDir,edudir);
+                            SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir,cityDir,coordDir,cenDir,edudir,compDir);
                           frame.setVisible(true);
                            dispose();
                             }
