@@ -104,12 +104,12 @@ public class GAdminCensorPanel extends javax.swing.JPanel {
 
         AsigneeDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please select-" }));
         AsigneeDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        add(AsigneeDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 257, 53));
+        add(AsigneeDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 257, 53));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Asignee :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 140, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 140, -1));
 
         AssignButton.setBackground(new java.awt.Color(255, 153, 153));
         AssignButton.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
