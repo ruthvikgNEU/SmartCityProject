@@ -3,34 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package SystemAdmin;
-import com.teamdev.jxbrowser.browser.Browser;
-import com.teamdev.jxbrowser.engine.Engine;
-import com.teamdev.jxbrowser.engine.EngineOptions;
-import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
-import com.teamdev.jxbrowser.view.swing.BrowserView;
+//import com.teamdev.jxbrowser.browser.Browser;
+//import com.teamdev.jxbrowser.engine.Engine;
+//import com.teamdev.jxbrowser.engine.EngineOptions;
+//import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+//import com.teamdev.jxbrowser.view.swing.BrowserView;
 
 public class MapsPanel extends javax.swing.JPanel {
 
-    Browser browser;
+    //Browser browser;
     public MapsPanel() {
         initComponents();
     }
 
-     private void open_site() {
-        try{
-             EngineOptions options =
-     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-   Engine engine = Engine.newInstance(options);
-   browser = engine.newBrowser();
-   BrowserView view = BrowserView.newInstance(browser);
-              browser.navigation().loadUrl("https://www.google.com/maps/@42.3366959,-71.0951561,16.43z");
-       MainMapsPanel.add(view);
-        }
-        catch(Exception e){
-            System.out.println(e+"");
-        }
- 
- }
+//     private void open_site() {
+//        try{
+//             EngineOptions options =
+//     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+//   Engine engine = Engine.newInstance(options);
+//   browser = engine.newBrowser();
+//   BrowserView view = BrowserView.newInstance(browser);
+//              browser.navigation().loadUrl("https://www.google.com/maps/@42.3366959,-71.0951561,16.43z");
+//       MainMapsPanel.add(view);
+//        }
+//        catch(Exception e){
+//            System.out.println(e+"");
+//        }
+// 
+// }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -88,21 +88,21 @@ public class MapsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SetLocationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationButtonMouseClicked
-        if (browser.url()!= null) {
-            String[] split1= browser.url().split("/place/");
-            String[] split2 = split1[1].split("/@");
-            String[] placeName = split2[0].split("\\+");
-            String[] longLat = split2[1].split(",");
-            String place="";
-
-            int size = placeName.length;
-            for(int i=0;i<size;i++){
-                place+=placeName[i];
-            }
-            System.out.println(place);
-            System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
-
-        }
+//        if (browser.url()!= null) {
+//            String[] split1= browser.url().split("/place/");
+//            String[] split2 = split1[1].split("/@");
+//            String[] placeName = split2[0].split("\\+");
+//            String[] longLat = split2[1].split(",");
+//            String place="";
+//
+//            int size = placeName.length;
+//            for(int i=0;i<size;i++){
+//                place+=placeName[i];
+//            }
+//            System.out.println(place);
+//            System.out.println("long->"+longLat[0]+"lat->"+longLat[1]);
+//
+//        }
       
         // TODO add your handling code here:
     }//GEN-LAST:event_SetLocationButtonMouseClicked
