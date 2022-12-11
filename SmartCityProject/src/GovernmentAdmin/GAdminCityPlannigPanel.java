@@ -4,6 +4,7 @@ package GovernmentAdmin;
 import Directories.CityDirectory;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import smartcityproject.MainJFrame;
 
 
 public class GAdminCityPlannigPanel extends javax.swing.JPanel {
@@ -51,8 +52,13 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
         ApplicationsTable = new javax.swing.JTable();
         CityCommDropDown = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        UpdateButton = new javax.swing.JButton();
+        uasignee = new javax.swing.JButton();
+        UpdateButton1 = new javax.swing.JButton();
+        tasignee = new javax.swing.JButton();
+        casignee = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        currloaded = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 51, 51));
         setForeground(new java.awt.Color(0, 51, 51));
@@ -79,34 +85,85 @@ public class GAdminCityPlannigPanel extends javax.swing.JPanel {
         ApplicationsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         jScrollPane1.setViewportView(ApplicationsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 1130, 180));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1030, 180));
 
         CityCommDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-" }));
         CityCommDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        add(CityCommDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 234, 57));
+        add(CityCommDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 234, 57));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Asignee :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 140, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 100, -1));
 
-        UpdateButton.setBackground(new java.awt.Color(204, 204, 255));
-        UpdateButton.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
-        UpdateButton.setText("Update");
-        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 140, 40));
+        uasignee.setBackground(new java.awt.Color(204, 204, 255));
+        uasignee.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        uasignee.setText("Load University Asignee's");
+        add(uasignee, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, -1, 40));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/city planning2.jpg"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 770));
+        UpdateButton1.setBackground(new java.awt.Color(204, 204, 255));
+        UpdateButton1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        UpdateButton1.setText("Update");
+        UpdateButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UpdateButton1MouseClicked(evt);
+            }
+        });
+        add(UpdateButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, 140, 40));
+
+        tasignee.setBackground(new java.awt.Color(204, 204, 255));
+        tasignee.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        tasignee.setText("Load Theatre Asignee's");
+        tasignee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tasigneeMouseClicked(evt);
+            }
+        });
+        add(tasignee, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 270, 40));
+
+        casignee.setBackground(new java.awt.Color(204, 204, 255));
+        casignee.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        casignee.setText("Load Company Asignee's");
+        add(casignee, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 300, 40));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Loaded :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, -1, -1));
+
+        currloaded.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        currloaded.setText("jLabel4");
+        add(currloaded, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 70, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/city planning2.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -330, -1, 1460));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tasigneeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tasigneeMouseClicked
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tasigneeMouseClicked
+
+    private void UpdateButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateButton1MouseClicked
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ApplicationsTable;
     private javax.swing.JComboBox<String> CityCommDropDown;
-    private javax.swing.JButton UpdateButton;
+    private javax.swing.JButton UpdateButton1;
+    private javax.swing.JButton casignee;
+    private javax.swing.JLabel currloaded;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton tasignee;
+    private javax.swing.JButton uasignee;
     // End of variables declaration//GEN-END:variables
 }

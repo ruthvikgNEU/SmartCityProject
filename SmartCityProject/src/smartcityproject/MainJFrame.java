@@ -204,7 +204,7 @@ String username;
                             }
                                     if(rs.getString(9).equals("compadmin")){
                                 flag = true;
-                          CompanyCreatorFrame frame = new CompanyCreatorFrame(compDir,cityDir,coordDir);
+                          CompanyCreatorFrame frame = new CompanyCreatorFrame(compDir,cityDir,coordDir,username);
                            frame.setVisible(true);
                            dispose();
                             }

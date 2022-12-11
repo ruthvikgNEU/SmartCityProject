@@ -101,6 +101,8 @@ insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","garlapati.r@northeastern.edu","password",123456,1,"mcreator");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","citycomm","garlapati.r@northeastern.edu","password",123456,1,"citycomm");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ccadmin","garlapati.r@northeastern.edu","password",123456,1,"ccadmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","compadmin","garlapati.r@northeastern.edu","password",123456,1,"compadmin");
+
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
 insert into theatres(name,location,owner,lat,lon) values('Prasad IMAX','Boston','Marvel',42.3410701,-71.0882683);

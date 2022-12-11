@@ -7,6 +7,15 @@ package Employment;
 import Directories.CityDirectory;
 import Directories.CompanyDirectory;
 import Directories.UserCoordinatesDirectory;
+import SystemAdmin.MapsFrame;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import model.UserCoordinates;
 import smartcityproject.MainJFrame;
 
 /**
@@ -21,17 +30,97 @@ public class CompanyCreatorFrame extends javax.swing.JFrame {
     CompanyDirectory compdir;
     CityDirectory citydir;
       UserCoordinatesDirectory corddir;
-    public CompanyCreatorFrame(CompanyDirectory compdir,CityDirectory citydir,  UserCoordinatesDirectory corddir) {
+      
+UserCoordinates newOne;
+String user;
+    public CompanyCreatorFrame(CompanyDirectory compdir,CityDirectory citydir,  UserCoordinatesDirectory corddir,String user) {
         initComponents();
         this.compdir = compdir;
         this.citydir = citydir;
         this.corddir = corddir;
+         newOne = corddir.addNew();
+         cordfld.setEditable(false);
+         GreenTick.setVisible(false);
+            RedTick.setVisible(false);
+            this.user = user;
+            populateCompanies();
     }
 
     private CompanyCreatorFrame() {
        // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+ private boolean CompanyExists(){
+        try{
+            ResultSet rs = citydir.getApprovedBuildings();
+            while(rs.next()) {
+          if(rs.getString("name").equals(namefld.getText()))
+              return false;
+        }
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return true;
+    }
+  private void populateCompanies(){
+         DefaultTableModel model = (DefaultTableModel) CompData.getModel();
+          try{
+              ResultSet rs = citydir.getAllApplicationsByAsignee(user);
+              model.setRowCount(0);
+               Object row[] = new Object[7];
+      while(rs.next()) {
+          if(rs.getString("type").equals("Company")){
+            row[0] = rs.getString("application_id");
+            row[1] = rs.getString("name");
+            row[2] = rs.getString("owner");
+            row[3] = rs.getString("location");
+            row[4] = rs.getString("lat");
+              row[5] = rs.getString("lon");
+              row[6] = rs.getString("application_status");
+            model.addRow(row);
+          }
+            }
+          }
+          catch(Exception e){
+              System.out.println(e);
+          }
+    }
+  private void NameListener(){
+    DocumentListener documentListener = new DocumentListener() {
+      @Override
+      public void changedUpdate(DocumentEvent documentEvent) {
+         if(CompanyExists()){
+            GreenTick.setVisible(true);
+            RedTick.setVisible(false);
+          }else{
+              RedTick.setVisible(true);
+              GreenTick.setVisible(false);
+          }
+      }
+      @Override
+      public void insertUpdate(DocumentEvent documentEvent) {
+          
+          if(CompanyExists()){
+            GreenTick.setVisible(true);
+            RedTick.setVisible(false);
+          }else{
+              RedTick.setVisible(true);
+              GreenTick.setVisible(false);
+          }
+      }
+      @Override
+      public void removeUpdate(DocumentEvent documentEvent) {
+           if(CompanyExists()){
+            GreenTick.setVisible(true);
+            RedTick.setVisible(false);
+          }else{
+              RedTick.setVisible(true);
+              GreenTick.setVisible(false);
+          }
+      }
+    };
+    namefld.getDocument().addDocumentListener(documentListener);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,6 +134,18 @@ public class CompanyCreatorFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CompData = new javax.swing.JTable();
+        namefld = new javax.swing.JTextField();
+        ownerfld = new javax.swing.JTextField();
+        locfld = new javax.swing.JTextField();
+        cordfld = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        SaveButton = new javax.swing.JButton();
+        GreenTick = new javax.swing.JLabel();
+        RedTick = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +171,32 @@ public class CompanyCreatorFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(CompData);
 
+        jLabel3.setText("Name :");
+
+        jLabel4.setText("Owner :");
+
+        jLabel5.setText("Location :");
+
+        jLabel6.setText("Co-Ordinates :");
+
+        jLabel7.setText("Set Location");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
+        SaveButton.setText("File Petition");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
+            }
+        });
+
+        GreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
+
+        RedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,8 +209,40 @@ public class CompanyCreatorFrame extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(ownerfld, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(locfld, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SaveButton)
+                                    .addComponent(cordfld, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(GreenTick)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(RedTick)))
+                        .addGap(333, 333, 333))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +256,30 @@ public class CompanyCreatorFrame extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(GreenTick))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ownerfld, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(locfld, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cordfld, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(34, 34, 34)
+                        .addComponent(SaveButton))
+                    .addComponent(RedTick))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,6 +292,39 @@ frame.setVisible(true);
 dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
+  String name,dean,location,cord;
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+name = namefld.getText();
+dean = ownerfld.getText();
+location = locfld.getText();
+newOne.setUsername(name);
+        compdir.addCompany(name, dean, location, newOne.getLat(), newOne.getLon(),user);
+        JOptionPane.showMessageDialog(this, "Added Successfully");
+        populateCompanies();
+        
+        namefld.setText("");
+        ownerfld.setText("");
+        locfld.setText("");
+        cordfld.setText("");
+         GreenTick.setVisible(false);
+            RedTick.setVisible(false);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+MapsFrame frame  = new MapsFrame(newOne);
+ frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setVisible(true);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent){
+               cordfld.setText(newOne.getLat()+","+newOne.getLon());
+            }
+        });
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -148,8 +363,20 @@ dispose();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable CompData;
+    private javax.swing.JLabel GreenTick;
+    private javax.swing.JLabel RedTick;
+    private javax.swing.JButton SaveButton;
+    private javax.swing.JTextField cordfld;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField locfld;
+    private javax.swing.JTextField namefld;
+    private javax.swing.JTextField ownerfld;
     // End of variables declaration//GEN-END:variables
 }
