@@ -202,8 +202,10 @@ public class MoviesJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_TicketsDropDownActionPerformed
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+        // gets the coordinates for the location
         double lat = 42.3410701;
         double lon = -71.0882683;
+        //gets the value from the ticketsdropdown and store the values in noft
         int noft = Integer.parseInt(String.valueOf(TicketsDropDown.getSelectedItem()));
         String stime = (String)ShowsDropDown.getSelectedItem();
         String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
