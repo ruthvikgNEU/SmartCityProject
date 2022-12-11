@@ -67,10 +67,10 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 51));
         jLabel1.setText("Hi!");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 120, 35));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 15, 180, 70));
 
         LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-70.png"))); // NOI18N
         LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,7 +78,7 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
                 LogoutButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, -1, -1));
+        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
 
         USernameLbl.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         getContentPane().add(USernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 19, 371, 35));
@@ -100,7 +100,7 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 979, 184));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "In-review", "Approved", "Rejected" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", "In-review", "Approved", "Rejected" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 214, 40));
 

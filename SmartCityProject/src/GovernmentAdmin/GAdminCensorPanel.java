@@ -82,9 +82,11 @@ public class GAdminCensorPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(0, 51, 102));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("Censor Applications");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 470, -1));
 
+        ApplicationsTable.setBackground(new java.awt.Color(0, 204, 204));
         ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -98,23 +100,25 @@ public class GAdminCensorPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(ApplicationsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1011, 198));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1070, 198));
 
-        AsigneeDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(AsigneeDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(556, 349, 257, 53));
+        AsigneeDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please select-" }));
+        AsigneeDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add(AsigneeDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 257, 53));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setText("Asignee :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 354, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 140, -1));
 
+        AssignButton.setBackground(new java.awt.Color(255, 153, 153));
         AssignButton.setText("Assign");
         AssignButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AssignButtonActionPerformed(evt);
             }
         });
-        add(AssignButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 456, 127, 50));
+        add(AssignButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 140, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cinema-come-è-cambiato.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
