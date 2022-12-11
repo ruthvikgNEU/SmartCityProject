@@ -27,6 +27,7 @@ public class UserDirectory {
         }
      return null;
     }
+    //Function to gets the data from the user
     public ResultSet getUserData(){
         try{
             PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from users");

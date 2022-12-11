@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 public class CompanyDirectory {
+    //establishing connection
     Connection connection;
     public CompanyDirectory(Connection connection){
     this.connection = connection;
