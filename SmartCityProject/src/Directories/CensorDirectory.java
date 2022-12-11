@@ -117,5 +117,21 @@ public class CensorDirectory {
             System.out.println(e);
         }
     }
-     
+      public void insertRecordbyAdmin(String name,String dir,String prod,String url,String theatre,String applied_Date){
+        try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url) values (?,?,?,?,?,?,?,?)");
+        st.setString(1,theatre);
+        st.setString(2,name);
+        st.setString(3, dir);
+        st.setString(4,prod);
+        st.setString(5, "Approved");
+        st.setString(6, "U/A");
+        st.setString(7, applied_Date);
+        st.setString(8, url);
+        st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+    }
 }

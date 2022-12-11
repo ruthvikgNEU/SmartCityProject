@@ -4,7 +4,11 @@
  */
 package SystemAdmin;
 
+import Directories.CensorDirectory;
+import Directories.CityDirectory;
+import Directories.EducationDirectory;
 import Directories.TheatreDirectory;
+import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
 import java.sql.*;
 import smartcityproject.MainJFrame;
@@ -17,17 +21,24 @@ public class SysAdminJFrame extends javax.swing.JFrame {
     String user;
     UserDirectory userDir;
     TheatreDirectory thDir;
-    public SysAdminJFrame(Connection connection,String user,UserDirectory userDir,TheatreDirectory thDir) {
+    CityDirectory cityDir;
+    UserCoordinatesDirectory usercordDir;
+    CensorDirectory cenDir;
+    EducationDirectory edudir;
+    public SysAdminJFrame(Connection connection,String user,UserDirectory userDir,TheatreDirectory thDir,CityDirectory cityDir,UserCoordinatesDirectory usercordDir,CensorDirectory cenDir,EducationDirectory edudir) {
         initComponents();
         this.conneciton = connection;
         this.user = user;
         this.userDir = userDir;
         this.thDir = thDir;
+        this.cityDir = cityDir;
+        this.usercordDir = usercordDir;
+        this.edudir = edudir;
         UsernameLbl.setText(user);
-        SysAdminTabbedPane.add("Add Theatres",new CreateTheatrePanel(connection,thDir));
-         SysAdminTabbedPane.add("Add Moveis",new CreateMoviesPanel(connection));
-          SysAdminTabbedPane.add("Add Universities",new CreateUniversityPanel(connection));
-           SysAdminTabbedPane.add("Add Courses",new CreateCoursesPanel(connection));
+        SysAdminTabbedPane.add("Add Theatres",new CreateTheatrePanel(connection,thDir,cityDir,usercordDir));
+         SysAdminTabbedPane.add("Add Moveis",new CreateMoviesPanel(connection,cenDir,cityDir));
+          SysAdminTabbedPane.add("Add Universities",new CreateUniversityPanel(connection,cityDir,usercordDir));
+           SysAdminTabbedPane.add("Add Courses",new CreateCoursesPanel(connection,edudir,cityDir));
             SysAdminTabbedPane.add("Add Companies",new CreateCompanyPanel(connection));
              SysAdminTabbedPane.add("Add Jobs",new CreateJobsPanel(connection));
               SysAdminTabbedPane.add("Add Admins",new CreateAdminsPanel(connection,userDir));

@@ -1,4 +1,4 @@
-
+SET SQL_SAFE_UPDATES = 0;
 drop database if exists test;
 create database test;
 use test;
@@ -21,6 +21,7 @@ passwordFld varchar(20),
 verify_code integer,
 can_login boolean default false,
 role varchar(20),
+balance double,
 primary key(user_id)
 );
 create table theatres(
@@ -92,13 +93,14 @@ asignee varchar(30),
 primary key(application_id)
 );
 
-insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role,balance) values("Ruthvik","Garlapati","ruthvikg31","garlapati.r@northeastern.edu","password",123456,1,"User","120.25");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","SysAdmin","garlapati.r@northeastern.edu","password",123456,1,"SystemAdmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","gadmin","garlapati.r@northeastern.edu","password",123456,1,"gadmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin1","garlapati.r@northeastern.edu","password",123456,1,"censoradmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","censoradmin2","garlapati.r@northeastern.edu","password",123456,1,"censoradmin");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","garlapati.r@northeastern.edu","password",123456,1,"mcreator");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","citycomm","garlapati.r@northeastern.edu","password",123456,1,"citycomm");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ccadmin","garlapati.r@northeastern.edu","password",123456,1,"ccadmin");
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
 insert into theatres(name,location,owner,lat,lon) values('Prasad IMAX','Boston','Marvel',42.3410701,-71.0882683);
@@ -145,10 +147,45 @@ asignee varchar(30),
 application_status varchar(30),
 primary key(application_id)
 );
+create table credit_applications(
+request_id integer auto_increment,
+username varchar(20),
+cardnumber varchar(20),
+amount double,
+alimit double,
+status varchar(20),
+primary key(request_id));
 
 
+insert into credit_applications(username,cardnumber,amount,alimit,status) values ("Username","1234567891234567",120.25,500.00,"Pending");
 
 
-
-
+create table credit_cards(
+card_id integer auto_increment,
+cardnumber varchar(20),
+pin integer,
+alimit double,
+primary key(card_id));
+insert into credit_cards(cardnumber,pin,alimit) values ("1234567891234567",1245,500.00);
+insert into credit_cards(cardnumber,pin,alimit) values ("1234567891234568",5478,500.00);
+insert into credit_cards(cardnumber,pin,alimit) values ("1234567891234557",8577,500.00);
+insert into credit_cards(cardnumber,pin,alimit) values ("1234567891224567",2788,500.00);
+insert into credit_cards(cardnumber,pin,alimit) values ("1234564591234567",4785,500.00);
+insert into credit_cards(cardnumber,pin,alimit) values ("1234567091234567",1414,500.00);
+insert into credit_cards(cardnumber,pin,alimit) values ("1234567893334567",8574,500.00);
 insert into city_applications(name,type,owner,location,lat,lon,asignee,application_status) values ("IMAX 3D","Theatre","Ruthvik","Boston",42.3410701,-71.0882683,"N/A","Active");
+create table my_purchases(
+transaction_id integer auto_increment,
+username varchar(20),
+t_type varchar(20),
+amount double,
+balance double,
+enterprise varchar(30),
+lat double,
+lon double,
+primary key(transaction_id));
+select * from my_purchases;
+select * from users;
+select * from credit_cards;
+select * from credit_applications;
+select * from users;

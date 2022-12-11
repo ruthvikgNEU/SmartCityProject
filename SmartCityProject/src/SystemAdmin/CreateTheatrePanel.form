@@ -33,10 +33,10 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="NameFld" pref="225" max="32767" attributes="0"/>
-                          <Component id="NameFld2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="NameFld3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="NameFld1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="namefld" pref="225" max="32767" attributes="0"/>
+                          <Component id="locfld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ownerfld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cordfld" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -79,25 +79,25 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="UsernameRedTick" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="NameFld" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="namefld" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="UsernameGreenTick" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NameFld2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="locfld" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="LocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NameFld1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cordfld" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SetLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NameFld3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ownerfld" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -168,7 +168,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="NameFld">
+    <Component class="javax.swing.JTextField" name="namefld">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -183,14 +183,14 @@
         <Property name="text" type="java.lang.String" value="Name :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NameFld1">
+    <Component class="javax.swing.JTextField" name="cordfld">
     </Component>
     <Component class="javax.swing.JLabel" name="LocationLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Location :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NameFld2">
+    <Component class="javax.swing.JTextField" name="locfld">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -202,6 +202,7 @@
         <Property name="text" type="java.lang.String" value="Set Location"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SetLocationLabelMouseClicked"/>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="SetLocationLabelMouseReleased"/>
       </Events>
     </Component>
@@ -213,7 +214,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubmitButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="NameFld3">
+    <Component class="javax.swing.JTextField" name="ownerfld">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>

@@ -4,13 +4,18 @@
  */
 package SystemAdmin;
 
+import Directories.CityDirectory;
 import Directories.TheatreDirectory;
+import Directories.UserCoordinatesDirectory;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import model.UserCoordinates;
 
 /**
  *
@@ -18,40 +23,46 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CreateTheatrePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CreateTheatrePanel
-     */
+  
     TheatreDirectory thDir;
     Connection connection;
-    public CreateTheatrePanel(Connection connection, TheatreDirectory thDir) {
+    CityDirectory cityDir;
+UserCoordinatesDirectory usercordDir;
+UserCoordinates newOne;
+    public CreateTheatrePanel(Connection connection, TheatreDirectory thDir,CityDirectory cityDir,UserCoordinatesDirectory usercordDir) {
         initComponents();
         this.connection = connection;
         this.thDir = thDir;
+         this.cityDir = cityDir;
+        this.usercordDir = usercordDir;
+         newOne = usercordDir.addNew();
          UsernameGreenTick.setVisible(false);
             UsernameRedTick.setVisible(false);
         populateTheatres();
         UsernameListener();
+        cordfld.setEditable(false);
     }
     private void populateTheatres(){
-        try{
-           
-            ResultSet rs = thDir.getTheatreData();
-            DefaultTableModel model = (DefaultTableModel) TheatreData.getModel();
-            model.setRowCount(0);
-            while(rs.next()) {
-            Object row[] = new Object[6];
-            row[0] = rs.getString("theatre_id");
-            row[1] =  rs.getString("name");
+         DefaultTableModel model = (DefaultTableModel) TheatreData.getModel();
+          try{
+              ResultSet rs = cityDir.getApprovedBuildings();
+              model.setRowCount(0);
+               Object row[] = new Object[6];
+      while(rs.next()) {
+          if(rs.getString("type").equals("Theatre")){
+            row[0] = rs.getString("application_id");
+            row[1] = rs.getString("name");
             row[2] = rs.getString("owner");
             row[3] = rs.getString("location");
-             row[4] = rs.getString("lat");
-             row[5] = rs.getString("lon");
+            row[4] = rs.getString("lat");
+              row[5] = rs.getString("lon");
             model.addRow(row);
-        }
-        }
-        catch(SQLException e){
-            System.out.println(e);
-        }
+          }
+            }
+          }
+          catch(Exception e){
+              System.out.println(e);
+          }
     }
     
     private void UsernameListener(){
@@ -88,16 +99,14 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
           }
       }
     };
-    NameFld.getDocument().addDocumentListener(documentListener);
+    namefld.getDocument().addDocumentListener(documentListener);
 }
     
     private boolean TheatreNameExists(){
         try{
-           
-            ResultSet rs = thDir.getTheatreData();
-          
+            ResultSet rs = cityDir.getApprovedBuildings();
             while(rs.next()) {
-          if(rs.getString("name").equals(NameFld.getText()))
+          if(rs.getString("name").equals(namefld.getText()))
               return false;
         }
         }
@@ -118,16 +127,16 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TheatreData = new javax.swing.JTable();
-        NameFld = new javax.swing.JTextField();
+        namefld = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        NameFld1 = new javax.swing.JTextField();
+        cordfld = new javax.swing.JTextField();
         LocationLabel = new javax.swing.JLabel();
-        NameFld2 = new javax.swing.JTextField();
+        locfld = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         SetLocationLabel = new javax.swing.JLabel();
         SubmitButton = new javax.swing.JButton();
-        NameFld3 = new javax.swing.JTextField();
+        ownerfld = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         UsernameRedTick = new javax.swing.JLabel();
         UsernameGreenTick = new javax.swing.JLabel();
@@ -158,6 +167,9 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
 
         SetLocationLabel.setText("Set Location");
         SetLocationLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SetLocationLabelMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 SetLocationLabelMouseReleased(evt);
             }
@@ -191,10 +203,10 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NameFld, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(NameFld2)
-                            .addComponent(NameFld3)
-                            .addComponent(NameFld1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(namefld, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(locfld)
+                            .addComponent(ownerfld)
+                            .addComponent(cordfld, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -226,21 +238,21 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(UsernameRedTick)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(NameFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
                     .addComponent(UsernameGreenTick))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameFld2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(locfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LocationLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameFld1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cordfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SetLocationLabel)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameFld3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ownerfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,32 +261,59 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SetLocationLabelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationLabelMouseReleased
-//MapsFrame frame  = new MapsFrame();
-// frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//        frame.setVisible(true);
+MapsFrame frame  = new MapsFrame(newOne);
+ frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setVisible(true);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent){
+               cordfld.setText(newOne.getLat()+","+newOne.getLon());
+            }
+        });
         // TODO add your handling code here:
     }//GEN-LAST:event_SetLocationLabelMouseReleased
 
+    String name,dean,location,cord;
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+
+
+name = namefld.getText();
+dean = ownerfld.getText();
+location = locfld.getText();
+newOne.setUsername(name);
+        cityDir.addTheatreBySystemAdmin(name, dean, location, newOne.getLat(), newOne.getLon());
+        JOptionPane.showMessageDialog(this, "Added Successfully");
+        populateTheatres();
+        
+        namefld.setText("");
+        ownerfld.setText("");
+        locfld.setText("");
+        cordfld.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitButtonActionPerformed
+
+    private void SetLocationLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationLabelMouseClicked
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SetLocationLabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LocationLabel;
-    private javax.swing.JTextField NameFld;
-    private javax.swing.JTextField NameFld1;
-    private javax.swing.JTextField NameFld2;
-    private javax.swing.JTextField NameFld3;
     private javax.swing.JLabel SetLocationLabel;
     private javax.swing.JButton SubmitButton;
     private javax.swing.JTable TheatreData;
     private javax.swing.JLabel UsernameGreenTick;
     private javax.swing.JLabel UsernameRedTick;
+    private javax.swing.JTextField cordfld;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField locfld;
+    private javax.swing.JTextField namefld;
+    private javax.swing.JTextField ownerfld;
     // End of variables declaration//GEN-END:variables
 }

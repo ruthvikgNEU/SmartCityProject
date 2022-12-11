@@ -6,6 +6,7 @@ package smartcityproject;
 import Directories.CensorDirectory;
 import Directories.CityDirectory;
 import Directories.CompanyDirectory;
+import Directories.EducationDirectory;
 import Directories.TheatreDirectory;
 import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
@@ -14,6 +15,7 @@ import GovernmentAdmin.CensorBoardAdminFrame;
 import GovernmentAdmin.CityCommisionerFrame;
 import GovernmentAdmin.GAdminLandingPage;
 import SystemAdmin.SysAdminJFrame;
+import UI.CreditCardAdmin;
 import UI.SignUPJPanel;
 import UI.UserLandingJPanel;
 import java.awt.CardLayout;
@@ -32,6 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
       UserCoordinatesDirectory coordDir;
       CityDirectory cityDir;
       TheatreDirectory thDir;
+      EducationDirectory edudir;
     public MainJFrame() {
          connectDatabase();
         compDir = new CompanyDirectory(connection);
@@ -40,6 +43,7 @@ public class MainJFrame extends javax.swing.JFrame {
         coordDir = new UserCoordinatesDirectory();
         cityDir = new CityDirectory(connection);
         this.thDir = new TheatreDirectory(connection);
+        this.edudir = new EducationDirectory(connection);
         initComponents();
        
     }
@@ -154,14 +158,14 @@ String username;
                         if(rs.getString(8).equals("1")){
                             if(rs.getString(9).equals("User")){
                                 flag = true;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir);
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir,userDir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
                             }
                             if(rs.getString(9).equals("SystemAdmin")){
                                 flag = true;
-                            SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir);
+                            SysAdminJFrame frame = new SysAdminJFrame(connection,username,userDir,thDir,cityDir,coordDir,cenDir,edudir);
                           frame.setVisible(true);
                            dispose();
                             }
@@ -186,6 +190,12 @@ String username;
                                 if(rs.getString(9).equals("citycomm")){
                                 flag = true;
                           CityCommisionerFrame frame = new CityCommisionerFrame(connection,username,cityDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                  if(rs.getString(9).equals("ccadmin")){
+                                flag = true;
+                          CreditCardAdmin frame = new CreditCardAdmin(userDir);
                            frame.setVisible(true);
                            dispose();
                             }
