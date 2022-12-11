@@ -89,8 +89,8 @@ public class MoviesCreatorAdmin extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 28, -1, -1));
 
         UsernameLbl.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
-        UsernameLbl.setForeground(new java.awt.Color(255, 204, 204));
-        getContentPane().add(UsernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 28, 610, 43));
+        UsernameLbl.setForeground(new java.awt.Color(255, 51, 51));
+        getContentPane().add(UsernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 610, 43));
 
         ApplicationsTableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

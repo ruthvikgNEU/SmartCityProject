@@ -72,18 +72,17 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
         jLabel1.setText("Hi!");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 15, 180, 70));
 
-        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-70.png"))); // NOI18N
+        LogoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logout.png"))); // NOI18N
         LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LogoutButtonMouseClicked(evt);
             }
         });
-        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, -1));
+        getContentPane().add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, -1, -1));
 
         USernameLbl.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         getContentPane().add(USernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 19, 371, 35));
 
-        ApplicationsTable.setBackground(new java.awt.Color(255, 204, 204));
         ApplicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
