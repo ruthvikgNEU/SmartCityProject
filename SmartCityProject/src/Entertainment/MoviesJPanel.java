@@ -162,6 +162,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
     private void TheatreDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TheatreDropDownActionPerformed
         //removing items from movies drop down box
         MoviesDropDown.removeAllItems();
+        //get the items in the theatredropdown box and set the value to theatre
         String theatre = String.valueOf(TheatreDropDown.getSelectedItem());
         try {
             PreparedStatement st = (PreparedStatement)c.prepareStatement("select movie_id,m.name from movies m, theatres t where m.theatre_id = t.theatre_id and t.name = ?");
@@ -181,6 +182,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
         
         //remove items from ShowsDropDown 
         ShowsDropDown.removeAllItems();
+        //get the items in the moviesdropdown box and set the value to theatre
         String movie = String.valueOf(MoviesDropDown.getSelectedItem());
         try {
             PreparedStatement st = (PreparedStatement)c.prepareStatement("select show_id,show_time from shows s, movies  m where m.movie_id = s.movie_id and m.name = ?");
