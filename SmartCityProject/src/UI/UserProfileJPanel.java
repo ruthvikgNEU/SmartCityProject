@@ -53,7 +53,7 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         SetLocation = new javax.swing.JButton();
         UpdateButton = new javax.swing.JButton();
-        MapsPanel = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -146,8 +146,8 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         UpdateButton.setText("Update");
         add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 464, 167, 49));
 
-        MapsPanel.setLayout(new java.awt.CardLayout());
-        add(MapsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 630));
+        jLabel11.setText("jLabel11");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1080, 590));
     }// </editor-fold>//GEN-END:initComponents
 
     private void EmailFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFldActionPerformed
@@ -199,7 +199,6 @@ MapsFrame frame  = new MapsFrame(newOne);
     private javax.swing.JTextField Fname;
     private javax.swing.JComboBox<String> Gender;
     private javax.swing.JTextField Lname;
-    private javax.swing.JPanel MapsPanel;
     private javax.swing.JTextField Nationality1;
     private javax.swing.JTextField Phone;
     private javax.swing.JButton SetLocation;
@@ -207,6 +206,7 @@ MapsFrame frame  = new MapsFrame(newOne);
     private javax.swing.JTextField coordinates;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
