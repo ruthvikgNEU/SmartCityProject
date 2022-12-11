@@ -205,8 +205,22 @@ asignee varchar(30),
 dayofweek varchar(30),
 primary key(application_id));
 
+create table company_jobs(
+job_id integer auto_increment,
+company varchar(30),
+role varchar(30),
+roledesc varchar(200),
+app_status varchar(20),
+asignee varchar(30),
+applied_date date,
+applied_by varchar(30),
+primary key(job_id));
 
 insert into course_applications(coursename,university,professor,coursedesc,app_status,applied_date,asignee,dayofweek) values ("MIS","Harvard","Kal Bugrara","///","Approved","2022-12-08","N/A","Monday");
 
 
 select * from city_applications;
+
+
+
+insert into company_jobs(company,role,roledesc,app_status,asignee,applied_date,applied_by) values ("Apple","SDE","lknckjnckksdc","Approved","jcreator","2022-12-08","tcreator");

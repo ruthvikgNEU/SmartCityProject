@@ -10,6 +10,8 @@ import Directories.EducationDirectory;
 import Directories.TheatreDirectory;
 import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
+import Employment.CompanyCreatorFrame;
+import Employment.JobsCreatorFrame;
 import Entertainment.MoviesCreatorAdmin;
 import GovernmentAdmin.CensorBoardAdminFrame;
 import GovernmentAdmin.CityCommisionerFrame;
@@ -197,6 +199,18 @@ String username;
                                   if(rs.getString(9).equals("ccadmin")){
                                 flag = true;
                           CreditCardAdmin frame = new CreditCardAdmin(userDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                    if(rs.getString(9).equals("compadmin")){
+                                flag = true;
+                          CompanyCreatorFrame frame = new CompanyCreatorFrame(compDir,cityDir,coordDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                     if(rs.getString(9).equals("jcreator")){
+                                flag = true;
+                          JobsCreatorFrame frame = new JobsCreatorFrame(compDir,cityDir);
                            frame.setVisible(true);
                            dispose();
                             }
