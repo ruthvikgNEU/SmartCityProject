@@ -91,7 +91,7 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 102, 255));
         jLabel3.setText("Theatre :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 90, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 90, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 153, 255));
@@ -101,11 +101,12 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 153, 255));
         jLabel5.setText("Show :");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 70, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 70, -1));
 
-        jLabel6.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 153, 255));
         jLabel6.setText("Date :");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 60, -1));
 
         TicketsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
         TicketsDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -120,19 +121,22 @@ public class MoviesJPanel extends javax.swing.JPanel {
         jLabel7.setText("Tickets :");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 360, 80, -1));
 
+        bookButton.setBackground(new java.awt.Color(255, 153, 255));
+        bookButton.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         bookButton.setText("Book");
+        bookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 147, -1));
+        jPanel1.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 147, 30));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 255, 51));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 153, 255));
         jLabel8.setText("Book a Ticket");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
-        jPanel1.add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, 40));
+        jPanel1.add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 150, 30));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/movi1.jpg"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 630));
