@@ -4,12 +4,18 @@
  */
 package SystemAdmin;
 
+import Directories.CityDirectory;
+import Directories.TheatreDirectory;
+import Directories.UserCoordinatesDirectory;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import model.UserCoordinates;
 
 /**
  *
@@ -17,34 +23,97 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CreateTheatrePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CreateTheatrePanel
-     */
+  
+    TheatreDirectory thDir;
     Connection connection;
-    public CreateTheatrePanel(Connection connection) {
+    CityDirectory cityDir;
+UserCoordinatesDirectory usercordDir;
+UserCoordinates newOne;
+    public CreateTheatrePanel(Connection connection, TheatreDirectory thDir,CityDirectory cityDir,UserCoordinatesDirectory usercordDir) {
         initComponents();
         this.connection = connection;
+        this.thDir = thDir;
+         this.cityDir = cityDir;
+        this.usercordDir = usercordDir;
+         newOne = usercordDir.addNew();
+         UsernameGreenTick.setVisible(false);
+            UsernameRedTick.setVisible(false);
         populateTheatres();
+        UsernameListener();
+        cordfld.setEditable(false);
     }
     private void populateTheatres(){
-        try{
-            PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from theatres");
-            ResultSet rs = st.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) TheatreData.getModel();
-            model.setRowCount(0);
-            while(rs.next()) {
-            Object row[] = new Object[5];
-            row[0] = rs.getString(1);
-            row[1] =  rs.getString(2);
-            row[2] = rs.getString(3);
-            row[3] = rs.getString(4);
-             row[4] = rs.getString(5);
+         DefaultTableModel model = (DefaultTableModel) TheatreData.getModel();
+          try{
+              ResultSet rs = cityDir.getApprovedBuildings();
+              model.setRowCount(0);
+               Object row[] = new Object[6];
+      while(rs.next()) {
+          if(rs.getString("type").equals("Theatre")){
+            row[0] = rs.getString("application_id");
+            row[1] = rs.getString("name");
+            row[2] = rs.getString("owner");
+            row[3] = rs.getString("location");
+            row[4] = rs.getString("lat");
+              row[5] = rs.getString("lon");
             model.addRow(row);
+          }
+            }
+          }
+          catch(Exception e){
+              System.out.println(e);
+          }
+    }
+    
+    private void UsernameListener(){
+    DocumentListener documentListener = new DocumentListener() {
+      @Override
+      public void changedUpdate(DocumentEvent documentEvent) {
+         if(TheatreNameExists()){
+            UsernameGreenTick.setVisible(true);
+            UsernameRedTick.setVisible(false);
+          }else{
+              UsernameRedTick.setVisible(true);
+              UsernameGreenTick.setVisible(false);
+          }
+      }
+      @Override
+      public void insertUpdate(DocumentEvent documentEvent) {
+          
+          if(TheatreNameExists()){
+            UsernameGreenTick.setVisible(true);
+            UsernameRedTick.setVisible(false);
+          }else{
+              UsernameRedTick.setVisible(true);
+              UsernameGreenTick.setVisible(false);
+          }
+      }
+      @Override
+      public void removeUpdate(DocumentEvent documentEvent) {
+           if(TheatreNameExists()){
+            UsernameGreenTick.setVisible(true);
+            UsernameRedTick.setVisible(false);
+          }else{
+              UsernameRedTick.setVisible(true);
+              UsernameGreenTick.setVisible(false);
+          }
+      }
+    };
+    namefld.getDocument().addDocumentListener(documentListener);
+}
+    
+    private boolean TheatreNameExists(){
+        try{
+            ResultSet rs = cityDir.getApprovedBuildings();
+            while(rs.next()) {
+          if(rs.getString("name").equals(namefld.getText()))
+              return false;
         }
         }
         catch(SQLException e){
             System.out.println(e);
         }
+        return true;
     }
 
     /**
@@ -58,91 +127,195 @@ public class CreateTheatrePanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TheatreData = new javax.swing.JTable();
-        NameFld = new javax.swing.JTextField();
+        namefld = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        NameFld1 = new javax.swing.JTextField();
+        cordfld = new javax.swing.JTextField();
         LocationLabel = new javax.swing.JLabel();
-        NameFld2 = new javax.swing.JTextField();
+        locfld = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         SetLocationLabel = new javax.swing.JLabel();
         SubmitButton = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        ownerfld = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        UsernameRedTick = new javax.swing.JLabel();
+        UsernameGreenTick = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(255, 255, 255));
 
         TheatreData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Name", "Location", "Latitude ", "Longitude"
+                "Id", "Name", "Owner", "Location", "Latitude ", "Longitude"
             }
         ));
         jScrollPane1.setViewportView(TheatreData);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 93, 676, 197));
-        add(NameFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 327, 238, 50));
-
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Theatres");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 145, 47));
+        jLabel1.setText("Add Theatres");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 343, -1, -1));
-        add(NameFld1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 485, 238, 50));
 
-        LocationLabel.setForeground(new java.awt.Color(255, 255, 255));
         LocationLabel.setText("Location :");
-        add(LocationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 420, -1, -1));
-        add(NameFld2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 404, 238, 50));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Co-Ordinates :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 501, -1, -1));
 
-        SetLocationLabel.setForeground(new java.awt.Color(255, 255, 255));
         SetLocationLabel.setText("Set Location");
         SetLocationLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SetLocationLabelMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 SetLocationLabelMouseReleased(evt);
             }
         });
-        add(SetLocationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 501, -1, -1));
 
         SubmitButton.setText("Submit");
-        add(SubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 563, 140, 41));
+        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButtonActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Libraries/Salle Dolby du Pathé Beaugrenelle - Frédéric Berthet.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -2, 780, 650));
+        jLabel4.setText("Owner :");
+
+        UsernameRedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
+
+        UsernameGreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LocationLabel)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(namefld, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(locfld)
+                            .addComponent(ownerfld)
+                            .addComponent(cordfld, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(SetLocationLabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(UsernameRedTick)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(UsernameGreenTick, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(495, 495, 495)
+                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(480, 480, 480)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(143, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(UsernameRedTick)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(UsernameGreenTick))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(locfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LocationLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cordfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SetLocationLabel)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ownerfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void SetLocationLabelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationLabelMouseReleased
-//MapsFrame frame  = new MapsFrame();
-// frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-//        frame.setVisible(true);
+MapsFrame frame  = new MapsFrame(newOne);
+ frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setVisible(true);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent){
+               cordfld.setText(newOne.getLat()+","+newOne.getLon());
+            }
+        });
         // TODO add your handling code here:
     }//GEN-LAST:event_SetLocationLabelMouseReleased
+
+    String name,dean,location,cord;
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+
+
+name = namefld.getText();
+dean = ownerfld.getText();
+location = locfld.getText();
+newOne.setUsername(name);
+        cityDir.addTheatreBySystemAdmin(name, dean, location, newOne.getLat(), newOne.getLon());
+        JOptionPane.showMessageDialog(this, "Added Successfully");
+        populateTheatres();
+        
+        namefld.setText("");
+        ownerfld.setText("");
+        locfld.setText("");
+        cordfld.setText("");
+         UsernameGreenTick.setVisible(false);
+            UsernameRedTick.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SubmitButtonActionPerformed
+
+    private void SetLocationLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationLabelMouseClicked
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SetLocationLabelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LocationLabel;
-    private javax.swing.JTextField NameFld;
-    private javax.swing.JTextField NameFld1;
-    private javax.swing.JTextField NameFld2;
     private javax.swing.JLabel SetLocationLabel;
     private javax.swing.JButton SubmitButton;
     private javax.swing.JTable TheatreData;
+    private javax.swing.JLabel UsernameGreenTick;
+    private javax.swing.JLabel UsernameRedTick;
+    private javax.swing.JTextField cordfld;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField locfld;
+    private javax.swing.JTextField namefld;
+    private javax.swing.JTextField ownerfld;
     // End of variables declaration//GEN-END:variables
 }

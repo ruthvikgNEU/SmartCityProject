@@ -2,11 +2,11 @@
 package UI;
 import Directories.CompanyDirectory;
 import Directories.UserCoordinatesDirectory;
+import Directories.UserDirectory;
 import Education.UniversityPanel;
 import Employment.MyApplicationsPanel;
 import Employment.MyEmpExchangePanel;
 import Entertainment.MoviesJPanel;
-import Healtcare.HealthcareMainJPanel;
 import java.sql.Connection;
 /**
  *
@@ -20,20 +20,21 @@ public class UserLandingJPanel extends javax.swing.JPanel {
  private static int zoomValue = 5;
  CompanyDirectory compDir;
  UserCoordinatesDirectory cord;
-    public UserLandingJPanel(Connection connection,String user,CompanyDirectory compDir,UserCoordinatesDirectory cord) {
+ UserDirectory userdir;
+    public UserLandingJPanel(Connection connection,String user,CompanyDirectory compDir,UserCoordinatesDirectory cord,UserDirectory userdir) {
         initComponents();
         this.connection = connection;
         this.user = user;
         this.compDir = compDir;
         this.cord = cord;
+        this.userdir = userdir;
         UsernameLbl.setText(user);
         TabbedPane.add("Profile",new UserProfileJPanel(cord,user));
-        TabbedPane.add("Analytics",new UserAnalyticsDashboard());
+        TabbedPane.add("Analytics",new UserAnalyticsDashboard(user,userdir));
        TabbedPane.add("Education",new UniversityPanel());
        TabbedPane.add("My Applications",new MyApplicationsPanel(compDir,connection,user));
        TabbedPane.add("Employment Exchange",new MyEmpExchangePanel());
        TabbedPane.add("Entertainment",new MoviesJPanel(connection,user));
-       TabbedPane.add("Healthcare",new HealthcareMainJPanel());
     }
 
     
