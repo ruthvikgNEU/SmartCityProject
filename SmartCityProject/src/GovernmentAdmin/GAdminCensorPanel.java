@@ -100,7 +100,7 @@ public class GAdminCensorPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(ApplicationsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1070, 198));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1020, 198));
 
         AsigneeDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please select-" }));
         AsigneeDropDown.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
