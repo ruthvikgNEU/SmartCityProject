@@ -98,4 +98,43 @@ public class CityDirectory {
       }
       return null;
      }
+     
+     public ResultSet getUserData(){
+        try{
+            PreparedStatement st = (PreparedStatement)connection.prepareStatement("select username,role from users");
+            return st.executeQuery();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+         return null;
+     }
+      public void addTheatre(String name,String owener,String location,double lat,double lon,String user){
+         try{
+          PreparedStatement st = (PreparedStatement)connection.prepareStatement("insert into city_applications(name,type,owner,location,lat,lon,asignee,application_status) values (?,?,?,?,?,?,?,?)");
+          st.setString(1,name);
+          st.setString(2,"Theatre");
+          st.setString(3, owener);
+          st.setString(4, location);
+          st.setDouble(5,lat);
+          st.setDouble(6, lon);
+          st.setString(7, user);
+          st.setString(8, "Pending");
+             st.executeUpdate();
+         }
+         catch(SQLException e){
+             System.out.println(e);
+         }
+      }
+           public ResultSet getTheatreData(String user){
+         try{
+          PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from city_applications where asignee = ?");
+         st.setString(1, user);
+              return st.executeQuery();
+         }
+         catch(SQLException e){
+             System.out.println(e);
+         }
+         return null;
+     }
 }

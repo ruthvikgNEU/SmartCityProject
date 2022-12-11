@@ -13,6 +13,7 @@ import Directories.UserDirectory;
 import Employment.CompanyCreatorFrame;
 import Employment.JobsCreatorFrame;
 import Entertainment.MoviesCreatorAdmin;
+import Entertainment.TheatreCreatorFrame;
 import GovernmentAdmin.CensorBoardAdminFrame;
 import GovernmentAdmin.CityCommisionerFrame;
 import GovernmentAdmin.GAdminLandingPage;
@@ -211,6 +212,12 @@ String username;
                                      if(rs.getString(9).equals("jcreator")){
                                 flag = true;
                           JobsCreatorFrame frame = new JobsCreatorFrame(compDir,cityDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                        if(rs.getString(9).equals("tcreator")){
+                                flag = true;
+                          TheatreCreatorFrame frame = new TheatreCreatorFrame(cityDir,username,coordDir);
                            frame.setVisible(true);
                            dispose();
                             }
