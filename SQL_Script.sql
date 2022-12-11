@@ -156,6 +156,7 @@ alimit double,
 status varchar(20),
 primary key(request_id));
 
+select * from city_applications;
 
 insert into credit_applications(username,cardnumber,amount,alimit,status) values ("Username","1234567891234567",120.25,500.00,"Pending");
 
@@ -189,3 +190,23 @@ select * from users;
 select * from credit_cards;
 select * from credit_applications;
 select * from users;
+select * from censor_applications;
+
+
+create table course_applications(
+application_id integer auto_increment,
+coursename varchar(20),
+university varchar(20),
+professor varchar(30),
+coursedesc varchar(200),
+app_status varchar(20),
+applied_date date,
+asignee varchar(30),
+dayofweek varchar(30),
+primary key(application_id));
+
+
+insert into course_applications(coursename,university,professor,coursedesc,app_status,applied_date,asignee,dayofweek) values ("MIS","Harvard","Kal Bugrara","///","Approved","2022-12-08","N/A","Monday");
+
+
+select * from city_applications;
