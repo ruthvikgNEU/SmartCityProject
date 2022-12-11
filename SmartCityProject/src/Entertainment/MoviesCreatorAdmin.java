@@ -103,6 +103,7 @@ public class MoviesCreatorAdmin extends javax.swing.JFrame {
                 "Application Id", "Theatre", "Name", "Director", "Producer/Studio", "Applied Date", "Application Status", "Movie Status", "Url"
             }
         ));
+        ApplicationsTableData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(ApplicationsTableData);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 92, 1268, 188));
@@ -155,11 +156,14 @@ dir = DirectorFld.getText();
 prod = StudioFld.getText();
 url = UrlFld.getText();
 theatre = String.valueOf(TheatresDropDown.getSelectedItem());
+String asignee = ""+user;
    Date dNow = new Date( );
       SimpleDateFormat ft = 
       new SimpleDateFormat (" yyyy-MM-dd");
       String applied_date  = ft.format(dNow);
-     cenDir.insertRecord(name, dir, prod, url, theatre, applied_date);
+      System.out.println(name);
+     cenDir.insertRecord(name, dir, prod, url, theatre, applied_date,asignee);
+     
      populateApplications();
     }//GEN-LAST:event_SaveFldActionPerformed
 

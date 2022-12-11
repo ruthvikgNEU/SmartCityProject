@@ -96,6 +96,7 @@ public class MyApplicationsPanel extends javax.swing.JPanel {
                 "Application Id", "Company", "Role", "Date Applied", "Status"
             }
         ));
+        ApplicationsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(ApplicationsTable);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 916, 193));
