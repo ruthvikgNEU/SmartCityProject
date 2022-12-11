@@ -42,9 +42,10 @@ public class MoviesJPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        jLabel2.setText("Welcome to Movies Dashboard.............!!");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 18, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 65)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 51, 255));
+        jLabel2.setText("Welcome to the Movies Dashboard! ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1030, -1));
 
         TheatreDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         TheatreDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -52,8 +53,9 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 TheatreDropDownActionPerformed(evt);
             }
         });
-        jPanel1.add(TheatreDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 329, 147, -1));
+        jPanel1.add(TheatreDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 147, -1));
 
+        jTable1.setBackground(new java.awt.Color(204, 204, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -67,10 +69,12 @@ public class MoviesJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 106, 780, 168));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 780, 350));
 
-        jLabel1.setText("My Bookings :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 84, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 255));
+        jLabel1.setText("Your Bookings :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
 
         MoviesDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", " " }));
         MoviesDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -78,23 +82,27 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 MoviesDropDownActionPerformed(evt);
             }
         });
-        jPanel1.add(MoviesDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 369, 147, -1));
+        jPanel1.add(MoviesDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 147, -1));
 
         ShowsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
-        jPanel1.add(ShowsDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 447, 147, -1));
+        jPanel1.add(ShowsDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 147, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
         jLabel3.setText("Theatre :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 332, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(102, 255, 102));
         jLabel4.setText("Movie :");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 372, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(51, 255, 51));
         jLabel5.setText("Show :");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 447, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(51, 255, 51));
         jLabel6.setText("Date :");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 481, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
         TicketsDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
         TicketsDropDown.addActionListener(new java.awt.event.ActionListener() {
@@ -102,10 +110,11 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 TicketsDropDownActionPerformed(evt);
             }
         });
-        jPanel1.add(TicketsDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 407, 147, -1));
+        jPanel1.add(TicketsDropDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 147, -1));
 
+        jLabel7.setForeground(new java.awt.Color(51, 255, 0));
         jLabel7.setText("Tickets :");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 410, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         bookButton.setText("Book");
         bookButton.addActionListener(new java.awt.event.ActionListener() {
@@ -113,12 +122,14 @@ public class MoviesJPanel extends javax.swing.JPanel {
                 bookButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 517, 147, -1));
+        jPanel1.add(bookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 147, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Book a Ticket");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 292, -1, -1));
-        jPanel1.add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 481, -1, -1));
+        jPanel1.add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/movi1.jpg"))); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
