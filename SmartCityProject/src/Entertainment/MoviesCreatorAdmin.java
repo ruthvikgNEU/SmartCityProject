@@ -2,6 +2,7 @@
 package Entertainment;
 
 import Directories.CensorDirectory;
+import Directories.CityDirectory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.*;
@@ -13,13 +14,32 @@ public class MoviesCreatorAdmin extends javax.swing.JFrame {
     Connection connection;
     String user;
     CensorDirectory cenDir;
-    public MoviesCreatorAdmin(Connection connection,String user,CensorDirectory cenDir) {
+    CityDirectory citydir;
+    public MoviesCreatorAdmin(Connection connection,String user,CensorDirectory cenDir,CityDirectory citydir) {
         initComponents();
         this.connection = connection;
         this.user  = user;
         this.cenDir = cenDir;
+        this.citydir = citydir;
         UsernameLbl.setText(user);
         populateApplications();
+        populateTheatres();
+    }
+    
+    private void populateTheatres(){
+        TheatresDropDown.removeAllItems();
+        try{
+        ResultSet rs = citydir.getApprovedBuildings();
+        while(rs.next()){
+            if(rs.getString("type").equals("Theatre")){
+                TheatresDropDown.addItem(rs.getString("name"));
+            }
+        }
+        }
+        catch(Exception e){
+         System.out.println(e);   
+        }
+        
     }
     
      private void populateApplications(){
@@ -163,7 +183,6 @@ String asignee = ""+user;
       String applied_date  = ft.format(dNow);
       System.out.println(name);
      cenDir.insertRecord(name, dir, prod, url, theatre, applied_date,asignee);
-     
      populateApplications();
     }//GEN-LAST:event_SaveFldActionPerformed
 

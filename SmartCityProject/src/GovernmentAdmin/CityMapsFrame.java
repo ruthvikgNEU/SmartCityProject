@@ -4,11 +4,11 @@
  */
 package GovernmentAdmin;
 
-//import com.teamdev.jxbrowser.browser.Browser;
-//import com.teamdev.jxbrowser.engine.Engine;
-//import com.teamdev.jxbrowser.engine.EngineOptions;
-//import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
-//import com.teamdev.jxbrowser.view.swing.BrowserView;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.swing.BrowserView;
 
 /**
  *
@@ -16,7 +16,7 @@ package GovernmentAdmin;
  */
 public class CityMapsFrame extends javax.swing.JFrame {
 
-     //Browser browser;
+     Browser browser;
      String cord;
     public CityMapsFrame(String cord) {
         initComponents();
@@ -28,18 +28,18 @@ public class CityMapsFrame extends javax.swing.JFrame {
        // throw new UnsupportedOperationException("Not sup
     }
  private void open_site() {
-//        try{
-//             EngineOptions options =
-//            EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-//            Engine engine = Engine.newInstance(options);
-//            browser = engine.newBrowser();
-//            BrowserView view = BrowserView.newInstance(browser);
-//            browser.navigation().loadUrl("https://www.google.com/maps/@"+cord+",21z");
-//            MapsPanel.add(view);
-//        }
-//        catch(Exception e){
-//           System.out.println(e+"");
-//        }
+        try{
+             EngineOptions options =
+            EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+            Engine engine = Engine.newInstance(options);
+            browser = engine.newBrowser();
+            BrowserView view = BrowserView.newInstance(browser);
+            browser.navigation().loadUrl("https://www.google.com/maps/@"+cord+",21z");
+            MapsPanel.add(view);
+        }
+        catch(Exception e){
+           System.out.println(e+"");
+        }
  
  }
 

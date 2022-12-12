@@ -130,12 +130,9 @@ UserCoordinates newOne;
         jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add Company");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 260, -1));
 
         CompanyData.setBackground(new java.awt.Color(255, 204, 153));
         CompanyData.setModel(new javax.swing.table.DefaultTableModel(
@@ -151,13 +148,9 @@ UserCoordinates newOne;
         ));
         jScrollPane1.setViewportView(CompanyData);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 79, 1016, 185));
-
         namefld.setBackground(new java.awt.Color(255, 204, 153));
-        add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 224, -1));
 
         locfld.setBackground(new java.awt.Color(255, 204, 153));
-        add(locfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 405, 224, -1));
 
         SaveButton.setBackground(new java.awt.Color(255, 204, 153));
         SaveButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -168,46 +161,36 @@ UserCoordinates newOne;
                 SaveButtonActionPerformed(evt);
             }
         });
-        add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, 120, 40));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name :");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 301, 60, 20));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Owner :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 356, 60, 20));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Location :");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 406, 70, 20));
 
         cordfld.setBackground(new java.awt.Color(255, 204, 153));
-        add(cordfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 461, 224, -1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Co-Ordinates :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 452, 100, 30));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Set Location");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
         });
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 130, 40));
 
         GreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
-        add(GreenTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 300, -1, -1));
 
         RedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
-        add(RedTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(763, 300, -1, -1));
+
+        ownerfld.setBackground(new java.awt.Color(255, 204, 153));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add company.jpeg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

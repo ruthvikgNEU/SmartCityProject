@@ -1,6 +1,7 @@
 
 package UI;
 import Directories.CompanyDirectory;
+import Directories.EducationDirectory;
 import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
 import Education.UniversityPanel;
@@ -21,19 +22,20 @@ public class UserLandingJPanel extends javax.swing.JPanel {
  CompanyDirectory compDir;
  UserCoordinatesDirectory cord;
  UserDirectory userdir;
-    public UserLandingJPanel(Connection connection,String user,CompanyDirectory compDir,UserCoordinatesDirectory cord,UserDirectory userdir) {
+ EducationDirectory edudir;
+    public UserLandingJPanel(Connection connection,String user,CompanyDirectory compDir,UserCoordinatesDirectory cord,UserDirectory userdir,EducationDirectory edudir) {
         initComponents();
         this.connection = connection;
         this.user = user;
         this.compDir = compDir;
         this.cord = cord;
         this.userdir = userdir;
+        this.edudir = edudir;
         UsernameLbl.setText(user);
         TabbedPane.add("Profile",new UserProfileJPanel(cord,user));
-        TabbedPane.add("Analytics",new UserAnalyticsDashboard(user,userdir));
-       TabbedPane.add("Education",new UniversityPanel());
-       TabbedPane.add("My Applications",new MyApplicationsPanel(compDir,connection,user));
-       TabbedPane.add("Employment Exchange",new MyEmpExchangePanel());
+        TabbedPane.add("Add Balance",new UserAnalyticsDashboard(user,userdir));
+       TabbedPane.add("Education",new UniversityPanel(edudir,user));
+       TabbedPane.add("Employement",new MyApplicationsPanel(compDir,connection,user));
        TabbedPane.add("Entertainment",new MoviesJPanel(connection,user));
     }
 

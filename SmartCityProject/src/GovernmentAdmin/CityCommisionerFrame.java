@@ -58,7 +58,7 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
         USernameLbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ApplicationsTable = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        status = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         UpdateStatus = new javax.swing.JButton();
         ViewonMap = new javax.swing.JButton();
@@ -99,9 +99,9 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 979, 184));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", "In-review", "Approved", "Rejected" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 214, 40));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", "In-review", "Approved", "Rejected" }));
+        status.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 214, 40));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 102, 102));
@@ -136,6 +136,17 @@ public class CityCommisionerFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UpdateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateStatusActionPerformed
+int index1 = ApplicationsTable.getSelectedRow();
+        if (index1 < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a Application....!");
+            return;
+        }
+         DefaultTableModel model2 = (DefaultTableModel) ApplicationsTable.getModel();
+        String id  = String.valueOf(model2.getValueAt(index1, 0));
+        String stat = String.valueOf(status.getSelectedItem());
+        cityDir.UpdateStatus(id, stat);
+        JOptionPane.showMessageDialog(this, "Update Success");
+        populateApplications();
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateStatusActionPerformed
 
@@ -199,10 +210,10 @@ int index1 = ApplicationsTable.getSelectedRow();
     private javax.swing.JLabel USernameLbl;
     private javax.swing.JButton UpdateStatus;
     private javax.swing.JButton ViewonMap;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }

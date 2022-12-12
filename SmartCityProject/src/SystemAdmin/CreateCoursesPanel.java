@@ -132,7 +132,7 @@ public class CreateCoursesPanel extends javax.swing.JPanel {
             }
         });
         add(UploadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, 110, 20));
-        add(filelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 467, 228, 24));
+        add(filelbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, 228, 24));
 
         SaveButton.setBackground(new java.awt.Color(0, 153, 153));
         SaveButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N

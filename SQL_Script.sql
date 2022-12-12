@@ -117,24 +117,12 @@ insert into shows(show_time,movie_id) values("11:15 AM",1);
 insert into shows(show_time,movie_id) values("11:30 AM",1);
 insert into shows(show_time,movie_id) values("02:00 PM",2);
 insert into shows(show_time,movie_id) values("02:15 PM",2);
-
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3410701,-71.0882683);
 insert into bookings(user_id,enterprize,lat,lon) values (1,"Movies",42.3432429,-71.0979135);
-insert into companies(name) values("Google");
-insert into companies(name) values("Meta");
-insert into companies(name) values("Apple");
-insert into jobs(name,description,company_id) values ("Software Engineer","Java,MySQL,Python",1);
-insert into jobs(name,description,company_id) values ("Databse Engineer",",Oracle,MySQL,Python",1);
-insert into jobs(name,description,company_id) values ("Product Engineer","Java,UI/UX",1);
-insert into jobs(name,description,company_id) values ("Software Engineer","Swift,Scala",3);
-insert into jobs(name,description,company_id) values ("Frontend Engineer","HTML,CSS",3);
-insert into jobs(name,description,company_id) values ("Metaverse Engineer","AWS,Cloud",2);
 insert into censor_applications(theatre,movie_name,director,studio,app_status,movie_status,applied_date,url,asignee) values ("Imax 3D","Avengers","Kevin Feige","Marvel Studios","Active","Pending","2022-12-08","https://www.youtube.com/watch?v=TcMBFSGVi1c","N/A");
 
 
-select * from censor_applications;
 
-select username from users where role = 'censoradmin';
 
 
 create table city_applications(
@@ -158,11 +146,6 @@ alimit double,
 status varchar(20),
 primary key(request_id));
 
-select * from city_applications;
-
-insert into credit_applications(username,cardnumber,amount,alimit,status) values ("Username","1234567891234567",120.25,500.00,"Pending");
-
-
 create table credit_cards(
 card_id integer auto_increment,
 cardnumber varchar(20),
@@ -176,7 +159,6 @@ insert into credit_cards(cardnumber,pin,alimit) values ("1234567891224567",2788,
 insert into credit_cards(cardnumber,pin,alimit) values ("1234564591234567",4785,500.00);
 insert into credit_cards(cardnumber,pin,alimit) values ("1234567091234567",1414,500.00);
 insert into credit_cards(cardnumber,pin,alimit) values ("1234567893334567",8574,500.00);
-insert into city_applications(name,type,owner,location,lat,lon,asignee,application_status) values ("IMAX 3D","Theatre","Ruthvik","Boston",42.3410701,-71.0882683,"N/A","Active");
 create table my_purchases(
 transaction_id integer auto_increment,
 username varchar(20),
@@ -187,12 +169,7 @@ enterprise varchar(30),
 lat double,
 lon double,
 primary key(transaction_id));
-select * from my_purchases;
-select * from users;
-select * from credit_cards;
-select * from credit_applications;
-select * from users;
-select * from censor_applications;
+
 
 
 create table course_applications(
@@ -218,11 +195,8 @@ applied_date date,
 applied_by varchar(30),
 primary key(job_id));
 
-insert into course_applications(coursename,university,professor,coursedesc,app_status,applied_date,asignee,dayofweek) values ("MIS","Harvard","Kal Bugrara","///","Approved","2022-12-08","N/A","Monday");
 
+select * from course_applications;
+select * from applications;
 
-select * from city_applications;
-
-
-
-insert into company_jobs(company,role,roledesc,app_status,asignee,applied_date,applied_by) values ("Apple","SDE","lknckjnckksdc","Approved","jcreator","2022-12-08","tcreator");
+select * from users;

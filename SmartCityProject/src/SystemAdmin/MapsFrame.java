@@ -4,23 +4,23 @@
  */
 package SystemAdmin;
 
-//import com.teamdev.jxbrowser.browser.Browser;
-//import com.teamdev.jxbrowser.engine.Engine;
-//import com.teamdev.jxbrowser.engine.EngineOptions;
-//import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
-//import com.teamdev.jxbrowser.view.swing.BrowserView;
+import com.teamdev.jxbrowser.browser.Browser;
+import com.teamdev.jxbrowser.engine.Engine;
+import com.teamdev.jxbrowser.engine.EngineOptions;
+import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+import com.teamdev.jxbrowser.view.swing.BrowserView;
 import javax.swing.JOptionPane;
 import model.UserCoordinates;
 
 
 public class MapsFrame extends javax.swing.JFrame {
 
-    //Browser browser;
+    Browser browser;
   UserCoordinates temp;
     public MapsFrame(UserCoordinates temp) {
         initComponents();
        this.temp = temp;
-      //open_site();
+      open_site();
     }
 
     private MapsFrame() {
@@ -28,22 +28,22 @@ public class MapsFrame extends javax.swing.JFrame {
     }
 
   
-//
-//    private void open_site() {
-//        try{
-//             EngineOptions options =
-//     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-//   Engine engine = Engine.newInstance(options);
-//   browser = engine.newBrowser();
-//   BrowserView view = BrowserView.newInstance(browser);
-//              browser.navigation().loadUrl("https://www.google.com/maps/@42.3366959,-71.0951561,16.43z");
-//       MapsPanel.add(view);
-//        }
-//        catch(Exception e){
-//            System.out.println(e+"");
-//        }
-// 
-// }
+
+    private void open_site() {
+        try{
+             EngineOptions options =
+     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+   Engine engine = Engine.newInstance(options);
+   browser = engine.newBrowser();
+   BrowserView view = BrowserView.newInstance(browser);
+              browser.navigation().loadUrl("https://www.google.com/maps/@42.3366959,-71.0951561,16.43z");
+       MapsPanel.add(view);
+        }
+        catch(Exception e){
+            System.out.println(e+"");
+        }
+ 
+ }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -96,20 +96,20 @@ public class MapsFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SetLocationButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SetLocationButtonMouseClicked
-//        if (browser.url()!= null) {
-//                String[] split1= browser.url().split("/place/");
-//                String[] split2 = split1[1].split("/@");
-//                String[] placeName = split2[0].split("\\+");
-//                String[] longLat = split2[1].split(",");
-//                String place="";
-//                int size = placeName.length;
-//                for(int i=0;i<size;i++){
-//                    place+=placeName[i];
-//                }
-//                temp.setLat(Double.parseDouble(longLat[0]));
-//                temp.setLon(Double.parseDouble(longLat[1]));
-//                JOptionPane.showMessageDialog(this, "Location Selected.");
-//            }
+        if (browser.url()!= null) {
+                String[] split1= browser.url().split("/place/");
+                String[] split2 = split1[1].split("/@");
+                String[] placeName = split2[0].split("\\+");
+                String[] longLat = split2[1].split(",");
+                String place="";
+                int size = placeName.length;
+                for(int i=0;i<size;i++){
+                    place+=placeName[i];
+                }
+                temp.setLat(Double.parseDouble(longLat[0]));
+                temp.setLon(Double.parseDouble(longLat[1]));
+                JOptionPane.showMessageDialog(this, "Location Selected.");
+            }
     }//GEN-LAST:event_SetLocationButtonMouseClicked
 
     public static void main(String args[]) {

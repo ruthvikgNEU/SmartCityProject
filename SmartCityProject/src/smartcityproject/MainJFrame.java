@@ -10,16 +10,20 @@ import Directories.EducationDirectory;
 import Directories.TheatreDirectory;
 import Directories.UserCoordinatesDirectory;
 import Directories.UserDirectory;
+import Education.CourseCreatorFrame;
+import Education.UCreatorFrame;
 import Employment.CompanyCreatorFrame;
 import Employment.JobsCreatorFrame;
 import Entertainment.MoviesCreatorAdmin;
 import Entertainment.TheatreCreatorFrame;
 import GovernmentAdmin.CensorBoardAdminFrame;
 import GovernmentAdmin.CityCommisionerFrame;
+import GovernmentAdmin.CourseRegAdmin;
 import GovernmentAdmin.GAdminLandingPage;
 import SystemAdmin.SysAdminJFrame;
 import UI.CreditCardAdmin;
 import UI.SignUPJPanel;
+import UI.SignUpJFrame;
 import UI.UserLandingJPanel;
 import java.awt.CardLayout;
 import java.awt.HeadlessException;
@@ -162,7 +166,7 @@ String username;
                             System.out.println(rs.getString("role"));
                             if(rs.getString("role").equals("User")){
                                 flag = true;
-                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir,userDir);
+                            UserLandingJPanel panel2 = new UserLandingJPanel(connection,username,compDir,coordDir,userDir,edudir);
                             container.add("UserLandingJPanel",panel2);
                             CardLayout layout = (CardLayout) container.getLayout();
                             layout.next(container);
@@ -175,7 +179,7 @@ String username;
                             }
                             if(rs.getString("role").equals("gadmin")){
                                 flag = true;
-                           GAdminLandingPage frame = new GAdminLandingPage(cenDir,username,cityDir);
+                           GAdminLandingPage frame = new GAdminLandingPage(cenDir,username,cityDir,edudir);
                            frame.setVisible(true);
                            dispose();
                             }
@@ -187,7 +191,7 @@ String username;
                             }
                                if(rs.getString("role").equals("mcreator")){
                                 flag = true;
-                          MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection,username,cenDir);
+                          MoviesCreatorAdmin frame = new MoviesCreatorAdmin(connection,username,cenDir,cityDir);
                            frame.setVisible(true);
                            dispose();
                             }
@@ -209,7 +213,7 @@ String username;
                            frame.setVisible(true);
                            dispose();
                             }
-                                     if(rs.getString(9).equals("jcreator")){
+                                     if(rs.getString(9).equals("jobscreator")){
                                 flag = true;
                           JobsCreatorFrame frame = new JobsCreatorFrame(compDir,cityDir);
                            frame.setVisible(true);
@@ -218,6 +222,24 @@ String username;
                                         if(rs.getString(9).equals("tcreator")){
                                 flag = true;
                           TheatreCreatorFrame frame = new TheatreCreatorFrame(cityDir,username,coordDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                         if(rs.getString(9).equals("ucreator")){
+                                flag = true;
+                          UCreatorFrame frame = new UCreatorFrame(username,connection,cityDir,coordDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                          if(rs.getString(9).equals("coursecreator")){
+                                flag = true;
+                          CourseCreatorFrame frame = new CourseCreatorFrame(username,edudir,cityDir);
+                           frame.setVisible(true);
+                           dispose();
+                            }
+                                            if(rs.getString(9).equals("courseregadmin")){
+                                flag = true;
+                          CourseRegAdmin frame = new CourseRegAdmin();
                            frame.setVisible(true);
                            dispose();
                             }
@@ -236,11 +258,9 @@ String username;
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        SignUPJPanel panel = new SignUPJPanel(MainJPanel,connection);
-        container.add("SignUPJPanel",panel);
-                            CardLayout layout = (CardLayout) container.getLayout();
-                            layout.next(container);
-      
+      SignUpJFrame frame = new SignUpJFrame(connection);
+      frame.setVisible(true);
+      dispose();
     }//GEN-LAST:event_RegisterButtonActionPerformed
 boolean flag = false;
    

@@ -6,21 +6,25 @@ package GovernmentAdmin;
 
 import Directories.CensorDirectory;
 import Directories.CityDirectory;
+import Directories.EducationDirectory;
 import smartcityproject.MainJFrame;
 
 public class GAdminLandingPage extends javax.swing.JFrame {
    CensorDirectory cenDir;
     String user;
     CityDirectory cityDir;
-    public GAdminLandingPage(CensorDirectory cenDir,String user,CityDirectory cityDir) {
+    EducationDirectory edudir;
+    
+    public GAdminLandingPage(CensorDirectory cenDir,String user,CityDirectory cityDir,EducationDirectory edudir) {
         initComponents();
          this.cenDir = cenDir;
         this.user = user;
        this.cityDir = cityDir;
+       this.edudir = edudir;
         GAdminTabbedPane.add("Censor Applications", new GAdminCensorPanel(cenDir,user));
         GAdminTabbedPane.add("City  Applications", new GAdminCityPlannigPanel(user,cityDir));
-        GAdminTabbedPane.add("Course  Applications", new GAdminCoursePanel());
-        GAdminTabbedPane.add("Company  Applications", new GAdminCompanyPanel());
+        GAdminTabbedPane.add("Course  Applications", new GAdminCoursePanel(edudir));
+        
     }
 
     private GAdminLandingPage() {

@@ -181,7 +181,6 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         UserData.setBackground(new java.awt.Color(255, 204, 204));
-        UserData.setForeground(new java.awt.Color(255, 255, 255));
         UserData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -230,7 +229,7 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 515, -1, -1));
 
         rolefld.setBackground(new java.awt.Color(255, 204, 204));
-        rolefld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "mcreator", "tcreator", "ucreator", "ccreator", "compcreator", "jobscreator", "gadmin", "censoradmin", "cityadmin", "courseregadmin" }));
+        rolefld.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "mcreator", "tcreator", "ucreator", "ccreator", "compcreator", "jobscreator", "gadmin", "censoradmin", "citycomm", "coursecreator", "courseregadmin", " " }));
         add(rolefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 313, 207, 39));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -269,7 +268,7 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         add(GreenTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(932, 451, -1, -1));
 
         RedTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-cross-mark-25.png"))); // NOI18N
-        add(RedTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(963, 440, -1, -1));
+        add(RedTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, -1, -1));
 
         UsernameGreenTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-approval-25.png"))); // NOI18N
         add(UsernameGreenTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 440, -1, -1));

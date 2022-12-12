@@ -23,6 +23,7 @@ public class CityDirectory {
      return null;
     }
      public ResultSet getAllApplicationsByAsignee(String username){
+         System.out.println(username+"sdvdfgdg");
      try{
         PreparedStatement st = (PreparedStatement)connection.prepareStatement("select * from city_applications where asignee = ?");
         st.setString(1,username);
@@ -137,4 +138,36 @@ public class CityDirectory {
          }
          return null;
      }
+           
+           
+           public void UpdateStatus(String id,String status){
+                try{
+        PreparedStatement st= (PreparedStatement)connection.prepareStatement("update city_applications set application_status = ? where application_id = ?");
+        st.setString(1, status);
+        st.setString(2, id);
+        st.executeUpdate();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+           }
+           
+           
+            public void addUniversity(String name,String owener,String location,double lat,double lon,String user){
+         try{
+          PreparedStatement st = (PreparedStatement)connection.prepareStatement("insert into city_applications(name,type,owner,location,lat,lon,asignee,application_status) values (?,?,?,?,?,?,?,?)");
+          st.setString(1,name);
+          st.setString(2,"University");
+          st.setString(3, owener);
+          st.setString(4, location);
+          st.setDouble(5,lat);
+          st.setDouble(6, lon);
+          st.setString(7, user);
+          st.setString(8, "Pending");
+             st.executeUpdate();
+         }
+         catch(SQLException e){
+             System.out.println(e);
+         }
+      }
 }

@@ -159,7 +159,7 @@ UserCoordinates newOne;
         ));
         jScrollPane1.setViewportView(TheatreData);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 1030, 197));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1030, 197));
 
         namefld.setBackground(new java.awt.Color(204, 204, 204));
         add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 333, 225, -1));
@@ -190,6 +190,7 @@ UserCoordinates newOne;
         jLabel3.setText("Co-Ordinates :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 418, -1, -1));
 
+        SetLocationLabel.setForeground(new java.awt.Color(255, 255, 255));
         SetLocationLabel.setText("Set Location");
         SetLocationLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

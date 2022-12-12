@@ -31,6 +31,7 @@ import javax.mail.Message.RecipientType;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
+import smartcityproject.MainJFrame;
 /**
  *
  * @author Ruthvik Garlapati
@@ -171,6 +172,11 @@ UsernameListener();
         HomeButton.setBackground(new java.awt.Color(0, 153, 153));
         HomeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home_24px.png"))); // NOI18N
         HomeButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        HomeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeButtonMouseClicked(evt);
+            }
+        });
         HomeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HomeButtonActionPerformed(evt);
@@ -395,6 +401,13 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_FirstNameFldActionPerformed
 
+    private void HomeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeButtonMouseClicked
+MainJFrame frame = new MainJFrame();
+frame.setVisible(true);
+dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HomeButtonMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -421,4 +434,8 @@ try {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
+
+    private void dispose() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
