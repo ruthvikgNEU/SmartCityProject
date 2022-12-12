@@ -69,7 +69,7 @@ public class UCreatorFrame extends javax.swing.JFrame {
         jLabel2.setText("Dean:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 89, -1));
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("-Please Type-");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 98, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
@@ -77,7 +77,7 @@ public class UCreatorFrame extends javax.swing.JFrame {
         jLabel3.setText("Date:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 80, -1));
 
-        jTextField2.setText("jTextField1");
+        jTextField2.setText("-Please Type-");
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 99, -1));
 
         jLabel4.setText("Course Info : ");
