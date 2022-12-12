@@ -41,6 +41,7 @@ public class CoursesPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable1.setBackground(new java.awt.Color(204, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -56,41 +57,49 @@ public class CoursesPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 963, 185));
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 204));
         jLabel1.setText("University Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 128, -1));
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 51, 255));
         jLabel2.setText("Course ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 81, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 81, -1));
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 255));
         jLabel3.setText("Professor Name");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 110, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 140, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 117, -1));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-" }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 117, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", " " }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 117, -1));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 117, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-" }));
         add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 128, -1));
 
+        jButton1.setBackground(new java.awt.Color(255, 153, 255));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jButton1.setText("Register");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 113, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 120, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 0, 0));
         jLabel4.setText("Welcome Student! ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 210, 71));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, 71));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 0, 153));
