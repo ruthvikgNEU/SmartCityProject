@@ -43,7 +43,7 @@ public class SysAdminJFrame extends javax.swing.JFrame {
           SysAdminTabbedPane.add("Add Universities",new CreateUniversityPanel(connection,cityDir,usercordDir));
            SysAdminTabbedPane.add("Add Courses",new CreateCoursesPanel(connection,edudir,cityDir));
             SysAdminTabbedPane.add("Add Companies",new CreateCompanyPanel(connection,compdir,cityDir,usercordDir));
-             SysAdminTabbedPane.add("Add Jobs",new CreateJobsPanel(connection));
+             SysAdminTabbedPane.add("Add Jobs",new CreateJobsPanel(connection,compdir,cityDir));
               SysAdminTabbedPane.add("Add Admins",new CreateAdminsPanel(connection,userDir));
     }
 

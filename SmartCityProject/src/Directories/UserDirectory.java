@@ -50,13 +50,14 @@ public class UserDirectory {
      
      public void addAdmin(String fname,String lname,String uname,String password, String email,String role){
            try{
-            PreparedStatement st = (PreparedStatement)connection.prepareStatement("insert into users(firstname,lastname,username,passwordFld,email,role) values (?,?,?,?,?,?)");
+            PreparedStatement st = (PreparedStatement)connection.prepareStatement("insert into users(firstname,lastname,username,passwordFld,email,role,can_login) values (?,?,?,?,?,?,?)");
             st.setString(1, fname);
             st.setString(2, lname);
             st.setString(3, uname);
             st.setString(4, password);
             st.setString(5, email);
             st.setString(6, role);
+            st.setString(7, "1");
             st.executeUpdate();
         }
         catch(SQLException e){

@@ -101,6 +101,8 @@ insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","mcreator","garlapati.r@northeastern.edu","password",123456,1,"mcreator");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","citycomm","garlapati.r@northeastern.edu","password",123456,1,"citycomm");
 insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","ccadmin","garlapati.r@northeastern.edu","password",123456,1,"ccadmin");
+insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login,role) values("Ruthvik","Garlapati","compadmin","garlapati.r@northeastern.edu","password",123456,1,"compadmin");
+
 update users set username = 'Username' where user_id = 1;
 update users set can_login = 1 where user_id = 1;
 insert into theatres(name,location,owner,lat,lon) values('Prasad IMAX','Boston','Marvel',42.3410701,-71.0882683);
@@ -205,8 +207,22 @@ asignee varchar(30),
 dayofweek varchar(30),
 primary key(application_id));
 
+create table company_jobs(
+job_id integer auto_increment,
+company varchar(30),
+role varchar(30),
+roledesc varchar(200),
+app_status varchar(20),
+asignee varchar(30),
+applied_date date,
+applied_by varchar(30),
+primary key(job_id));
 
 insert into course_applications(coursename,university,professor,coursedesc,app_status,applied_date,asignee,dayofweek) values ("MIS","Harvard","Kal Bugrara","///","Approved","2022-12-08","N/A","Monday");
 
 
 select * from city_applications;
+
+
+
+insert into company_jobs(company,role,roledesc,app_status,asignee,applied_date,applied_by) values ("Apple","SDE","lknckjnckksdc","Approved","jcreator","2022-12-08","tcreator");

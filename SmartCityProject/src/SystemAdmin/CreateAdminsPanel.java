@@ -290,8 +290,8 @@ public class CreateAdminsPanel extends javax.swing.JPanel {
         uname = UName.getText();
         email = emailfld.getText();
         role = rolefld.getSelectedItem().toString();
-        pass = password.getPassword().toString();
-        cnfpass = cnfpassword.getPassword().toString();
+        pass = String.valueOf(password.getPassword());
+        cnfpass = String.valueOf(cnfpassword.getPassword());
         userDir.addAdmin(fname, lname, uname, pass, email, role);
         JOptionPane.showMessageDialog(this, "User Added.");
         populateAdmins();

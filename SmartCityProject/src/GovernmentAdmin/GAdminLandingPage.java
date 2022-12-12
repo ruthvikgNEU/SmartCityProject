@@ -19,6 +19,8 @@ public class GAdminLandingPage extends javax.swing.JFrame {
        this.cityDir = cityDir;
         GAdminTabbedPane.add("Censor Applications", new GAdminCensorPanel(cenDir,user));
         GAdminTabbedPane.add("City  Applications", new GAdminCityPlannigPanel(user,cityDir));
+        GAdminTabbedPane.add("Course  Applications", new GAdminCoursePanel());
+        GAdminTabbedPane.add("Company  Applications", new GAdminCompanyPanel());
     }
 
     private GAdminLandingPage() {
@@ -85,6 +87,10 @@ public class GAdminLandingPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+
+MainJFrame frame = new MainJFrame();
+frame.setVisible(true);
+dispose();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
