@@ -57,9 +57,9 @@ public class UserProfileJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel2.setText("Update Profile!!");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 39, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 290, -1));
         add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 123, 284, 42));
 
         jLabel1.setText("First Name :");
@@ -143,11 +143,12 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         });
         add(SetLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 360, -1, -1));
 
+        UpdateButton.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         UpdateButton.setText("Update");
-        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 464, 167, 49));
+        add(UpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 440, 167, 49));
 
-        jLabel11.setText("jLabel11");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 1080, 590));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/upd.png"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, -10, 1000, 590));
     }// </editor-fold>//GEN-END:initComponents
 
     private void EmailFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFldActionPerformed
