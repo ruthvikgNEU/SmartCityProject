@@ -62,10 +62,14 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 290, -1));
         add(Fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 123, 284, 42));
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 0));
         jLabel1.setText("First Name :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 135, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 135, 100, -1));
         add(Lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 183, 284, 42));
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
         jLabel3.setText("Last Name :");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 195, -1, -1));
 
@@ -76,6 +80,8 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         });
         add(EmailFld, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 243, 284, 42));
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setText("Email :");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 255, -1, -1));
 
@@ -86,6 +92,8 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         });
         add(Phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 363, 284, 42));
 
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("Passport :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 315, -1, -1));
 
@@ -96,12 +104,16 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         });
         add(EmailFld2, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 303, 284, 42));
 
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("Phone :");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 375, -1, -1));
 
-        Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Male", "Female", "Others" }));
+        Gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Please Select-", "Male", "Female", "Others" }));
         add(Gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 126, 139, 42));
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 51, 51));
         jLabel7.setText("Gender :");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 138, -1, -1));
 
@@ -126,22 +138,29 @@ public class UserProfileJPanel extends javax.swing.JPanel {
         });
         add(coordinates, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 300, 284, 42));
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 51, 51));
         jLabel8.setText("Nationality :");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(575, 198, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
         jLabel9.setText("Address :");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 252, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 51, 51));
         jLabel10.setText("Co-Ordinates :");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(559, 312, -1, -1));
 
+        SetLocation.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         SetLocation.setText("Set on map");
         SetLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SetLocationActionPerformed(evt);
             }
         });
-        add(SetLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 360, -1, -1));
+        add(SetLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 360, 140, 40));
 
         UpdateButton.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         UpdateButton.setText("Update");
