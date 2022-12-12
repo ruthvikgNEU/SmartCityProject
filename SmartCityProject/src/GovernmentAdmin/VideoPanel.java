@@ -1,14 +1,14 @@
 
 package GovernmentAdmin;
 
-import com.teamdev.jxbrowser.browser.Browser;
-import com.teamdev.jxbrowser.engine.Engine;
-import com.teamdev.jxbrowser.engine.EngineOptions;
-import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
-import com.teamdev.jxbrowser.view.swing.BrowserView;
+//import com.teamdev.jxbrowser.browser.Browser;
+//import com.teamdev.jxbrowser.engine.Engine;
+//import com.teamdev.jxbrowser.engine.EngineOptions;
+//import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+//import com.teamdev.jxbrowser.view.swing.BrowserView;
 
 public class VideoPanel extends javax.swing.JFrame {
- Browser browser;
+ //Browser browser;
  static String url;
     public VideoPanel(String url) {
         initComponents();
@@ -18,18 +18,18 @@ public class VideoPanel extends javax.swing.JFrame {
    
     private void PlayMovie(){
   
-      try{
-             EngineOptions options =
-             EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-             Engine engine = Engine.newInstance(options);
-              browser = engine.newBrowser();
-             BrowserView view = BrowserView.newInstance(browser);
-              browser.navigation().loadUrl(url);
-               VideoPanel.add(view);
-        }
-        catch(Exception e){
-            System.out.println(e+"");
-        }
+//      try{
+//             EngineOptions options =
+//             EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+//             Engine engine = Engine.newInstance(options);
+//              browser = engine.newBrowser();
+//             BrowserView view = BrowserView.newInstance(browser);
+//              browser.navigation().loadUrl(url);
+//               VideoPanel.add(view);
+//        }
+//        catch(Exception e){
+//            System.out.println(e+"");
+//        }
     }
 
     @SuppressWarnings("unchecked")
@@ -79,8 +79,8 @@ public class VideoPanel extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CloseButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CloseButton, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
                 .addComponent(VideoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -90,7 +90,7 @@ public class VideoPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseButtonMouseClicked
-browser.navigation().loadUrl("https://www.google.com/");
+//browser.navigation().loadUrl("https://www.google.com/");
 dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_CloseButtonMouseClicked

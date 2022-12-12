@@ -69,11 +69,12 @@ public class SysAdminJFrame extends javax.swing.JFrame {
         SysAdminTabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         getContentPane().add(SysAdminTabbedPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 71, 1200, 630));
 
-        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Hi!!");
 
+        UsernameLbl.setBackground(new java.awt.Color(51, 51, 51));
         UsernameLbl.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-logout-rounded-70.png"))); // NOI18N

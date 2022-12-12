@@ -6,12 +6,12 @@ package UI;
 
 import java.sql.Connection;
 
-import com.teamdev.jxbrowser.browser.Browser;
-import com.teamdev.jxbrowser.engine.Engine;
-import com.teamdev.jxbrowser.engine.EngineOptions;
-import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
-import com.teamdev.jxbrowser.view.swing.BrowserView;
-import java.awt.BorderLayout;
+//import com.teamdev.jxbrowser.browser.Browser;
+//import com.teamdev.jxbrowser.engine.Engine;
+//import com.teamdev.jxbrowser.engine.EngineOptions;
+//import static com.teamdev.jxbrowser.engine.RenderingMode.HARDWARE_ACCELERATED;
+//import com.teamdev.jxbrowser.view.swing.BrowserView;
+//import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.*;
@@ -60,35 +60,35 @@ public class UserDashBoardMapsPanel extends javax.swing.JPanel {
    String third = "];\n";
    //String second = "['Booking 1', -33.890542, 151.274856, 4],\n['Booking 2', -33.923036, 151.259052, 5]\n";
    String setMarkerScript = first + str + third + fourth;
-   EngineOptions options =
-     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
-   Engine engine = Engine.newInstance(options);
-   Browser browser = engine.newBrowser();
-   SwingUtilities.invokeLater(() -> {
-     BrowserView view = BrowserView.newInstance(browser);
-     browser.mainFrame().ifPresent(frame ->
-       frame.executeJavaScript(setMarkerScript));
-     ZoomIN.addActionListener(e -> {
-       if (zoomValue < MAX_ZOOM) {
-         browser.mainFrame().ifPresent(frame ->
-           frame.executeJavaScript("map.setZoom(" +
-             ++zoomValue + ")"));
-       }
-     });
-     ZoomOut.addActionListener(e -> {
-       if (zoomValue > MIN_ZOOM) {
-         browser.mainFrame().ifPresent(frame ->
-           frame.executeJavaScript("map.setZoom(" +
-             --zoomValue + ")"));
-       }
-     });
-     setMarkers.addActionListener(e ->
-       browser.mainFrame().ifPresent(frame ->
-         frame.executeJavaScript(setMarkerScript)));
-     MapsPanel.add(view, BorderLayout.CENTER);
-     String rootPath = System.getProperty("user.dir");
-     browser.navigation().loadUrl("D:/NEU_JAVA_WORKSPACE/JavaSwingHospitalApplication/TestingProject/build/classes/Libraries/simple_map.html");
-   });
+//   EngineOptions options =
+//     EngineOptions.newBuilder(HARDWARE_ACCELERATED).licenseKey("1BNDHFSC1G4NNJSWIB7FX6CBOWWCX8MKR14WNT2DH9XV6YW9EOWTXHCOQSIKV88D6J65JS").build();
+//   Engine engine = Engine.newInstance(options);
+//   Browser browser = engine.newBrowser();
+//   SwingUtilities.invokeLater(() -> {
+//     BrowserView view = BrowserView.newInstance(browser);
+//     browser.mainFrame().ifPresent(frame ->
+//       frame.executeJavaScript(setMarkerScript));
+//     ZoomIN.addActionListener(e -> {
+//       if (zoomValue < MAX_ZOOM) {
+//         browser.mainFrame().ifPresent(frame ->
+//           frame.executeJavaScript("map.setZoom(" +
+//             ++zoomValue + ")"));
+//       }
+//     });
+//     ZoomOut.addActionListener(e -> {
+//       if (zoomValue > MIN_ZOOM) {
+//         browser.mainFrame().ifPresent(frame ->
+//           frame.executeJavaScript("map.setZoom(" +
+//             --zoomValue + ")"));
+//       }
+//     });
+//     setMarkers.addActionListener(e ->
+//       browser.mainFrame().ifPresent(frame ->
+//         frame.executeJavaScript(setMarkerScript)));
+//     MapsPanel.add(view, BorderLayout.CENTER);
+//     String rootPath = System.getProperty("user.dir");
+//     browser.navigation().loadUrl("D:/NEU_JAVA_WORKSPACE/JavaSwingHospitalApplication/TestingProject/build/classes/Libraries/simple_map.html");
+//   });
  }
     /**
      * This method is called from within the constructor to initialize the form.
