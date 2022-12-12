@@ -80,12 +80,17 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add Cinema");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
+        CinemaData.setBackground(new java.awt.Color(204, 255, 255));
         CinemaData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -99,11 +104,24 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(CinemaData);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 1030, 198));
+
+        thdropdown.setBackground(new java.awt.Color(204, 255, 255));
         thdropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(thdropdown, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 328, 252, -1));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Theatre :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(441, 331, -1, -1));
 
+        namefld.setBackground(new java.awt.Color(204, 255, 255));
+        add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 371, 252, -1));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 374, -1, -1));
 
         SaveButton.setText("Save");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -111,12 +129,31 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
                 SaveButtonActionPerformed(evt);
             }
         });
+        add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 535, 137, 35));
 
+        dirfld.setBackground(new java.awt.Color(204, 255, 255));
+        add(dirfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 412, 252, -1));
+
+        prodfld.setBackground(new java.awt.Color(204, 255, 255));
+        add(prodfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 453, 252, -1));
+
+        urlfld.setBackground(new java.awt.Color(204, 255, 255));
+        add(urlfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 494, 252, -1));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Director :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 415, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Producer/Studio :");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 456, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Url :");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 497, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-repeat-25.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,71 +161,12 @@ public class CreateMoviesPanel extends javax.swing.JPanel {
                 jLabel7MouseClicked(evt);
             }
         });
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 328, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(480, 480, 480)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(391, 391, 391)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(thdropdown, 0, 252, Short.MAX_VALUE)
-                            .addComponent(namefld)
-                            .addComponent(dirfld, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(prodfld)
-                            .addComponent(urlfld)
-                            .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)))
-                .addGap(30, 30, 30))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(thdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dirfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(prodfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(urlfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cinema-come-è-cambiato.jpg"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 630));
     }// </editor-fold>//GEN-END:initComponents
 String name,theatre,dir,studio,url;
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
@@ -229,6 +207,7 @@ populateTheatres();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField namefld;
     private javax.swing.JTextField prodfld;

@@ -69,12 +69,17 @@ private void populateUniversities(){
         jLabel5 = new javax.swing.JLabel();
         SaveButton = new javax.swing.JButton();
         stloclbl = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Add University");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 230, -1));
 
+        universitydropdown.setBackground(new java.awt.Color(204, 255, 255));
         universitydropdown.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -88,13 +93,39 @@ private void populateUniversities(){
         ));
         jScrollPane1.setViewportView(universitydropdown);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 1011, 190));
+
+        namefld.setBackground(new java.awt.Color(204, 255, 255));
+        add(namefld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 316, 233, -1));
+
+        deanfld.setBackground(new java.awt.Color(204, 255, 255));
+        add(deanfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 357, 233, -1));
+
+        locfld.setBackground(new java.awt.Color(204, 255, 255));
+        add(locfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 398, 233, -1));
+
+        cordfld.setBackground(new java.awt.Color(204, 255, 255));
+        add(cordfld, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 439, 233, -1));
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name :");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 319, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Dean :");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 360, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Location :");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 401, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Co-Ordinates :");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 442, -1, -1));
 
         SaveButton.setText("Save");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,81 +133,20 @@ private void populateUniversities(){
                 SaveButtonActionPerformed(evt);
             }
         });
+        add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 494, 110, 40));
 
+        stloclbl.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        stloclbl.setForeground(new java.awt.Color(255, 255, 255));
         stloclbl.setText("Set Location");
         stloclbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 stloclblMouseClicked(evt);
             }
         });
+        add(stloclbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 442, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deanfld, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cordfld, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                            .addComponent(locfld))
-                        .addGap(18, 18, 18)
-                        .addComponent(stloclbl)))
-                .addGap(337, 337, 337))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(408, 408, 408)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(502, 502, 502)
-                        .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namefld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deanfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(locfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cordfld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(stloclbl))
-                .addGap(32, 32, 32)
-                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/university.jpeg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 630));
     }// </editor-fold>//GEN-END:initComponents
 String name,dean,location,cord;
 
@@ -217,6 +187,7 @@ MapsFrame frame  = new MapsFrame(newOne);
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField locfld;
     private javax.swing.JTextField namefld;
