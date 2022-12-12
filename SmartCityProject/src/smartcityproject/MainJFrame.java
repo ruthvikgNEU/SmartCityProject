@@ -53,7 +53,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
     public final void connectDatabase(){
      try{
-         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "rajkumar");
+         connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root", "root");
         }
         catch(SQLException e){
             System.out.println("Unable to connect to Database");
