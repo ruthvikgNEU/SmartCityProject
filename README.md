@@ -6,5 +6,12 @@ In reality, there are hardships faced by people to gain access to different reso
 
 
 
-![Uml_usecase diagram](https://user-images.githubusercontent.com/113465932/206881850-758e1f41-54e4-4f98-b641-7c1a68399e12.jpeg)
+CLASS DIAGRAM:
+
+![Classdiagram](https://user-images.githubusercontent.com/113465932/206961620-07bc43c0-4fb6-47ba-a8e7-29fb22125b9d.jpeg)
+
+
+USE CASE DIAGRAM
+
+![Usecase](https://user-images.githubusercontent.com/113465932/206961645-53f43460-b979-46c0-a7cf-874e6ab7f9d2.jpeg)
 
