@@ -374,7 +374,7 @@ String fname,lname,uname,email,pass,cnfpass,code;
         cnfpass = String.valueOf(CnfPasswordFld.getPassword());
         code = generateUniqueId();
         try {
-            PreparedStatement st = (PreparedStatement) connection.prepareStatement("insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login) values(?,?,?,?,?,?,false)");
+            PreparedStatement st = (PreparedStatement) connection.prepareStatement("insert into users(firstname,lastname,username,email,passwordFld,verify_code,can_login) values(?,?,?,?,?,?,?)");
 
             st.setString(1, fname);
             st.setString(2, lname);
@@ -382,6 +382,7 @@ String fname,lname,uname,email,pass,cnfpass,code;
             st.setString(4, email);
             st.setString(5, pass);
             st.setString(6, code);
+            st.setString(7,"0");
             st.executeUpdate();
             send_mail(email, Integer.parseInt(code));
         } catch (NumberFormatException | SQLException e) {
@@ -390,34 +391,31 @@ String fname,lname,uname,email,pass,cnfpass,code;
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void VerifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyButtonActionPerformed
-        String code = VerifyCodeFld.getText();
-
+        String codes = VerifyCodeFld.getText();
         try {
-            PreparedStatement st = (PreparedStatement)connection.prepareStatement("Select username,passwordFld,verify_code from users");
-            PreparedStatement st2 = (PreparedStatement)connection.prepareStatement("update users set can_login = ? where username = ? ");
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                if(rs.getString(1).equals(uname) && rs.getString(2).equals(pass)){
-                    if(rs.getString(3).equals(code)){
-                        st2.setString(1,"1");
-                        st2.setString(2,uname);
-                        int executeUpdate = st2.executeUpdate();
-                        System.out.println(executeUpdate);
-                        JOptionPane.showMessageDialog(this, "Email Verified.\n Please proceed to Login.");
+           
+           
+            
+            
+              
+                    if(codes.equals(code)){
+                      PreparedStatement st2 = (PreparedStatement)connection.prepareStatement("update users set can_login = ? where username = ? ");
+                      st2.setString(1, "1");
+                      st2.setString(2, uname);
+                      st2.executeUpdate();
+                        JOptionPane.showMessageDialog(this, "Email Verified. Please Login.");
                     }else{
                         JOptionPane.showMessageDialog(this, "Incorrect Verification Code");
                     }
-                }
-            }
+                
+            
         } catch (HeadlessException | SQLException sqlException) {
-            sqlException.printStackTrace();
+            System.out.println(sqlException);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_VerifyButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

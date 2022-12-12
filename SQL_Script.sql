@@ -19,7 +19,7 @@ username varchar(15),
 email varchar(30),
 passwordFld varchar(20),
 verify_code integer,
-can_login boolean default false,
+can_login varchar(2) default "0",
 role varchar(20),
 balance double,
 primary key(user_id)
