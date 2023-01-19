@@ -332,8 +332,8 @@ private void UsernameListener(){
     }//GEN-LAST:event_HomeButtonActionPerformed
 public void send_mail(String to_mail, int code) {
   System.out.println("Sending Mail");
-  String email = "ruthvik.vgf58@gmail.com";
-  String password = "Lionelmessi10$";
+  String email = "EMAIL HERE";
+  String password = "PASSWORD HERE";
   Properties defaultProps = new Properties();
   defaultProps.setProperty("mail.smtp.auth", "true");
   defaultProps.setProperty("mail.smtp.starttls.enable", "true");
@@ -352,7 +352,7 @@ public void send_mail(String to_mail, int code) {
     message.addRecipient(Message.RecipientType.TO, new InternetAddress(to_mail));
     message.setSubject("AED Project Email Verification");
     message.setText("Hi, \n \n Your Verification code is "+code+"\n \nThanks,\nAdmin Team.");
-    Transport.send(message,email,"vmifdghiyfqpkjpy");
+    Transport.send(message,email,"APP PASSWORD HERE");
     System.out.println("Sent Mail");
     JOptionPane.showMessageDialog(this, "Verification Email Successfully sent.!!");
 }
